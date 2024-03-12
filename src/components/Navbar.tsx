@@ -14,6 +14,8 @@ const Navbar: React.FC = () => {
                     {/* Add more navigation links as needed */}
                 </div>
             </div>
+
+
         </nav>
     );
 };
