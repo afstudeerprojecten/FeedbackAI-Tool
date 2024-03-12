@@ -1,5 +1,6 @@
 // src/components/Navbar.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
@@ -7,7 +8,8 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white font-bold text-lg">My React App</div>
         <div className="space-x-4">
-          <a href="/" className="text-white hover:text-primary-light transition-colors duration-200">Home</a>
+          <Link to="/" className="text-white hover:text-primary-light transition-colors duration-200">Home</Link>
+          <Link to="/chat" className="text-white hover:text-primary-light transition-colors duration-200">Chat</Link>
           {/* Add more navigation links as needed */}
         </div>
       </div>
