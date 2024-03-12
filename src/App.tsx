@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home'; // Assuming you have a Home component
 import Navbar from './components/Navbar';
-import ChatPage from './pages/Chatpage'; // Assuming you have a ChatPage component
+import ChatPage from './pages/ChatPage'; // Assuming you have a ChatPage component
+import FormPage from './pages/FormPage';
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chat" element={<ChatPage />} />
+        <Route path="/form" element={<FormPage />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>
