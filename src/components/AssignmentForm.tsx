@@ -4,6 +4,22 @@ import React, { useState } from 'react';
 const AssignmentForm: React.FC = () => {
   const [description, setDescription] = useState('');
   const [templates, setTemplates] = useState('');
+  const [response, setResponse] = useState<string>('');
+
+  // Placeholder function to simulate response from OpenAI API
+  const generateTemplates = () => {
+    // Check if templates is not empty and is a valid number
+    if (templates !== '' && !isNaN(Number(templates))) {
+      const numberOfTemplates = Number(templates);
+      // Generate templates based on the description and number of templates
+      const templatesArray = Array.from({ length: numberOfTemplates }, () => description);
+      const placeholderResponse = templatesArray.join('\n');
+      setResponse(placeholderResponse);
+    } else {
+      // Handle invalid input for number of templates
+      setResponse('Please enter a valid number for the number of templates.');
+    }
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -42,10 +58,16 @@ const AssignmentForm: React.FC = () => {
             required
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+        <button
+          onClick={generateTemplates}
+          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mb-4"
+        >
           Generate Templates
         </button>
       </form>
+      <h2 className="text-2xl font-bold mb-4">Generated Templates</h2>
+
+      <div className="border border-gray-300 p-4 rounded-md">{response}</div>
     </div>
   );
 };
