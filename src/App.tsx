@@ -4,6 +4,7 @@ import Home from './pages/Home'; // Assuming you have a Home component
 import Navbar from './components/Navbar';
 import ChatPage from './pages/ChatPage'; // Assuming you have a ChatPage component
 import FormPage from './pages/FormPage';
+import RegisterTeacherForm from './components/RegisterTeacherForm';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/form" element={<FormPage />} />
+        <Route path="/registerteacher" element={<RegisterTeacherForm />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>

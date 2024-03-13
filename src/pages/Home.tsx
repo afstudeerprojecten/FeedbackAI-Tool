@@ -12,9 +12,9 @@ const Home: React.FC = () => {
                         <div className="hero bg-base rounded-lg p-8">
                             <div className="hero-content text-center">
                                 <div className="max-w-md">
-                                    <h1 className="text-5xl font-bold text-white">Hello there</h1>
-                                    <p className="py-6 text-white">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                                    <Link to="/form" className="btn btn-primary">Get Started</Link>
+                                    <h1 className="text-5xl font-bold text-white">Welcome!</h1>
+                                    <p className="py-6 text-white">This tool allows you, as a teacher, to enter your assignemts and let your students get feedback back from the AI to further help them with their assigments</p>
+                                    <Link to="/registerteacher" className="btn btn-primary">Get Started</Link>
                                 </div>
                             </div>
                         </div>
