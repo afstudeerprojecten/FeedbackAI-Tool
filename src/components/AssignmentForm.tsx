@@ -68,6 +68,16 @@ const AssignmentForm: React.FC = () => {
       <h2 className="text-2xl font-bold mb-4">Generated Templates</h2>
 
       <div className="border border-gray-300 p-4 rounded-md">{response}</div>
+      <br />
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2  gap-4 p-8">
+      <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mb-4">
+        Accept Templates
+      </button>
+      
+      <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mb-4">
+        Decline Templates
+      </button>
+      </div>
     </div>
   );
 };
