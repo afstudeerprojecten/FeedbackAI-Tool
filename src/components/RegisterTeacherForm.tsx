@@ -3,7 +3,7 @@ import React from 'react';
 const RegisterTeacherForm: React.FC = () => {
   return (
     <div className="min-h-screen bg-base flex items-center justify-center">
-      <div className="bg-base rounded-lg shadow-md p-8 max-w-md w-full">
+      <div className="bg-base rounded-lg shadow-2xl p-8 max-w-md w-full">
         <form>
           <h2 className="text-2xl font-semibold mb-4">Register Teacher</h2>
           <div className="mb-4">
