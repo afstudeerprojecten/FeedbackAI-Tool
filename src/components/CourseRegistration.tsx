@@ -15,7 +15,7 @@ const CourseRegistration: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-base">
-            <div className="bg-base rounded-lg shadow-md p-8 max-w-md w-full">
+            <div className="bg-base rounded-lg shadow-2xl p-8 max-w-md w-full">
                 <h1 className="text-2xl font-semibold mb-4">Course Registration</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">

@@ -4,7 +4,7 @@ const SubjectCards: React.FC = () => {
     return (
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8">
             {/* Subject 1 */}
-            <div className="card shadow-lg p-6">
+            <div className="card shadow-2xl p-6">
                 <div className="flex justify-center">
                     <img src="src/img/openai.png" alt="Math" className="w-42 h-42" />
                 </div>
@@ -13,7 +13,7 @@ const SubjectCards: React.FC = () => {
             </div>
 
             {/* Subject 2 */}
-            <div className="card shadow-lg p-6">
+            <div className="card shadow-2xl p-6">
                 <div className="flex justify-center">
                     <img src="src/img/course.jpeg" alt="Science" className="w-42 h-42" />
                 </div>
@@ -22,7 +22,7 @@ const SubjectCards: React.FC = () => {
             </div>
 
             {/* Subject 3 */}
-            <div className="card shadow-lg p-6">
+            <div className="card shadow-2xl p-6">
                 <div className="flex justify-center">
                     <img src="src/img/openai.png" alt="History" className="w-42 h-42" />
                 </div>
