@@ -23,7 +23,7 @@ const CourseRegistration: React.FC = () => {
                         <input
                             type="text"
                             id="teacherName"
-                            className="input input-bordered w-full mt-1"
+                            className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                             value={teacherName}
                             onChange={(e) => setTeacherName(e.target.value)}
                             required
@@ -34,7 +34,7 @@ const CourseRegistration: React.FC = () => {
                         <input
                             type="text"
                             id="courseName"
-                            className="input input-bordered w-full mt-1"
+                            className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                             value={courseName}
                             onChange={(e) => setCourseName(e.target.value)}
                             required
