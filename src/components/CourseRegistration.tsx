@@ -1,3 +1,4 @@
+// CourseRegistration.tsx
 import React, { useState } from 'react';
 
 const CourseRegistration: React.FC = () => {
@@ -14,7 +15,7 @@ const CourseRegistration: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-base">
-            <div className="container mx-auto py-8">
+            <div className="bg-base-300 rounded-lg shadow-md p-8 max-w-md w-full">
                 <h1 className="text-2xl font-semibold mb-4">Course Registration</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
@@ -26,7 +27,6 @@ const CourseRegistration: React.FC = () => {
                             value={teacherName}
                             onChange={(e) => setTeacherName(e.target.value)}
                             required
-                             // Automatically fills with logged-in teacher's name
                         />
                     </div>
                     <div className="mb-4">
