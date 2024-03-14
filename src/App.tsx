@@ -9,7 +9,7 @@ import CourseRegistrationPage from './pages/CourseRegistrationPage';
 
 const App: React.FC = () => {
   return (
-    <Router basename="/FeedbackAI-Tool">
+    <Router basename="/FeedbackAI-Tool/">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
