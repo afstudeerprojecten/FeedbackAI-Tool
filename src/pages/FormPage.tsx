@@ -5,16 +5,13 @@ const FormPage: React.FC = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="mb-8">
-        <div className="bg-base shadow-2xl rounded px-8 py-6 mb-4">
-          <h2 className="text-2xl font-bold mb-4">How To Use</h2>
-          <p className="mb-4">Follow these steps to use the assignment form:</p>
-          <ol className="list-decimal list-inside">
-            <li className="mb-2">Enter the assignment description in the text area provided.</li>
-            <li className="mb-2">Specify the number of templates you want to generate.</li>
-            <li className="mb-2">Click on "Generate Templates" to create the templates.</li>
-            <li className="mb-2">Review the generated templates below.</li>
-            <li>Select either "Accept Templates" or "Decline Templates" based on your decision.</li>
-          </ol>
+        <div className="bg-base shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
+          <h1 className="text-2xl font-bold mb-4 text-center">How To Use</h1>
+          <p className="text-center mb-4">1. Select the course for the assignment from the dropdown.</p>
+          <p className="text-center mb-4">2. Enter the title for the assignment.</p>
+          <p className="text-center mb-4">3. Provide a description of the assignment.</p>
+          <p className="text-center mb-4">4. Specify the number of templates to generate.</p>
+          <p className="text-center mb-8">5. Click on "Generate Templates" to generate the templates.</p>
         </div>
         <AssignmentForm />
       </div>
