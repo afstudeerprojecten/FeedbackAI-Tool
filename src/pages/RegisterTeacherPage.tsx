@@ -4,8 +4,8 @@ import RegisterForm from '../components/RegisterTeacherForm';
 
 const RegisterPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-base-300 flex items-center justify-center">
-      <div className="bg-base-300 rounded-lg shadow-xl p-8 max-w-md w-full">
+    <div className="min-h-screen bg-base flex items-center justify-center">
+      <div className="bg-base rounded-lg shadow-xl p-8 max-w-md w-full">
         <RegisterForm />
       </div>
     </div>
