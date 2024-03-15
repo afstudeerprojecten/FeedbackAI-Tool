@@ -65,6 +65,7 @@ const ChatInterface: React.FC = () => {
       </div>
       <div className="container mx-auto flex flex-col items-center">
         <ChatMessages messages={messages} />
+        <br />
         <ChatInput onSendMessage={handleSendMessage} />
       </div>
     </div>
