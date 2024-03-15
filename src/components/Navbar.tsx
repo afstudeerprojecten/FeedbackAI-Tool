@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
                 <div className="text-white font-bold text-lg">FeedbackAI-Tool</div>
                 <div className="space-x-4">
                     <Link to="/" className="text-white hover:text-primary-light transition-colors duration-200">Home</Link>
-                    <Link to="/chat" className="text-white hover:text-primary-light transition-colors duration-200">Chat</Link>
+                    <Link to="/chat" className="text-white hover:text-primary-light transition-colors duration-200">Student Submission</Link>
                     <Link to="/assignment" className="text-white hover:text-primary-light transition-colors duration-200">Create Assignment</Link>
                     <Link to="/registeruser" className="text-white hover:text-primary-light transition-colors duration-200">Register User</Link>
                     <Link to="/registercourse" className="text-white hover:text-primary-light transition-colors duration-200">Register Course</Link>
