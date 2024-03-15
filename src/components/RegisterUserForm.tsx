@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RegisterTeacherForm: React.FC = () => {
+const RegisterUserForm: React.FC = () => {
   return (
     <div className="min-h-screen bg-base flex items-center justify-center">
       <div className="bg-base rounded-lg shadow-2xl p-8 max-w-md w-full">
@@ -22,6 +22,14 @@ const RegisterTeacherForm: React.FC = () => {
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input type="email" id="email" name="email" className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
           </div>
+          <div className="mb-4">
+            <label htmlFor="role" className="block text-sm font-medium text-gray-700">Role</label>
+            <select id="role" name="role" className="input input-bordered w-full mt-1">
+              <option value="teacher">Teacher</option>
+              <option value="student">Student</option>
+              <option value="organization_admin">Organization Admin</option>
+            </select>
+          </div>
           <div className="mb-6">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
             <input type="password" id="password" name="password" className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
@@ -35,4 +43,4 @@ const RegisterTeacherForm: React.FC = () => {
   );
 };
 
-export default RegisterTeacherForm;
+export default RegisterUserForm;

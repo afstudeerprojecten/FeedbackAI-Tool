@@ -4,7 +4,7 @@ import Home from './pages/Home'; // Assuming you have a Home component
 import Navbar from './components/Navbar';
 import ChatPage from './pages/ChatPage'; // Assuming you have a ChatPage component
 import FormPage from './pages/FormPage';
-import RegisterTeacherForm from './components/RegisterTeacherForm';
+import RegisterTeacherForm from './components/RegisterUserForm';
 import CourseRegistrationPage from './pages/CourseRegistrationPage';
 
 const App: React.FC = () => {
