@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
                     <Link to="/" className="text-white hover:text-primary-light transition-colors duration-200">Home</Link>
                     <Link to="/chat" className="text-white hover:text-primary-light transition-colors duration-200">Chat</Link>
                     <Link to="/assignment" className="text-white hover:text-primary-light transition-colors duration-200">Create Assignment</Link>
-                    <Link to="/registerteacher" className="text-white hover:text-primary-light transition-colors duration-200">Register Teacher</Link>
+                    <Link to="/registeruser" className="text-white hover:text-primary-light transition-colors duration-200">Register User</Link>
                     <Link to="/registercourse" className="text-white hover:text-primary-light transition-colors duration-200">Register Course</Link>
                     {/* Add more navigation links as needed */}
                 </div>

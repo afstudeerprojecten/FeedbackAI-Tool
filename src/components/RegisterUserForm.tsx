@@ -5,7 +5,7 @@ const RegisterUserForm: React.FC = () => {
     <div className="min-h-screen bg-base flex items-center justify-center">
       <div className="bg-base rounded-lg shadow-2xl p-8 max-w-md w-full">
         <form>
-          <h2 className="text-2xl font-semibold mb-4">Register Teacher</h2>
+          <h2 className="text-2xl font-semibold mb-4">Register New User</h2>
           <div className="mb-4">
             <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
             <input type="text" id="username" name="username" className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
