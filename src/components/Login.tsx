@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { redirect } from 'react-router-dom'; // Assuming you're using React Router
 import mockUsers from '../data/mockData'; // Import the User type and mock users data
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,8 +17,9 @@ const Login: React.FC = () => {
       // Log in successful, redirect to the dashboard or homepage
       // Here you can store the user's information in local storage or session storage for authentication purposes
       // For now, we're just redirecting to the homepage
-        redirect('/');
-      console.log('Login successful');
+        navigate("/");
+        console.log('Login successful');
+        sessionStorage.setItem('user', JSON.stringify(foundUser));
     } else {
       setError('Invalid username or password.');
     }
