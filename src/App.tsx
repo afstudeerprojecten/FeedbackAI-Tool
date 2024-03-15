@@ -6,6 +6,7 @@ import ChatPage from './pages/ChatPage'; // Assuming you have a ChatPage compone
 import FormPage from './pages/FormPage';
 import RegisterUserForm from './components/RegisterUserForm';
 import CourseRegistrationPage from './pages/CourseRegistrationPage';
+import LoginPage from './pages/LoginPage';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route path="/assignment" element={<FormPage />} />
         <Route path="/registeruser" element={<RegisterUserForm />} />
         <Route path="/registercourse" element={<CourseRegistrationPage />} />
+        <Route path="/login" element={<LoginPage />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>

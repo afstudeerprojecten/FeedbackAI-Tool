@@ -13,6 +13,7 @@ const Navbar: React.FC = () => {
                     <Link to="/assignment" className="text-white hover:text-primary-light transition-colors duration-200">Create Assignment</Link>
                     <Link to="/registeruser" className="text-white hover:text-primary-light transition-colors duration-200">Register User</Link>
                     <Link to="/registercourse" className="text-white hover:text-primary-light transition-colors duration-200">Register Course</Link>
+                    <Link to="/login" className="text-white hover:text-primary-light transition-colors duration-200">Login</Link>
                     {/* Add more navigation links as needed */}
                 </div>
                 <label className="flex cursor-pointer gap-2">
