@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# FeedbackAI Tool Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+The FeedbackAI Tool Frontend is a web application designed to assist teachers in providing feedback on student assignments using OpenAI's API. The system allows teachers to create template solutions, manage courses, and review student submissions.
 
-Currently, two official plugins are available:
+## Features
+- **Course Management:** Teachers can create and manage courses, organizing assignments within each course.
+- **Assignment Creation:** Teachers can define assignments, give a description of the assignment and the amount of template solutions they want.
+- **Student Submissions:** Students can submit their work for assignments, which is then processed by the system for feedback.
+- **Feedback Generation:** OpenAI's API is utilized to generate feedback on student submissions, providing hints and suggestions for improvement.
+- **Reviewing Submissions:** Teachers can review student submissions, view generated feedback, and provide additional comments or grades.
+- **Final Submission:** Students can submit their revised assignments for final review by the teacher.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+ **Login:**
+   - Use the provided login functionality to access the system.
+   - If no login credentials are available, register an account.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+ **Navigation:**
+   - Use the navigation menu to access different features such as course management, assignment creation, and student submissions.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Technologies Used
+- React.js
+- React Router
+- OpenAI API (for feedback generation)
+- Tailwind CSS (for styling)
