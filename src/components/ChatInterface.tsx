@@ -63,11 +63,13 @@ const ChatInterface: React.FC = () => {
           </div>
         </form>
       </div>
-      <div className="container mx-auto flex flex-col items-center">
+      <div className="container mx-auto flex flex-col items-center shadow-2xl">
         <ChatMessages messages={messages} />
         <br />
         <ChatInput onSendMessage={handleSendMessage} />
+        <br />
       </div>
+
     </div>
   );
 };

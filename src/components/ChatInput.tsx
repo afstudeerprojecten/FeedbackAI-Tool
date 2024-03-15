@@ -9,12 +9,13 @@ const ChatInput: React.FC<Props> = ({ onSendMessage }) => {
   const [isLoading, setIsLoading] = useState(false); // State to track loading state
   const [messages, setMessages] = useState<{ text: string; sender: string }[]>([]); // State to store messages
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(event.target.value);
   };
 
-  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
+  const handleKeyPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
       sendMessage();
     }
   };
@@ -41,16 +42,18 @@ const ChatInput: React.FC<Props> = ({ onSendMessage }) => {
   };
 
   return (
-    <div className="input-container flex items-center">
-      <input
-        type="text"
+    <div className="input-container">
+      <textarea
+        id='chat-input'
         value={inputValue}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
         placeholder="Type your message here..."
-        className="mr-2 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500"
+        className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+        rows={8} // Set the number of rows for the textarea
       />
-      <button className="btn btn-sm btn-primary" onClick={sendMessage}>
+      
+      <button className="btn btn-primary mt-2 block mx-auto w-full" onClick={sendMessage}>
         {isLoading ? 'Sending...' : 'Send'}
       </button>
     </div>
