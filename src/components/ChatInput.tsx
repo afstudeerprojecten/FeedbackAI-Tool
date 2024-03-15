@@ -49,7 +49,7 @@ const ChatInput: React.FC<Props> = ({ onSendMessage }) => {
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
         placeholder="Type your message here..."
-        className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+        className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 max-w-full"
         rows={8} // Set the number of rows for the textarea
       />
       
