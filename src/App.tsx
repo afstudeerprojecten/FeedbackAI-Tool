@@ -4,11 +4,12 @@ import Home from './pages/Home'; // Assuming you have a Home component
 import Navbar from './components/Navbar';
 import ChatPage from './pages/ChatPage'; // Assuming you have a ChatPage component
 import FormPage from './pages/FormPage';
-import RegisterUserForm from './components/RegisterUserForm';
+// import RegisterUserForm from './components/RegisterUserForm';
 import CourseRegistrationPage from './pages/CourseRegistrationPage';
 import LoginPage from './pages/LoginPage';
 import RegisterOrganisationPage from './pages/RegisterOrganisationPage';
 import OrganizationsOverviewPage from './pages/OrganisationTableOverviewPage';
+import RegisterTeacherPage from './pages/RegisterTeacherPage';
 
 const App: React.FC = () => {
   return (
@@ -18,7 +19,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/assignment" element={<FormPage />} />
-        <Route path="/registeruser" element={<RegisterUserForm />} />
+        <Route path="/registerteacher" element={<RegisterTeacherPage />} />
         <Route path="/registercourse" element={<CourseRegistrationPage />} />
         <Route path="/registerorg" element={<RegisterOrganisationPage />} />
         <Route path="/organisations" element={<OrganizationsOverviewPage />} />
