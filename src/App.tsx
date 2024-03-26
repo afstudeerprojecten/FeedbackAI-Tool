@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterOrganisationPage from './pages/RegisterOrganisationPage';
 import OrganizationsOverviewPage from './pages/OrganisationTableOverviewPage';
 import RegisterTeacherPage from './pages/RegisterTeacherPage';
+import TeacherOverviewPage from './pages/TeacherTableOverviewPage';
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
         <Route path="/registercourse" element={<CourseRegistrationPage />} />
         <Route path="/registerorg" element={<RegisterOrganisationPage />} />
         <Route path="/organisations" element={<OrganizationsOverviewPage />} />
+        <Route path="/teachers" element={<TeacherOverviewPage />} />
         <Route path="/login" element={<LoginPage />} />
         {/* Add more routes as needed */}
       </Routes>
