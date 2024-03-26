@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
                         <>
                             <Link to="/chat" className="text-white hover:text-primary-light transition-colors duration-200">Student Submission</Link>
                             <Link to="/assignment" className="text-white hover:text-primary-light transition-colors duration-200">Create Assignment</Link>
-                            <Link to="/registeruser" className="text-white hover:text-primary-light transition-colors duration-200">Register User</Link>
+                            <Link to="/registerteacher" className="text-white hover:text-primary-light transition-colors duration-200">Register Teacher</Link>
                             <Link to="/registerorg" className="text-white hover:text-primary-light transition-colors duration-200">Register Organisation</Link>
                             <Link to="/organisations" className="text-white hover:text-primary-light transition-colors duration-200">Organisation Overview</Link>
                             <Link to="/registercourse" className="text-white hover:text-primary-light transition-colors duration-200">Register Course</Link>
