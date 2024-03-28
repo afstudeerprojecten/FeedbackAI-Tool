@@ -1,8 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTeachers } from '../services/teacherService';
+import { fetchTeachers, deleteTeacher } from '../services/teacherService';
 
 const TeachersOverviewTable: React.FC = () => {
   const [teachers, setTeachers] = useState<any[]>([]);
+
+  const clickDelete = (id: number) => {
+    // Display confirmation dialog
+    const confirmDelete = window.confirm('Are you sure you want to delete this teacher?');
+
+    if (confirmDelete) {
+      // User clicked OK, proceed with deletion
+      deleteTeacher(id)
+        .then(() => {
+          const newTeachers = teachers.filter((teacher) => teacher.id !== id);
+          setTeachers(newTeachers);
+        })
+        .catch((error: any) => {
+          console.error(error.message);
+        });
+    } else {
+      // User clicked Cancel, do nothing
+      console.log('Deletion cancelled by user');
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +55,9 @@ const TeachersOverviewTable: React.FC = () => {
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Email
             </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Delete
+            </th>
             {/* Add more table headers as needed */}
           </tr>
         </thead>
@@ -45,6 +68,11 @@ const TeachersOverviewTable: React.FC = () => {
               <td className="px-6 py-4 whitespace-nowrap">{teacher.name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{teacher.lastname}</td>
               <td className="px-6 py-4 whitespace-nowrap">{teacher.email}</td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <button onClick={() => clickDelete(teacher.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                  Delete
+                </button>
+              </td>
               {/* Add more table cells for other teacher properties */}
             </tr>
           ))}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { registerTeacher } from '../services/teacherService';
 import { fetchOrganizations } from '../services/organisationService';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterTeacher: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const RegisterTeacher: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [organizations, setOrganizations] = useState<any[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchOrganizationsData = async () => {
@@ -43,6 +45,9 @@ const RegisterTeacher: React.FC = () => {
       const dataToSend = { ...formData, organisationId: parseInt(formData.organisation_id) };
       await registerTeacher(dataToSend);
       setSuccess(true);
+      setTimeout(() => {
+        navigate('/teachers');
+      }, 2000);
     } catch (error: any) {
       setError(error.response.data.detail || 'An error occurred while registering the teacher');
     } finally {

@@ -35,3 +35,19 @@ export const fetchTeachers = async () => {
         throw error.response.data.detail || 'An error occurred while fetching teachers';
     }
 };
+
+export const deleteTeacher = async (teacherId: number) => {
+    try {
+        const config = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'  
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.delete(`${API_URL}/teacher/delete/${teacherId}`, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while deleting the teacher';
+    }
+};
