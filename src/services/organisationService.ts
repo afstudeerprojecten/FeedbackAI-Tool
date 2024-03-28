@@ -34,3 +34,19 @@ export const fetchOrganizations = async () => {
     }
 };
 
+export const deleteOrganisation = async (organisationId: number) => {
+    try {
+        const config = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'  
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.delete(`${API_URL}/organisation/delete/${organisationId}`, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while deleting the organisation';
+    }
+}
+
