@@ -51,3 +51,35 @@ export const deleteTeacher = async (teacherId: number) => {
         throw error.response.data.detail || 'An error occurred while deleting the teacher';
     }
 };
+
+export const updateTeacher = async (teacherId: number, teacherData: any) => {
+    try {
+        const config = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'  
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.put(`${API_URL}/teacher/update/${teacherId}`, teacherData, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while updating the teacher';
+    }
+}
+
+export const fetchTeacher = async (teacherId: number) => {
+    try {
+        const config = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'  
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.get(`${API_URL}/teacher/id/${teacherId}`, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while fetching the teacher';
+    }
+}

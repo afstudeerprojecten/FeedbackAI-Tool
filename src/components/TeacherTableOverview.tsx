@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTeachers, deleteTeacher } from '../services/teacherService';
+import { useNavigate } from 'react-router-dom';
 
 const TeachersOverviewTable: React.FC = () => {
   const [teachers, setTeachers] = useState<any[]>([]);
 
+  const nav = useNavigate();
   const clickDelete = (id: number) => {
     // Display confirmation dialog
     const confirmDelete = window.confirm('Are you sure you want to delete this teacher?');
@@ -23,6 +25,10 @@ const TeachersOverviewTable: React.FC = () => {
       console.log('Deletion cancelled by user');
     }
   }
+  const clickUpdate = (updateId: any) => {
+    sessionStorage.setItem('updateId', updateId);
+    nav('/teacher/update');
+};
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +62,9 @@ const TeachersOverviewTable: React.FC = () => {
               Email
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Update
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Delete
             </th>
             {/* Add more table headers as needed */}
@@ -68,6 +77,11 @@ const TeachersOverviewTable: React.FC = () => {
               <td className="px-6 py-4 whitespace-nowrap">{teacher.name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{teacher.lastname}</td>
               <td className="px-6 py-4 whitespace-nowrap">{teacher.email}</td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <button onClick={() => clickUpdate(teacher.id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Update
+                </button>
+              </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <button onClick={() => clickDelete(teacher.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                   Delete
