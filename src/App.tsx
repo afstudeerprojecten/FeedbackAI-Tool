@@ -13,6 +13,8 @@ import TeacherOverviewPage from './pages/TeacherTableOverviewPage';
 import UpdateTeacherPage from './pages/UpdateTeacherPage';
 import RegisterCoursePage from './pages/RegisterCoursePage';
 import CourseOverviewTable from './pages/CourseTableOverviewPage';
+import RegisterAdminPage from './pages/RegisterAdminPage';
+import AdminOverviewTablePage from './pages/AdminTableOverviewPage';
 
 const App: React.FC = () => {
   return (
@@ -30,6 +32,8 @@ const App: React.FC = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/teacher/update" element={<UpdateTeacherPage />} />
         <Route path="/courses" element={<CourseOverviewTable />} />
+        <Route path="/registeradmin" element={<RegisterAdminPage />} />
+        <Route path="/admins" element={<AdminOverviewTablePage />} />
 
         {/* Add more routes as needed */}
       </Routes>
