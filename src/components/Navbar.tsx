@@ -32,8 +32,8 @@ const Navbar: React.FC = () => {
                     )}
                     {role === 'Organisation Admin' && (
                         <>
-                            {/* <Link to="/chat" className="text-white hover:text-primary-light transition-colors duration-200">Student Submission</Link>
-                            <Link to="/assignment" className="text-white hover:text-primary-light transition-colors duration-200">Create Assignment</Link> */}
+                            <Link to="/chat" className="text-white hover:text-primary-light transition-colors duration-200">Student Submission</Link>
+                            <Link to="/assignment" className="text-white hover:text-primary-light transition-colors duration-200">Create Assignment</Link>
                             <Link to="/registeradmin" className="text-white hover:text-primary-light transition-colors duration-200">Register Admin</Link>
                             <Link to="/admins" className="text-white hover:text-primary-light transition-colors duration-200">Admin Overview</Link>
                             <Link to="/registerteacher" className="text-white hover:text-primary-light transition-colors duration-200">Register Teacher</Link>
