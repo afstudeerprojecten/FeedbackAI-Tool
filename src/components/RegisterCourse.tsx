@@ -57,7 +57,7 @@ const RegisterCourse: React.FC = () => {
       <h2 className="text-xl font-bold mb-4">Register Course</h2>
       {success ? (
         <div className="bg-green-200 text-green-800 px-4 py-2 mb-4">
-          Teacher registered successfully!
+          Course registered successfully!
         </div>
       ) : (
         <form onSubmit={handleSubmit}>

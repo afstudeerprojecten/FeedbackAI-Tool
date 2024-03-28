@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { registerOrganisation } from '../services/organisationService';
+import { registerAdmin } from '../services/adminService';
 import { useNavigate } from 'react-router-dom';
 
-const RegisterOrganisation: React.FC = () => {
+const RegisterAdmin: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
     username: '',
     password: '',
   });
@@ -17,19 +16,18 @@ const RegisterOrganisation: React.FC = () => {
     const { name, value } = e.target;
     setFormData(prevState => ({ ...prevState, [name]: value }));
   };
-  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
     setLoading(true);
     try {
-      await registerOrganisation(formData);
+      await registerAdmin(formData);
       setSuccess(true);
       setTimeout(() => {
         navigate('/organisations');
       }, 2000);
-    } catch (error: any) {    
+    } catch (error: any) {
       setError(error);
     } finally {
       setLoading(false);
@@ -41,23 +39,10 @@ const RegisterOrganisation: React.FC = () => {
       <h2 className="text-xl font-bold mb-4">Register Organisation</h2>
       {success ? (
         <div className="bg-green-200 text-green-800 px-4 py-2 mb-4">
-          Organisation registered successfully!
+          Admin registered successfully!
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-sm font-bold mb-2" htmlFor="name">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full border rounded px-3 py-2"
-            />
-          </div>
           <div className="mb-4">
             <label className="block text-sm font-bold mb-2" htmlFor="username">
               Username
@@ -98,4 +83,4 @@ const RegisterOrganisation: React.FC = () => {
   );
 };
 
-export default RegisterOrganisation;
+export default RegisterAdmin;
