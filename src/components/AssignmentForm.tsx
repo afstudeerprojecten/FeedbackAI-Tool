@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { fetchCourses } from '../services/courseService';
 import { fetchTeacher } from '../services/teacherService';
+import { createAssignment } from '../services/assignmentService';
 
 
 const AssignmentForm: React.FC = () => {
   const [formData, setFormData] = useState({
     teacher_id: '',
     course_id: '',
-    assignmentDescription: '',
-    assignmentTitle: '',
-    ageStudents: '',
-    teacher_name: ''
+    description: '',
+    title: '',
+    student_ages: '',
+    teacher_name: '',
+    word_count: ''
   });
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState<string | null>(null);
-  // const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
   // const navigate = useNavigate();
   // const [course, setCourse] = useState<string>(''); // Mock data
   const [courses, setCourses] = useState<any[]>([]);
+  const [assignment, setAssignment] = useState<any>(); // Mock data
 
 
   // Placeholder function to simulate response from OpenAI API
@@ -72,25 +75,40 @@ const AssignmentForm: React.FC = () => {
     }
   };
 
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   console.log('formData', formData);
-  //   e.preventDefault();
-  //   setError(null);
-  //   setLoading(true);
-  //   try {
-  //     // Parse organisationId to an integer before sending the data
-  //     const dataToSend = { ...formData, teacher_id: parseInt(formData.teacher_id) };
-  //     await registerCourse(dataToSend);
-  //     setSuccess(true);
-  //     setTimeout(() => {
-  //       navigate('/courses');
-  //     }, 2000);
-  //   } catch (error: any) {
-  //     setError(error.response.data.detail || 'An error occurred while registering the teacher');
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const handleAssignmetSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    console.log('Form Data:', formData);
+    try {
+      const dataToSend = {
+        ...formData,
+        courseId: parseInt(formData.course_id),
+        student_ages: parseInt(formData.student_ages),
+        word_count: parseInt(formData.word_count)
+      };
+      const createdAssignment = await createAssignment(dataToSend);
+      setSuccess(true);
+      setAssignment(createdAssignment);
+      setFormData({
+        teacher_id: '',
+        course_id: '',
+        description: '',
+        title: '',
+        student_ages: '',
+        teacher_name: '',
+        word_count: ''
+      });
+      console.log('Assignment created:', assignment);
+      setTimeout(() => {
+        // navigate('/assignments');
+      }, 2000);
+    } catch (error: any) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="container mx-auto p-4">
@@ -138,8 +156,8 @@ const AssignmentForm: React.FC = () => {
               type="text"
               id="title"
               className="input input-bordered w-full mt-1"
-              value={formData.assignmentTitle}
-              onChange={(e) => setFormData(prevState => ({ ...prevState, assignmentTitle: e.target.value }))}
+              value={formData.title}
+              onChange={(e) => setFormData(prevState => ({ ...prevState, title: e.target.value }))}
               required
             />
           </div>
@@ -150,32 +168,56 @@ const AssignmentForm: React.FC = () => {
             <textarea
               id="description"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              value={formData.assignmentDescription}
-              onChange={(e) => setFormData(prevState => ({ ...prevState, assignmentDescription: e.target.value }))}
+              value={formData.description}
+              onChange={(e) => setFormData(prevState => ({ ...prevState, description: e.target.value }))}
               required
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="ageStudents" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="student_ages" className="block text-sm font-medium text-gray-700">
               Age of Students
             </label>
             <input
               type="number"
-              id="ageStudents"
+              id="student_ages"
               className="input input-bordered w-full mt-1"
-              value={formData.ageStudents}
-              onChange={(e) => setFormData(prevState => ({ ...prevState, ageStudents: e.target.value }))}
+              value={formData.student_ages}
+              onChange={(e) => setFormData(prevState => ({ ...prevState, student_ages: e.target.value }))}
               required
               min="0"
-              
+
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="word_count" className="block text-sm font-medium text-gray-700">
+              Word Count
+            </label>
+            <input
+              type="number"
+              id="word_count"
+              className="input input-bordered w-full mt-1"
+              value={formData.word_count}
+              onChange={(e) => setFormData(prevState => ({ ...prevState, word_count: e.target.value }))}
+              required
+              min="0"
+
             />
           </div>
           <button
-            className="btn btn-primary w-full"
+            type="submit"
+            className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+            onClick={handleAssignmetSubmit}
+            disabled={loading}
           >
-            Generate Templates
+            {loading ? 'Creating Assignment...' : 'Create Assignment'}
           </button>
+          {error && <div className="text-red-600 mt-4">{error.toString()}</div>}
+          {success && (
+            <div className="bg-green-200 text-green-800 px-4 py-2 mt-4">
+              Assignment created successfully!
+            </div>
+          )}
         </form>
       </div>
       <div className="bg-base shadow-2xl rounded p-4 mb-4">
