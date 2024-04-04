@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { fetchCourses } from '../services/courseService';
 import { fetchTeacher } from '../services/teacherService';
 import { createAssignment } from '../services/assignmentService';
+import { generateTemplate, createTemplate } from '../services/templateService';
+
 
 
 const AssignmentForm: React.FC = () => {
@@ -21,6 +23,8 @@ const AssignmentForm: React.FC = () => {
   // const [course, setCourse] = useState<string>(''); // Mock data
   const [courses, setCourses] = useState<any[]>([]);
   const [assignment, setAssignment] = useState<any>(); // Mock data
+  const [template, setTemplate] = useState<any>(); // Mock data
+  var templateCount = 0;
 
 
   // Placeholder function to simulate response from OpenAI API
@@ -100,6 +104,45 @@ const AssignmentForm: React.FC = () => {
         word_count: ''
       });
       console.log('Assignment created:', assignment);
+      setTimeout(() => {
+        // navigate('/assignments');
+      }, 2000);
+    } catch (error: any) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  const handleTemplateSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    try {
+      if (templateCount > 3) {
+        return setError('You have reached the maximum number of templates');
+      }
+      setLoading(true);
+      const createdTemplate = await generateTemplate(assignment.id);
+      setTemplate(createdTemplate);
+      console.log('Template created:', template);
+      setSuccess(true);
+      templateCount++;
+      setTimeout(() => {
+        // navigate('/assignments');
+      }, 2000);
+    } catch (error: any) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  const handleTemplateAccept = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    try {
+      // Accept the template
+      createTemplate(template);
+      console.log('Template accepted:', template);
+      setSuccess(true);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -220,15 +263,34 @@ const AssignmentForm: React.FC = () => {
           )}
         </form>
       </div>
+      <button
+      type='submit'
+      onClick={handleTemplateSubmit}
+      disabled={loading}
+      className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+        Generate Templates
+      </button>
       <div className="bg-base shadow-2xl rounded p-4 mb-4">
         <h2 className="text-2xl font-bold mb-4">Generated Templates</h2>
-        <div className="border border-gray-300 p-2 rounded-md"></div>
+        <div className="border border-gray-300 p-2 rounded-md">
+          <p className="text-lg font-bold">Template{templateCount}</p>
+          <p className="text-sm">
+            {template || 'No template generated yet'}
+          </p>
+
+        </div>
       </div>
       <div className="flex justify-center">
-        <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mr-2">
+        <button 
+        type='button'
+        onClick={handleTemplateAccept}
+        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mr-2">
           Accept Templates
         </button>
-        <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+        <button 
+        type='button'
+        onClick={handleTemplateSubmit}
+        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
           Decline Templates
         </button>
       </div>
