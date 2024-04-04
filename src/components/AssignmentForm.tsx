@@ -153,6 +153,25 @@ const AssignmentForm: React.FC = () => {
     }
   }
 
+  const handleTemplateDecline = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    try {
+      // Decline the template
+      setTemplate('');
+      console.log('Template declined:', template);
+      setSuccess(true);
+      templateCount--;
+      setTimeout(() => {
+        // navigate('/assignments');
+      }, 2000);
+    } catch (error: any) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="container mx-auto p-4">
       <div className="bg-base shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
@@ -289,7 +308,7 @@ const AssignmentForm: React.FC = () => {
         </button>
         <button 
         type='button'
-        onClick={handleTemplateSubmit}
+        onClick={handleTemplateDecline}
         className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
           Decline Templates
         </button>
