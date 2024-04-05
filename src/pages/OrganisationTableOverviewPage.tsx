@@ -1,7 +1,7 @@
 // OrganizationsOverviewPage.tsx
 
 import React from 'react';
-import OrganizationsOverviewTable from '../components/OrganisationTableOverview'; // Adjust the path as per your project structure
+import OrganizationsOverviewTable from '../components/Organisation/OrganisationTableOverview'; // Adjust the path as per your project structure
 
 const OrganizationsOverviewPage: React.FC = () => {
   return (

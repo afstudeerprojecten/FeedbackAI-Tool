@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchAdmins } from '../services/adminService';
+import { fetchAdmins } from '../../services/adminService';
 
 
 const AdminOverviewTable: React.FC = () => {

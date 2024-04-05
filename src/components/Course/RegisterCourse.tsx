@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTeachers } from '../services/teacherService';
-import { registerCourse } from '../services/courseService';
+import { fetchTeachers } from '../../services/teacherService';
+import { registerCourse } from '../../services/courseService';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterCourse: React.FC = () => {

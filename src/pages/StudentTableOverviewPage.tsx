@@ -1,7 +1,7 @@
 // StudentTableOverviewPage.tsx
 
 import React from 'react';
-import StudentTableOverview from '../components/StudentTableOverview'; // Adjust the path as per your project structure
+import StudentTableOverview from '../components/Student/StudentTableOverview'; // Adjust the path as per your project structure
 
 const StudentTableOverviewPage: React.FC = () => {
   return (

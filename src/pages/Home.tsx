@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TeacherReviews from '../components/TeacherReviews';
+import TeacherReviews from '../components/Teacher/TeacherReviews';
 import SubjectCards from '../components/SubjectCards';
 
 const Home: React.FC = () => {
