@@ -37,6 +37,10 @@ const Navbar: React.FC = () => {
                             <Link to="/teachers" className="text-white hover:text-primary-light transition-colors duration-200">Teacher Overview</Link>
                             <Link to="/courses" className="text-white hover:text-primary-light transition-colors duration-200">Course Overview</Link>
                             <Link to="/registercourse" className="text-white hover:text-primary-light transition-colors duration-200">Register Course</Link>
+                            <Link to="/registerstudent" className="text-white hover:text-primary-light transition-colors duration-200">Register Student</Link>
+                            <Link to="/students" className="text-white hover:text-primary-light transition-colors duration-200">Student Overview</Link>
+                            
+                        
                         </>
                     )}
                     {role === 'Super User' && (
