@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { registerAdmin } from '../services/adminService';
+import { registerAdmin } from '../../services/adminService';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterAdmin: React.FC = () => {

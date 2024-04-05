@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterTeacher from '../components/RegisterTeacher';
+import RegisterTeacher from '../components/Teacher/RegisterTeacher';
 
 const RegisterTeacherPage: React.FC = () => {
   return (

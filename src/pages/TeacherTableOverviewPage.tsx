@@ -1,7 +1,7 @@
 // TeacherOverviewPage.tsx
 
 import React from 'react';
-import TeacherOverviewTable from '../components/TeacherTableOverview'; // Adjust the path as per your project structure
+import TeacherOverviewTable from '../components/Teacher/TeacherTableOverview'; // Adjust the path as per your project structure
 
 const TeacherOverviewPage: React.FC = () => {
   return (

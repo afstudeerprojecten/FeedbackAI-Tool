@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterOrganisation from '../components/RegisterOrganisation';
+import RegisterOrganisation from '../components/Organisation/RegisterOrganisation';
 
 const RegisterOrganisationPage: React.FC = () => {
   return (

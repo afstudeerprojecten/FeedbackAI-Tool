@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { registerTeacher } from '../services/teacherService';
-import { fetchOrganizations } from '../services/organisationService';
+import { registerStudent } from '../../services/studentService';
+import { fetchOrganizations } from '../../services/organisationService';
 import { useNavigate } from 'react-router-dom';
 
-const RegisterTeacher: React.FC = () => {
+const RegisterStudent: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     lastname: '',
@@ -43,10 +43,10 @@ const RegisterTeacher: React.FC = () => {
     try {
       // Parse organisationId to an integer before sending the data
       const dataToSend = { ...formData, organisationId: parseInt(formData.organisation_id) };
-      await registerTeacher(dataToSend);
+      await registerStudent(dataToSend);
       setSuccess(true);
       setTimeout(() => {
-        navigate('/teachers');
+        navigate('/students');
       }, 2000);
     } catch (error: any) {
       setError(error.response.data.detail || 'An error occurred while registering the teacher');
@@ -57,10 +57,10 @@ const RegisterTeacher: React.FC = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">Register Teacher</h2>
+      <h2 className="text-xl font-bold mb-4">Register Student</h2>
       {success ? (
         <div className="bg-green-200 text-green-800 px-4 py-2 mb-4">
-          Teacher registered successfully!
+          Student registered successfully!
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -154,4 +154,4 @@ const RegisterTeacher: React.FC = () => {
   );
 };
 
-export default RegisterTeacher;
+export default RegisterStudent;

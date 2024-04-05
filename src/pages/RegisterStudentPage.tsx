@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterStudent from '../components/RegisterStudent';
+import RegisterStudent from '../components/Student/RegisterStudent';
 
 const RegisterStudentPage: React.FC = () => {
   return (

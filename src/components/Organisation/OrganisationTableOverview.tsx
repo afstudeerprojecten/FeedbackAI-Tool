@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchOrganizations, deleteOrganisation } from '../services/organisationService';
+import { fetchOrganizations, deleteOrganisation } from '../../services/organisationService';
 
 
 const OrganizationsOverviewTable: React.FC = () => {

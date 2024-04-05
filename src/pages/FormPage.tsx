@@ -1,5 +1,5 @@
 import React from 'react';
-import AssignmentForm from '../components/AssignmentForm';
+import AssignmentForm from '../components/Assignment/AssignmentForm';
 
 const FormPage: React.FC = () => {
   return (

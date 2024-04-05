@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { fetchCourses } from '../services/courseService';
-import { fetchTeacher } from '../services/teacherService';
-import { createAssignment } from '../services/assignmentService';
-import { generateTemplate, createTemplate } from '../services/templateService';
+import { fetchCourses } from '../../services/courseService';
+import { fetchTeacher } from '../../services/teacherService';
+import { createAssignment } from '../../services/assignmentService';
+import { generateTemplate, createTemplate } from '../../services/templateService';
 
 
 

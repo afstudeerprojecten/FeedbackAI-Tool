@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchStudents, deleteStudent } from '../services/studentService';
+import { fetchStudents, deleteStudent } from '../../services/studentService';
 // import { useNavigate } from 'react-router-dom';
 
 const StudentTableOverview: React.FC = () => {

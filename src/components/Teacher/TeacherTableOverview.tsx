@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTeachers, deleteTeacher } from '../services/teacherService';
+import { fetchTeachers, deleteTeacher } from '../../services/teacherService';
 import { useNavigate } from 'react-router-dom';
 
 const TeachersOverviewTable: React.FC = () => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { registerOrganisation } from '../services/organisationService';
+import { registerOrganisation } from '../../services/organisationService';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterOrganisation: React.FC = () => {

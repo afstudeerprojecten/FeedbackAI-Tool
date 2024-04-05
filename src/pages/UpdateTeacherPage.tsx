@@ -1,5 +1,5 @@
 import React from 'react';
-import UpdateTeacher from '../components/UpdateTeacherForm';
+import UpdateTeacher from '../components/Teacher/UpdateTeacherForm';
 const UpdateTeacherPage: React.FC = () => {
   return (
     <div className="container mx-auto">

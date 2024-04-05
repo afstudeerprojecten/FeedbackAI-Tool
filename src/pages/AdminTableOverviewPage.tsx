@@ -1,7 +1,7 @@
 // OrganizationsOverviewPage.tsx
 
 import React from 'react';
-import AdminOverviewTable from '../components/AdminOverviewTable'; // Adjust the path as per your project structure
+import AdminOverviewTable from '../components/Admin/AdminOverviewTable'; // Adjust the path as per your project structure
 
 const AdminOverviewTablePage: React.FC = () => {
   return (

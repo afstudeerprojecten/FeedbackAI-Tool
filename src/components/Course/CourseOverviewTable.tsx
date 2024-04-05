@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchCourses } from '../services/courseService';
+import { fetchCourses } from '../../services/courseService';
 
 
 const OrganizationsOverviewTable: React.FC = () => {
