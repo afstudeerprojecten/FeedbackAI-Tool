@@ -142,7 +142,6 @@ const AssignmentForm: React.FC = () => {
       // Accept the template
       createTemplate(template);
       console.log('Template accepted:', template);
-      setSuccess(true);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -160,7 +159,6 @@ const AssignmentForm: React.FC = () => {
       // Decline the template
       setTemplate('');
       console.log('Template declined:', template);
-      setSuccess(true);
       templateCount--;
       setTimeout(() => {
         // navigate('/assignments');

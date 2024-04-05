@@ -7,7 +7,7 @@ export type User = {
     lastName: string;
     email: string;
     password: string;
-    role: 'Student' | 'Teacher' | 'Organisation Admin';
+    role: 'Student' | 'Teacher' | 'Organisation Admin' | 'Super User';
   };
   
   // Array of mock users
@@ -36,6 +36,14 @@ export type User = {
       password: 'adminpassword',
       role: 'Organisation Admin',
     },
+    {
+      username: 'superuser',
+      firstName: 'Super',
+      lastName: 'User',
+      email: 'super@super.com',
+      password: 'superpassword',
+      role: 'Super User',
+    }
   ];
   
   export default mockUsers;
