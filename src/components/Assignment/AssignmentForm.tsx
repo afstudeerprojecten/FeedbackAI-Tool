@@ -126,6 +126,7 @@ const AssignmentForm: React.FC = () => {
       console.log('Template created:', template);
       setSuccess(true);
       templateCount++;
+      console.log('Template Count:', templateCount);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -140,7 +141,7 @@ const AssignmentForm: React.FC = () => {
     setError(null);
     try {
       // Accept the template
-      createTemplate(template);
+      createTemplate({template_content: template, assignment_id: assignment.id});
       console.log('Template accepted:', template);
       setTimeout(() => {
         // navigate('/assignments');
