@@ -22,7 +22,10 @@ const Navbar: React.FC = () => {
                 <div className="space-x-4">
                     <Link to="/" className="text-white hover:text-primary-light transition-colors duration-200">Home</Link>
                     {role === 'Student' && (
+                        <>
                         <Link to="/chat" className="text-white hover:text-primary-light transition-colors duration-200">Student Submission</Link>
+                        <Link to="/assignments" className="text-white hover:text-primary-light transition-colors duration-200">Assignment Overview</Link>
+                        </>
                     )}
                     {role === 'Teacher' && (
                         <>
