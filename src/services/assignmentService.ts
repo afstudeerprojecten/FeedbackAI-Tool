@@ -43,7 +43,7 @@ export const fetchAssignmentTemplates = async (assignmentId: number) => {
             },
             mode: 'cors' // Ensure CORS mode
         };
-        const response = await axios.get(`${API_URL}/assignment/${assignmentId}/templates`, config);
+        const response = await axios.get(`${API_URL}/assignment/${assignmentId}/get_templates`, config);
         return response.data;
     } catch (error: any) {
         throw error.response.data.detail || 'An error occurred while fetching assignment templates';

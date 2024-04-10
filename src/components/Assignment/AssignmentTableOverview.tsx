@@ -32,6 +32,10 @@ const AssignmentTableOverview: React.FC = () => {
     navigate(`/assignment/${id}`);
   };
 
+  const handleViewTemplates = (id: number) => {
+    navigate(`/assignment/${id}/get_templates`);
+  }
+
   return (
     <div className="p-6">
       <h2 className="text-xl font-bold mb-4">Assignment Overview</h2>
@@ -57,7 +61,7 @@ const AssignmentTableOverview: React.FC = () => {
                 <button onClick={() => handleViewDescription(assignment.id)}>View Description</button>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                {showTemplates && <button>View Templates</button>}
+                {showTemplates && <button onClick={() => handleViewTemplates(assignment.id)}>View Templates</button>}
               </td>
             </tr>
           ))}
