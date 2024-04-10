@@ -34,6 +34,9 @@ const AssignmentTemplatesOverview: React.FC = () => {
         <thead className="bg-base">
           <tr>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Template ID
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Template Content
             </th>
           </tr>
@@ -41,6 +44,9 @@ const AssignmentTemplatesOverview: React.FC = () => {
         <tbody className="bg-base divide-y divide-gray-200">
           {templates.map((template, index) => (
             <tr key={index}>
+              <td className="px-6 py-4 whitespace-normal align-top">
+                {template.id}
+              </td>
               <td className="px-6 py-4 whitespace-normal">
                 {formatTemplateContent(template.content)}
               </td>
