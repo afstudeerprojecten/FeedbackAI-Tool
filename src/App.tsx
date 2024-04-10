@@ -20,6 +20,7 @@ import StudentTableOverviewPage from './pages/StudentTableOverviewPage';
 import AssignemntOverviewPage from './pages/AssignmentTableOverviewPage';
 import AssignmentDescriptionPage from './pages/AssignmentDescriptionPage';
 import TemplatesTableOverviewPage from './pages/TemplateTableOverviewPage';
+import FeedbackPage from './pages/FeedbackPage';
 
 const App: React.FC = () => {
   return (
@@ -44,6 +45,7 @@ const App: React.FC = () => {
         <Route path="/assignments" element={<AssignemntOverviewPage />} />
         <Route path="/assignment/:id" element={<AssignmentDescriptionPage />} />
         <Route path="/assignment/:id/get_templates" element={<TemplatesTableOverviewPage />} />
+        <Route path="/feedback" element={<FeedbackPage />} />
 
         {/* Add more routes as needed */}
       </Routes>
