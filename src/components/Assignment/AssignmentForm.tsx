@@ -19,12 +19,10 @@ const AssignmentForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
-  // const navigate = useNavigate();
-  // const [course, setCourse] = useState<string>(''); // Mock data
   const [courses, setCourses] = useState<any[]>([]);
-  const [assignment, setAssignment] = useState<any>(); // Mock data
-  const [template, setTemplate] = useState<any>(); // Mock data
-  var templateCount = 0;
+  const [assignment, setAssignment] = useState<any>();
+  const [template, setTemplate] = useState<any>();
+  const [templateCount, setTemplateCount] = useState(0);
 
 
   // Placeholder function to simulate response from OpenAI API
@@ -117,7 +115,7 @@ const AssignmentForm: React.FC = () => {
     e.preventDefault();
     setError(null);
     try {
-      if (templateCount > 3) {
+      if (templateCount >= 3) {
         return setError('You have reached the maximum number of templates');
       }
       setLoading(true);
@@ -125,7 +123,7 @@ const AssignmentForm: React.FC = () => {
       setTemplate(createdTemplate);
       console.log('Template created:', template);
       setSuccess(true);
-      templateCount++;
+      setTemplateCount((prevCount) => prevCount + 1);
       console.log('Template Count:', templateCount);
       setTimeout(() => {
         // navigate('/assignments');
@@ -141,7 +139,7 @@ const AssignmentForm: React.FC = () => {
     setError(null);
     try {
       // Accept the template
-      createTemplate({template_content: template, assignment_id: assignment.id});
+      createTemplate({ template_content: template, assignment_id: assignment.id });
       console.log('Template accepted:', template);
       setTimeout(() => {
         // navigate('/assignments');
@@ -157,10 +155,14 @@ const AssignmentForm: React.FC = () => {
     e.preventDefault();
     setError(null);
     try {
+      if (templateCount <= 0) {
+        return setError('No template to decline');
+      } else {
+        setTemplateCount((prevCount) => prevCount - 1);
+      }
       // Decline the template
       setTemplate('');
       console.log('Template declined:', template);
-      templateCount--;
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -282,33 +284,34 @@ const AssignmentForm: React.FC = () => {
         </form>
       </div>
       <button
-      type='submit'
-      onClick={handleTemplateSubmit}
-      disabled={loading}
-      className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+        type='submit'
+        onClick={handleTemplateSubmit}
+        disabled={loading}
+        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
         Generate Templates
       </button>
       <div className="bg-base shadow-2xl rounded p-4 mb-4">
         <h2 className="text-2xl font-bold mb-4">Generated Templates</h2>
         <div className="border border-gray-300 p-2 rounded-md">
-          <p className="text-lg font-bold">Template{templateCount}</p>
-          <p className="text-sm">
+          <p className="text-lg font-bold">
+            {templateCount === 0 ? "No templates generated yet" : `Template${templateCount}`}
+          </p>          <p className="text-sm">
             {template || 'No template generated yet'}
           </p>
 
         </div>
       </div>
       <div className="flex justify-center">
-        <button 
-        type='button'
-        onClick={handleTemplateAccept}
-        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mr-2">
+        <button
+          type='button'
+          onClick={handleTemplateAccept}
+          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mr-2">
           Accept Templates
         </button>
-        <button 
-        type='button'
-        onClick={handleTemplateDecline}
-        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+        <button
+          type='button'
+          onClick={handleTemplateDecline}
+          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
           Decline Templates
         </button>
       </div>
