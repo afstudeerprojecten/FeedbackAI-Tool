@@ -10,8 +10,12 @@ const FormPage: React.FC = () => {
           <p className="text-center mb-4">1. Select the course for the assignment from the dropdown.</p>
           <p className="text-center mb-4">2. Enter the title for the assignment.</p>
           <p className="text-center mb-4">3. Provide a description of the assignment.</p>
-          <p className="text-center mb-4">4. Specify the number of templates to generate.</p>
-          <p className="text-center mb-8">5. Click on "Generate Templates" to generate the templates.</p>
+          <p className="text-center mb-4">4. Specify the age of the students.</p>
+          <p className="text-center mb-4">5. Specify the amount of words needed.</p>
+          <p className="text-center mb-8">6. Click on "Create Assignment" to create the assignment.</p>
+          <p className="text-center mb-8">7. Click on "Generate Templates" to generate the first of 3 templates.</p>
+          <p className="text-center mb-8">9. Choose to accept the template and let it be saved OR decline it to generate a new one.</p>
+
         </div>
         <AssignmentForm />
       </div>

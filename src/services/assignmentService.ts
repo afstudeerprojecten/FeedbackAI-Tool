@@ -34,20 +34,35 @@ export const fetchAssigments = async () => {
     }
 };
 
-// export const fetchAssignment = async (assignmentId: number) => {
-//     try {
-//         const config = {
-//             method: 'GET',
-//             headers: {
-//                 'Content-Type': 'application/json'  
-//             },
-//             mode: 'cors' // Ensure CORS mode
-//         };
-//         const response = await axios.get(`${API_URL}/assignment/${assignmentId}`, config);
-//         return response.data;
-//     } catch (error: any) {
-//         throw error.response.data.detail || 'An error occurred while fetching assignment';
-//     }
-// }
+export const fetchAssignmentTemplates = async (assignmentId: number) => {
+    try {
+        const config = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'  
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.get(`${API_URL}/assignment/${assignmentId}/get_templates`, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while fetching assignment templates';
+    }
+}
 
+export const fetchAssignmentById = async (assignmentId: number) => {
+    try {
+        const config = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'  
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.get(`${API_URL}/assignment/${assignmentId}`, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while fetching assignment';
+    }
+}
 
