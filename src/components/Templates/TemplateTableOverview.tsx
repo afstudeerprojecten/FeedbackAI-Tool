@@ -22,9 +22,10 @@ const AssignmentTemplatesOverview: React.FC = () => {
   // Function to format the template content into paragraphs
   const formatTemplateContent = (content: string) => {
     return content.split('\n').map((paragraph, index) => (
-      <p key={index} className="mb-4">{paragraph}</p>
+      <div key={index} className="mb-4">{paragraph}</div>
     ));
   };
+
 
   return (
     <div className="p-6">
@@ -40,7 +41,7 @@ const AssignmentTemplatesOverview: React.FC = () => {
         <tbody className="bg-base divide-y divide-gray-200">
           {templates.map((template, index) => (
             <tr key={index}>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="px-6 py-4 whitespace-normal">
                 {formatTemplateContent(template.content)}
               </td>
             </tr>
