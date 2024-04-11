@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { fetchSubmissions } from "../../services/submissionService";
 import { fetchStudent } from "../../services/studentService";
+import { useNavigate } from "react-router-dom";
 
 const SubmissionTableOverview: React.FC = () => {
   const [submissions, setSubmissions] = useState<any[]>([]);
   const [studentNames, setStudentNames] = useState<{ [id: number]: string }>({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +38,10 @@ const SubmissionTableOverview: React.FC = () => {
     return names;
   }
 
+  const handleViewSubmission = async (id: number) => {
+    navigate(`/submission/${id}`);
+  }
+
   return (
     <div className="p-6">
       <h2 className="text-xl font-bold mb-4">Submission Overview</h2>
@@ -51,6 +57,10 @@ const SubmissionTableOverview: React.FC = () => {
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Student Name
             </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              View Submission
+            </th>
+
           </tr>
         </thead>
         <tbody className="bg-base divide-y divide-gray-200">
@@ -59,6 +69,9 @@ const SubmissionTableOverview: React.FC = () => {
               <td className="px-6 py-4 whitespace-nowrap">{submission.assignment_id}</td>
               <td className="px-6 py-4 whitespace-nowrap">{submission.student_id}</td>
               <td className="px-6 py-4 whitespace-nowrap">{studentNames[submission.student_id]}</td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <button onClick={() => handleViewSubmission(submission.id)}>View Submission</button>
+              </td>
             </tr>
           ))}
         </tbody>
