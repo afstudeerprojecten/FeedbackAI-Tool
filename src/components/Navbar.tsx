@@ -23,7 +23,6 @@ const Navbar: React.FC = () => {
                     <Link to="/" className="text-white hover:text-primary-light transition-colors duration-200">Home</Link>
                     {role === 'Student' && (
                         <>
-                        <Link to="/chat" className="text-white hover:text-primary-light transition-colors duration-200">Student Submission</Link>
                         <Link to="/assignments" className="text-white hover:text-primary-light transition-colors duration-200">Assignment Overview</Link>
                         <Link to="/feedback" className="text-white hover:text-primary-light transition-colors duration-200">Submission Feedback</Link>
                         </>
