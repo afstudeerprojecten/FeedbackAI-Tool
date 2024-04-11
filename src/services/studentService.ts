@@ -34,6 +34,22 @@ export const fetchStudents = async () => {
     }
 }
 
+export const fetchStudent = async (studentId: number) => {
+    try {
+        const config = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'  
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.get(`${API_URL}/student/id/${studentId}`, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while fetching the student';
+    }
+}
+
 export const deleteStudent = async (studentId: number) => {
     try {
         const config = {

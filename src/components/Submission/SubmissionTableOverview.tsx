@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
-//import { useNavigate } from "react-router-dom";
 import { fetchSubmissions } from "../../services/submissionService";
+import { fetchStudent } from "../../services/studentService";
 
 const SubmissionTableOverview: React.FC = () => {
   const [submissions, setSubmissions] = useState<any[]>([]);
-  //const navigate = useNavigate();
+  const [studentNames, setStudentNames] = useState<{ [id: number]: string }>({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch submissions data from a service
         const data = await fetchSubmissions();
         setSubmissions(data);
+        // Fetch and cache student names
+        const studentIds = data.map((submission: { student_id: any; }) => submission.student_id);
+        const names = await fetchStudentNames(studentIds);
+        setStudentNames(names);
       } catch (error:any) {
         console.error(error.message);
       }
@@ -20,9 +23,18 @@ const SubmissionTableOverview: React.FC = () => {
     fetchData();
   }, []);
 
-//   const handleViewSubmission = (id: number) => {
-//     navigate(`/submission/${id}`);
-//   };
+  const fetchStudentNames = async (studentIds: number[]) => {
+    const names: { [id: number]: string } = {};
+    try {
+      for (const id of studentIds) {
+        const student = await fetchStudent(id);
+        names[id] = student.name;
+      }
+    } catch (error:any) {
+      console.error(error.message);
+    }
+    return names;
+  }
 
   return (
     <div className="p-6">
@@ -34,7 +46,10 @@ const SubmissionTableOverview: React.FC = () => {
               Assignment
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Student
+              Student ID
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Student Name
             </th>
           </tr>
         </thead>
@@ -43,6 +58,7 @@ const SubmissionTableOverview: React.FC = () => {
             <tr key={submission.id}>
               <td className="px-6 py-4 whitespace-nowrap">{submission.assignment_id}</td>
               <td className="px-6 py-4 whitespace-nowrap">{submission.student_id}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{studentNames[submission.student_id]}</td>
             </tr>
           ))}
         </tbody>
