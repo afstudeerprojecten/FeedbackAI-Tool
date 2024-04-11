@@ -14,7 +14,7 @@ export type User = {
   // Array of mock users
   const mockUsers: User[] = [
     {
-      id: 1,
+      id: 2,
       username: 'student1',
       firstName: 'student1',
       lastName: 'studentlastname1',

@@ -66,3 +66,19 @@ export const fetchAssignmentById = async (assignmentId: number) => {
     }
 }
 
+export const fetchAssignmentByCourse = async (courseId: number) => {
+    try {
+        const config = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'  
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.get(`${API_URL}/assignment/course/${courseId}`, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while fetching assignments';
+    }
+}
+
