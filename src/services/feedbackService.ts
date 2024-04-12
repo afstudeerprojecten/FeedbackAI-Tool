@@ -18,3 +18,12 @@ export const submitAssignment = async (submission: CreateSubmission) : Promise<F
         throw error.response.data.detail || 'An error occurred while registering the assignment';
     }
 };
+
+export const fetchFeedback = async (submission_id: number) : Promise<Feedback> => {
+    try {
+        const response = await axios.get(`${API_URL}/submission/feedback/${submission_id}`);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while fetching feedback';
+    }
+}

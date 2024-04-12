@@ -41,6 +41,9 @@ const SubmissionTableOverview: React.FC = () => {
   const handleViewSubmission = async (id: number) => {
     navigate(`/submission/${id}`);
   }
+  const handleViewFeedback = async (id: number) => {
+    navigate(`/feedback/${id}`);
+  }
 
   return (
     <div className="p-6">
@@ -60,6 +63,9 @@ const SubmissionTableOverview: React.FC = () => {
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               View Submission
             </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              View Feedback
+            </th>
 
           </tr>
         </thead>
@@ -71,6 +77,9 @@ const SubmissionTableOverview: React.FC = () => {
               <td className="px-6 py-4 whitespace-nowrap">{studentNames[submission.student_id]}</td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <button onClick={() => handleViewSubmission(submission.id)}>View Submission</button>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <button onClick={() => handleViewFeedback(submission.id)}>View Feedback</button>
               </td>
             </tr>
           ))}

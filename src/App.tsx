@@ -23,6 +23,7 @@ import TemplatesTableOverviewPage from './pages/TemplateTableOverviewPage';
 import FeedbackPage from './pages/FeedbackPage';
 import SubmissionOverviewPage from './pages/SubmissionTableOverviewPage';
 import SubmissionContentPage from './pages/SubmissionContentPage';
+import SubmissionFeedbackPage from './pages/SubmissionFeedbackPage';
 
 const App: React.FC = () => {
   return (
@@ -50,6 +51,7 @@ const App: React.FC = () => {
         <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/submissions" element={<SubmissionOverviewPage />} />
         <Route path="/submission/:id" element={<SubmissionContentPage />} />
+        <Route path="/feedback/:id" element={<SubmissionFeedbackPage />} />
 
         {/* Add more routes as needed */}
       </Routes>
