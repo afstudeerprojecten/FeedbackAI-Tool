@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { fetchSubmissions } from "../../services/submissionService";
 import { fetchStudent } from "../../services/studentService";
 import { useNavigate } from "react-router-dom";
+import { format } from 'date-fns';
+
 
 const SubmissionTableOverview: React.FC = () => {
   const [submissions, setSubmissions] = useState<any[]>([]);
@@ -61,6 +63,9 @@ const SubmissionTableOverview: React.FC = () => {
               Student Name
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Date Submitted
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               View Submission
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -75,6 +80,7 @@ const SubmissionTableOverview: React.FC = () => {
               <td className="px-6 py-4 whitespace-nowrap">{submission.assignment_id}</td>
               <td className="px-6 py-4 whitespace-nowrap">{submission.student_id}</td>
               <td className="px-6 py-4 whitespace-nowrap">{studentNames[submission.student_id]}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{format(new Date(submission.date_created), 'dd/MM/yyyy')}</td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <button onClick={() => handleViewSubmission(submission.id)}>View Submission</button>
               </td>
