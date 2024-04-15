@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchAssigments } from "../../services/assignmentService";
 
 const AssignmentTableOverview: React.FC = () => {
@@ -10,10 +10,9 @@ const AssignmentTableOverview: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch assignments data from a service
         const data = await fetchAssigments();
         setAssignments(data);
-      } catch (error:any) {
+      } catch (error: any) {
         console.error(error.message);
       }
     };
@@ -22,11 +21,10 @@ const AssignmentTableOverview: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Determine user role based on sessionStorage
     const user = sessionStorage.getItem('user');
     const role = user ? JSON.parse(user).role : null;
-    setShowTemplates(role === 'Teacher'); // Show templates only if user is a teacher
-}, []);
+    setShowTemplates(role === 'Teacher');
+  }, []);
 
   const handleViewDescription = (id: number) => {
     navigate(`/assignment/${id}`);
@@ -34,7 +32,7 @@ const AssignmentTableOverview: React.FC = () => {
 
   const handleViewTemplates = (id: number) => {
     navigate(`/assignment/${id}/get_templates`);
-  }
+  };
 
   return (
     <div className="p-6">
@@ -51,6 +49,9 @@ const AssignmentTableOverview: React.FC = () => {
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Templates
             </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Generate
+            </th>
           </tr>
         </thead>
         <tbody className="bg-base divide-y divide-gray-200">
@@ -62,6 +63,9 @@ const AssignmentTableOverview: React.FC = () => {
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 {showTemplates && <button onClick={() => handleViewTemplates(assignment.id)}>View Templates</button>}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <Link to={`/generate_template/${assignment.id}`}>Generate Template</Link>
               </td>
             </tr>
           ))}
