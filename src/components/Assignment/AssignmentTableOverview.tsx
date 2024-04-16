@@ -35,42 +35,44 @@ const AssignmentTableOverview: React.FC = () => {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">Assignment Overview</h2>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-base">
-          <tr>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Title
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Description
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Templates
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Generate
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-base divide-y divide-gray-200">
-          {assignments.map(assignment => (
-            <tr key={assignment.id}>
-              <td className="px-6 py-4 whitespace-nowrap">{assignment.title}</td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <button onClick={() => handleViewDescription(assignment.id)}>View Description</button>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                {showTemplates && <button onClick={() => handleViewTemplates(assignment.id)}>View Templates</button>}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <Link to={`/generate_template/${assignment.id}`}>Generate Template</Link>
-              </td>
+    <div className="bg-light-neutral dark:bg-dark-neutral mx-4">
+      <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text ml-4">Assignment Overview</h2>
+      <div className="overflow-x-auto">
+        <table className="table table-md">
+          <thead className="bg-light-neutral dark:bg-dark-neutral">
+            <tr>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                Title
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                Description
+              </th>
+             {showTemplates && <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                Templates
+              </th>}
+              {showTemplates &&<th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                Generate
+              </th>}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="bg-light-neutral dark:bg-dark-neutral divide-y divide-gray-200">
+            {assignments.map(assignment => (
+              <tr key={assignment.id}>
+                <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">{assignment.title}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">
+                  <button onClick={() => handleViewDescription(assignment.id)}>View Description</button>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">
+                  {showTemplates && <button onClick={() => handleViewTemplates(assignment.id)}>View Templates</button>}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">
+                 {showTemplates &&  <Link to={`/generate_template/${assignment.id}`}>Generate Template</Link>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

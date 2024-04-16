@@ -77,10 +77,10 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
 
     return (
         <div>
-            <div className="bg-base shadow-2xl rounded p-4 mb-4">
-                <h2 className="text-2xl font-bold mb-4">Generated Templates</h2>
+            <div className="bg-light-neutral dark:bg-dark-neutral rounded p-4 mb-4">
+                <h2 className="text-2xl text-light-text dark:text-dark-text font-bold mb-4">Generated Templates</h2>
                 <div className="border border-gray-300 p-2 rounded-md">
-                    <p className="text-lg font-bold">
+                    <p className="text-lg text-light-text dark:text-dark-text font-bold">
                         {templateCount === 0 ? "No templates generated yet" : `Template ${templateCount}`}
                     </p>
                     <p className="text-sm">
@@ -93,9 +93,9 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
                 type='submit'
                 onClick={handleTemplateSubmit}
                 disabled={loadingTemplate}
-                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+                className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
             >
-                {loadingTemplate ? 'Generating Template...' : 'Generate Template'}
+                {loadingTemplate ? <span className="loading loading-spinner loading-xs"></span> : 'Generate Template'}
             </button>
             {templateError && <div className="text-red-600 mt-4">{templateError}</div>}
             {templateSuccess && (
@@ -108,14 +108,14 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
                 <button
                     type='button'
                     onClick={handleTemplateAccept}
-                    className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 mr-2"
+                    className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary m-4"
                 >
                     Accept Templates
                 </button>
                 <button
                     type='button'
                     onClick={handleTemplateDecline}
-                    className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+                    className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary m-4"
                 >
                     Decline Templates
                 </button>

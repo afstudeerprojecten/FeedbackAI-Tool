@@ -48,49 +48,50 @@ const SubmissionTableOverview: React.FC = () => {
   }
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">Submission Overview</h2>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-base">
-          <tr>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Assignment
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Student ID
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Student Name
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Date Submitted
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              View Submission
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              View Feedback
-            </th>
-
-          </tr>
-        </thead>
-        <tbody className="bg-base divide-y divide-gray-200">
-          {submissions.map(submission => (
-            <tr key={submission.id}>
-              <td className="px-6 py-4 whitespace-nowrap">{submission.assignment_id}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{submission.student_id}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{studentNames[submission.student_id]}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{format(new Date(submission.date_created), 'dd/MM/yyyy')}</td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <button onClick={() => handleViewSubmission(submission.id)}>View Submission</button>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <button onClick={() => handleViewFeedback(submission.id)}>View Feedback</button>
-              </td>
+    <div className="bg-light-neutral dark:bg-dark-neutral mx-4 p-6">
+      <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text ml-4">Submission Overview</h2>
+      <div className="overflow-x-auto">
+        <table className="table table-md">
+          <thead className="bg-light-neutral dark:bg-dark-neutral">
+            <tr>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                Assignment
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                Student ID
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                Student Name
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                Date Submitted
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                View Submission
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                View Feedback
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="bg-light-neutral dark:bg-dark-neutral divide-y divide-gray-200">
+            {submissions.map(submission => (
+              <tr key={submission.id}>
+                <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">{submission.assignment_id}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">{submission.student_id}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">{studentNames[submission.student_id]}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">{format(new Date(submission.date_created), 'dd/MM/yyyy')}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">
+                  <button onClick={() => handleViewSubmission(submission.id)}>View Submission</button>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">
+                  <button onClick={() => handleViewFeedback(submission.id)}>View Feedback</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -4,8 +4,8 @@ import React from "react";
 
 const SubmissionOverviewPage: React.FC = () => {
   return (
-    <div>
-      <SubmissionTableOverview />
+    <div className="min-h-screen bg-light-neutral text-light-text dark:bg-dark-neutral text-dark-text">
+    <SubmissionTableOverview />
     </div>
   );
 };

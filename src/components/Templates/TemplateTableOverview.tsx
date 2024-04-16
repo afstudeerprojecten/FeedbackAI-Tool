@@ -28,26 +28,26 @@ const AssignmentTemplatesOverview: React.FC = () => {
 
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">Assignment Templates Overview</h2>
+    <div className="p-6 bg-light-neutral dark:bg-dark-neutral">
+      <h2 className="text-xl text-light-text dark:text-dark-text font-bold mb-4">Assignment Templates Overview</h2>
       <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-base">
+        <thead className="bg-light-neutral dark:bg-dark-neutral">
           <tr>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark-text-dark-text uppercase tracking-wider">
               Template ID
             </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
               Template Content
             </th>
           </tr>
         </thead>
-        <tbody className="bg-base divide-y divide-gray-200">
+        <tbody className="bg-light-neutral dark:bg-dark-neutral divide-y divide-gray-200">
           {templates.map((template, index) => (
             <tr key={index}>
-              <td className="px-6 py-4 whitespace-normal align-top">
+              <td className="px-6 py-4 whitespace-normal align-top text-light-text dark:text-dark-text ">
                 {template.id}
               </td>
-              <td className="px-6 py-4 whitespace-normal">
+              <td className="px-6 py-4 whitespace-normal text-light-text dark:text-dark-text">
                 {formatTemplateContent(template.content)}
               </td>
             </tr>

@@ -5,9 +5,9 @@ import AssignemntOverview from '../components/Assignment/AssignmentTableOverview
 
 const AssignemntOverviewPage: React.FC = () => {
   return (
-    <div className="container mx-auto">
-      <AssignemntOverview />
-    </div>
+    <main className="min-h-screen bg-light-neutral dark:bg-dark-neutral">
+    <AssignemntOverview />
+    </main>
   );
 };
 

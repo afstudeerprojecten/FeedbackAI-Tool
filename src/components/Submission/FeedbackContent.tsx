@@ -17,9 +17,9 @@ const FeedbackContent: React.FC<SubmissionFeedbacktProps> = ({ feedback }) => {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">Submission Feedback</h2>
-      <div className="description">
+    <div className="p-6 bg-light-neutral dark-bg-dark-neutral">
+      <h2 className="bg-light-neutral dark-bg-dark-neutral text-light-text dark:-text-dark-text text-xl font-bold mb-4">Submission Feedback</h2>
+      <div className="text-light-text dark:-text-dark-text">
         {formatDescription(feedback)}
       </div>
     </div>

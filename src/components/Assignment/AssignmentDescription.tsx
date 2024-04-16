@@ -18,8 +18,8 @@ const AssignmentDescription: React.FC<AssignmentDescriptionProps> = ({ descripti
 
   return (
     <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">Assignment Description</h2>
-      <div className="description">
+      <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">Assignment Description</h2>
+      <div className="text-light-text dark:text-dark-text">
         {formatDescription(description)}
       </div>
     </div>

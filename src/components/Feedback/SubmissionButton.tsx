@@ -10,7 +10,7 @@ const SubmissionButton: React.FC<SubmissionButtonProps> = ({ onSubmit }) => {
         <>
         <button 
         type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+        className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
         onClick={onSubmit}>Submit</button>
         </>
     );

@@ -8,7 +8,7 @@ import { fetchCourses } from '../../services/courseService';
 import { submitAssignment } from '../../services/feedbackService';
 import { User } from '../../data/mockData';
 
-const FeedbackForm: React.FC = ()=> {
+const FeedbackForm: React.FC = () => {
     const [assignments, setAssignments] = useState<Assignment[]>([]);
     const [selectedCourse, setSelectedCourse] = useState<any>('');
     const [courses, setCourses] = useState<any[]>([]);
@@ -48,7 +48,7 @@ const FeedbackForm: React.FC = ()=> {
     };
 
     const handleAssignmentSelect = (assignmentId: string) => {
-        setSelectedAssignment(assignmentId);        
+        setSelectedAssignment(assignmentId);
     };
 
     const handleCourseSelect = (courseId: string) => {
@@ -81,7 +81,7 @@ const FeedbackForm: React.FC = ()=> {
                     student_id: studentId,
                     content: submission
                 }
-    
+
                 const feedback: Feedback = await submitAssignment(dataSubmission)
                 console.log("got feedback");
                 console.log(feedback)
@@ -89,11 +89,11 @@ const FeedbackForm: React.FC = ()=> {
                 setFeedback(feedback.content);
             }
             else {
-                throw new Error("ID missing, please retry logging in")
+                throw new Error("ID missing, please try logging in again")
             }
         }
         catch (error: any) {
-            setError("Somethign went wrong")
+            setError("Something went wrong")
         }
         finally {
             setLoading(false)
@@ -102,36 +102,54 @@ const FeedbackForm: React.FC = ()=> {
 
     return (
         <>
-        <div className="container mx-auto p-4">
-            <div className="bg-base shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
-                <h2 className="text-2xl font-bold mb-4 text-center">Assignment Form</h2>
-                <form>
-                        <div className="mb-4">
-                            <label htmlFor="course" className="block text-sm font-medium text-gray-700">Select Course</label>
-                            <select id="course" name="course" onChange={(e) => handleCourseSelect(e.target.value)} value={selectedCourse} className="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                                <option value="">Select Course</option>
-                                {courses.map(course => (
-                                    <option key={course.id} value={course.id}>{course.name}</option>
-                                ))}
-                            </select>
-                        </div>
+            <div className="container mx-auto p-4 bg-light-neutral rounded dark:bg-dark-neutral">
+    <div className="bg-light-neutral rounded px-8 pt-6 pb-8 mb-4 dark:bg-dark-neutral">
+        <h2 className="text-2xl font-bold mb-4 text-center text-light-text dark:text-dark-text">Submission Form</h2>
+        <form>
+            <div className="mb-4">
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-sm font-bold mb-2 text-light-text dark:text-dark-text" htmlFor="course_id">
+                            Course
+                        </label>
+                        <select id="course" name="course" onChange={(e) => handleCourseSelect(e.target.value)} value={selectedCourse} className="w-full border rounded px-3 py-2 text-light-text dark:text-dark-text bg-light-neutral dark:bg-dark-neutral dark:border-gray-500 dark:text-dark-text dark:focus-dark-primary focus:outline-none focus:ring-gray-500 focus:border-gray-500">
+                            <option value="">Select Course</option>
+                            {courses.map(course => (
+                                <option key={course.id} value={course.id}>{course.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
                         <AssignmentSelector assignments={assignments} selectedAssignment={selectedAssignment} onSelectAssignment={handleAssignmentSelect} />
-                        <SubmissionInput value={submission} onChange={setSubmission} />
-                        <SubmissionButton onSubmit={handleSubmissionSubmit} />
-                        {error && <div className="text-red-600 mt-4">{error.toString()}</div>}
-                        {loading && <div className="text-green-600 mt-4">Gathering Feedback</div>}
-                </form>
-            </div>
-        </div>
-
-        <div className="container mx-auto p-4">
-            <div className="bg-base shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
-                <h2 className="text-2xl font-bold mb-4 text-center">Feedback</h2>
-                <div>
-                    <p>{feedback}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <SubmissionInput value={submission} onChange={setSubmission} />
+            
+            <div className="flex justify-center">
+            {loading ? (
+                        <span className="loading loading-spinner loading-xs"></span>
+                    ) : (
+                        <SubmissionButton onSubmit={handleSubmissionSubmit} />
+                    )}           
+                     </div>
+
+            {error && <div className="text-red-600 mt-4">{error.toString()}</div>}
+            {/* {loading  && <div className="text-green-600 mt-4">Gathering Feedback</div>} */}
+        </form>
+    </div>
+</div>
+
+
+            <div className="container mx-auto p-4 bg-light-neutral rounded dark:bg-dark-neutral">
+                <div className="bg-light-neutral rounded px-8 pt-6 pb-8 mb-4 dark:bg-dark-neutral">
+                    <h2 className="text-2xl font-bold mb-4 text-center text-light-text dark:text-dark-text">Feedback</h2>
+                    <div>
+                        <p className="text-light-text dark:text-dark-text">{feedback}</p>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };

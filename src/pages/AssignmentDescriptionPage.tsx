@@ -30,8 +30,8 @@ const AssignmentDescriptionPage: React.FC = () => {
         navigate('/assignments', { replace: true });
     };
     return (
-        <div>
-          <button className="btn btn-primary m-4" onClick={handleGoBack}>Back to Overview</button>
+        <div className="min-h-screen bg-light-neutral text-light-text dark:bg-dark-neutral text-dark-text">
+          <button className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary ml-4" onClick={handleGoBack}>Back to Overview</button>
           <AssignmentDescription description={description} />
         </div>
       );
