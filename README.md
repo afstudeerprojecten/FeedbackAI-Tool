@@ -28,19 +28,31 @@ The FeedbackAI Tool Frontend is a web application designed to assist teachers in
 
 ## Configuration
 
-We're using environment variables to configure stuff. You're expected to create a `.env` file in the root of the project and set this variable
+>READ THIS PLEASE!!!
 
+We're using environment variables to configure stuff. You're expected to create a `.env` file in the root of the project and set this variable. 
 ```bash
 VITE_BACKEND_URL=http://localhost:8080
 ```
 
-### Developer notice
+A full example is provided in `example.env`.
 
->PLEASE READ!
+**THIS IS A BREAKING CHANGE!** It wasn't like this before!
+
+### Developer notice
 
 By default, environment variables that are undefined should default to `CONFIG_<VARIABLE_NAME>`. This is important for deploying using Docker. You can use this snippet as a reference:
 
 ```ts
 const API_URL = import.meta.env.VITE_BACKEND_URL ?? "CONFIG_BACKEND_URL";  
              // This is to get the env var       if null, return CONFIG_BACKEND_URL
+```
+
+## Running the project
+
+### In Docker
+
+```bash
+docker build . -t feedbackai-frontend
+docker run -e CONFIG_BACKEND_URL='http://localhost:8080' -p 3000:80 feedbackai-frontend
 ```
