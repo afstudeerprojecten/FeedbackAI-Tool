@@ -1,0 +1,13 @@
+#!/bin/sh
+# Script that lets you replace environment variables in your static files. 
+for i in $(env | grep CONFIG_)
+do
+    key=$(echo $i | cut -d '=' -f 1)
+    value=$(echo $i | cut -d '=' -f 2-)
+    echo $key=$value
+    # sed All files
+    # find /usr/share/nginx/html -type f -exec sed -i "s|${key}|${value}|g" '{}' +
+
+    # sed JS and CSS only
+    find /usr/share/nginx/html -type f \( -name '*.js' -o -name '*.css' \) -exec sed -i "s|${key}|${value}|g" '{}' +
+done
