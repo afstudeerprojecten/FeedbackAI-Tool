@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000'; // Replace with your actual API URL
+const API_URL = import.meta.env.VITE_BACKEND_URL ?? "CONFIG_BACKEND_URL";   // Replace with your actual API URL
 
 export const registerTeacher = async (teacherData: any) => {
     try {

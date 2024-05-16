@@ -28,7 +28,7 @@ import GenerateTemplatePage from './pages/GenerateTemplatePage';
 
 const App: React.FC = () => {
   return (
-    <Router basename="/FeedbackAI-Tool/">
+    <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

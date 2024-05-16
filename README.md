@@ -24,3 +24,23 @@ The FeedbackAI Tool Frontend is a web application designed to assist teachers in
 - React Router
 - OpenAI API (for feedback generation)
 - Tailwind CSS (for styling)
+
+
+## Configuration
+
+We're using environment variables to configure stuff. You're expected to create a `.env` file in the root of the project and set this variable
+
+```bash
+VITE_BACKEND_URL=http://localhost:8080
+```
+
+### Developer notice
+
+>PLEASE READ!
+
+By default, environment variables that are undefined should default to `CONFIG_<VARIABLE_NAME>`. This is important for deploying using Docker. You can use this snippet as a reference:
+
+```ts
+const API_URL = import.meta.env.VITE_BACKEND_URL ?? "CONFIG_BACKEND_URL";  
+             // This is to get the env var       if null, return CONFIG_BACKEND_URL
+```
