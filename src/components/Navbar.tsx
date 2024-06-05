@@ -38,8 +38,7 @@ const Navbar: React.FC = () => {
                         tabIndex={0}
                         className="menu dropdown-content z-[1] p-2 shadow rounded-box w-52 mt-4 bg-dark-neutral dark:bg-base-900 text-base-content dark:text-dark-text"
                     >
-
-                            {role === 'Student' && (
+                            {role === 'student' && (
                                 <>
                                     <li>
                                         <Link to="/assignments" className="text-dark-text dark:text-dark-text">Assignment Overview</Link>
@@ -49,7 +48,7 @@ const Navbar: React.FC = () => {
                                     </li>
                                 </>
                             )}
-                            {role === 'Teacher' && (
+                            {role === 'teacher' && (
                                 <>
                                     <li>
                                         <Link to="/assignment" className="text-dark-text dark:text-dark-text">Create Assignment</Link>
