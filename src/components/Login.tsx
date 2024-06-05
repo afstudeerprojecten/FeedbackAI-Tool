@@ -22,7 +22,8 @@ const Login: React.FC = () => {
         navigate("/");
         console.log('Login successful');
         sessionStorage.setItem('user', JSON.stringify(foundUser));
-        registerEvent({event_type: 1, user_id: foundUser.id, event_value: 1});
+        if (foundUser.role === 'Student')
+          registerEvent({event_id: 1, user_id: foundUser.id, value: 1});
 
     } else {
       setError('Invalid username or password.');
