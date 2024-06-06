@@ -21,11 +21,11 @@ const AssignmentTemplatesOverview: React.FC = () => {
   }, [id]);
 
   // Function to format the template content into paragraphs
-  const formatTemplateContent = (content: string) => {
-    return content.split('\n').map((paragraph, index) => (
-      <div key={index} className="mb-4">{paragraph}</div>
-    ));
-  };
+  // const formatTemplateContent = (content: string) => {
+  //   return content.split('\n').map((paragraph, index) => (
+  //     <div key={index} className="mb-4">{paragraph}</div>
+  //   ));
+  // };
 
 
   return (
