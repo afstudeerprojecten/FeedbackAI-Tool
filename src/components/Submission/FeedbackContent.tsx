@@ -1,4 +1,5 @@
 import React from "react";
+import Markdown from "react-markdown";
 
 interface SubmissionFeedbacktProps {
   feedback: string;
@@ -20,10 +21,11 @@ const FeedbackContent: React.FC<SubmissionFeedbacktProps> = ({ feedback }) => {
     <div className="p-6 bg-light-neutral dark-bg-dark-neutral">
       <h2 className="bg-light-neutral dark-bg-dark-neutral text-light-text dark:-text-dark-text text-xl font-bold mb-4">Submission Feedback</h2>
       <div className="text-light-text dark:-text-dark-text">
-        {formatDescription(feedback)}
+        <Markdown>{feedback}</Markdown>
       </div>
     </div>
   );
 }
 
 export default FeedbackContent;
+// formatDescription(feedback)

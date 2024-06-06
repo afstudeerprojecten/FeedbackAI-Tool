@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAssignmentTemplates } from "../../services/assignmentService";
+import Markdown from "react-markdown";
 
 const AssignmentTemplatesOverview: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -48,7 +49,9 @@ const AssignmentTemplatesOverview: React.FC = () => {
                 {template.id}
               </td>
               <td className="px-6 py-4 whitespace-normal text-light-text dark:text-dark-text">
-                {formatTemplateContent(template.content)}
+              <Markdown>
+                {template.content}
+              </Markdown>
               </td>
             </tr>
           ))}
