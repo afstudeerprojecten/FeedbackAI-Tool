@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -9,6 +12,8 @@ const Navbar: React.FC = () => {
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
     navigate('/');
+    toast.success('Logged out successfully');
+
   };
 
   // Check if user is logged in

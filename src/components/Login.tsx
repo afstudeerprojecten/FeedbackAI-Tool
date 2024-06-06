@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/authService';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Define the type for the decoded token
 interface DecodedToken {
@@ -34,10 +36,13 @@ const Login: React.FC = () => {
       const decodedToken = parseJwt(token);
       const userRole = decodedToken.user_type;
       sessionStorage.setItem('user', JSON.stringify({ email, role: userRole }));
-      sessionStorage.setItem('token', token);
-      navigate('/');
+      sessionStorage.setItem('token', token); 
+      toast.success('Logged in successfully', {
+        onClose: () => navigate('/')
+      });
     } catch (error) {
       setError('Incorrect email or password');
+      toast.error('Incorrect email or password');
     }
   };
 
@@ -74,6 +79,7 @@ const Login: React.FC = () => {
           <div>
             <button type="submit" className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">Login</button>
           </div>
+          <ToastContainer position="top-center" />
         </form>
       </div>
     </div>
