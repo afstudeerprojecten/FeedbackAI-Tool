@@ -34,6 +34,7 @@ const Login: React.FC = () => {
       const decodedToken = parseJwt(token);
       const userRole = decodedToken.user_type;
       sessionStorage.setItem('user', JSON.stringify({ email, role: userRole }));
+      sessionStorage.setItem('token', token);
       navigate('/');
     } catch (error) {
       setError('Incorrect email or password');

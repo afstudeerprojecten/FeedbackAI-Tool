@@ -1,13 +1,15 @@
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_BACKEND_URL ?? "CONFIG_BACKEND_URL"; 
+const token = sessionStorage.getItem('token');
 
 export const fetchSubmissions = async () => {
     try {
         const config = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'  
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}` // Include the token in the header
             },
             mode: 'cors' // Ensure CORS mode
         };
@@ -23,7 +25,8 @@ export const fetchSubmission = async (submissionId: number) => {
         const config = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'  
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}` // Include the token in the header
             },
             mode: 'cors' // Ensure CORS mode
         };
