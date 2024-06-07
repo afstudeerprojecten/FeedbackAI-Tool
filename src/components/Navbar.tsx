@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
     <nav className="navbar bg-light-neutral text-light-text dark:bg-dark-neutral dark:text-dark-text">
       <div className="flex-none">
         <div className="dropdown dropdown-bottom">
-          <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+          <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn md:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -82,11 +82,6 @@ const Navbar: React.FC = () => {
             {role === 'teacher' && (
               <>
                 <li>
-                  <Link to="/assignment" className="text-dark-text dark:text-dark-text">
-                    Create Assignment
-                  </Link>
-                </li>
-                <li>
                   <Link to="/registercourse" className="text-dark-text dark:text-dark-text">
                     Register Course
                   </Link>
@@ -94,6 +89,11 @@ const Navbar: React.FC = () => {
                 <li>
                   <Link to="/courses" className="text-dark-text dark:text-dark-text">
                     Course Overview
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/assignment" className="text-dark-text dark:text-dark-text">
+                    Create Assignment
                   </Link>
                 </li>
                 <li>
@@ -171,28 +171,90 @@ const Navbar: React.FC = () => {
                 </li>
               </>
             )}
-            {!isLoggedIn && (
-              <li>
-                <Link to="/login" className="text-dark-text dark:text-dark-text">
-                  Login
-                </Link>
-              </li>
-            )}
-            {isLoggedIn && (
-              <li>
-                <button onClick={handleLogout} className="text-dark-text dark:text-dark-text">
-                  Logout
-                </button>
-              </li>
-            )}
+
           </ul>
         </div>
       </div>
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-2xl">
+        <div className="btn btn-ghost">
+        <Link to="/" className="text-l md:text-2xl">
           FeedbackAI-Tool
         </Link>
+        </div>
       </div>
+
+        <div className="md:block hidden">
+            {role === 'student' && (
+                    <>
+                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+                            <Link to="/assignments" className="text-base-content dark:text-dark-text">Assignment Overview</Link>
+                        </div>
+
+                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+                            <Link to="/feedback" className="text-base-content dark:text-dark-text">Submission Feedback</Link>
+                        </div>
+
+                    </>
+                )}
+
+                {role === 'teacher' && (
+                    <>
+                        <div className="dropdown dropdown-bottom">
+                            <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+                                Assignments
+                            </div>
+                            <ul
+                                tabIndex={0}
+                                className="menu dropdown-content z-[1] p-2 shadow rounded-box w-52 mt-4 bg-dark-neutral dark:bg-base-900 text-base-content dark:text-dark-text"
+                            >
+                                <li>
+                                    <Link to="/assignment" className="text-dark-text dark:text-dark-text">Create Assignment</Link>
+                                </li>
+                                <li>
+                                    <Link to="/assignments" className="text-dark-text dark:text-dark-text">Assignment Overview</Link>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div className="dropdown dropdown-bottom">
+                            <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+                                Courses
+                            </div>
+                            <ul
+                                tabIndex={0}
+                                className="menu dropdown-content z-[1] p-2 shadow rounded-box w-52 mt-4 bg-dark-neutral dark:bg-base-900 text-base-content dark:text-dark-text"
+                            >
+                                <li>
+                                    <Link to="/registercourse" className="text-dark-text dark:text-dark-text">Register Course</Link>
+                                </li>
+                                <li>
+                                    <Link to="/courses" className="text-dark-text dark:text-dark-text">Course Overview</Link>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+                            <Link to="/submissions" className="">Submissions</Link>
+                        </div>
+                    </>
+                )}  
+        </div>
+
+        <div>
+            <div className="mr-1">
+                {!isLoggedIn && (
+                    <Link to="/login" className="btn bg-dark-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">
+                    Login
+                    </Link>
+                )}
+                {isLoggedIn && (
+                    <button onClick={handleLogout} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">
+                    Logout
+                    </button>
+                )}
+            </div>
+        </div>
+
       <div className="flex-none">
         <label className="flex cursor-pointer gap-2 mr-10" htmlFor="theme-switch">
           <svg
