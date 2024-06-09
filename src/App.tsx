@@ -29,6 +29,7 @@ import GenerateTemplatePage from './pages/GenerateTemplatePage';
 import Unauthorized from './pages/UnauthorizedPage';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import AssignmentFlowPage from './pages/AssignmentFlowPage';
+import AssignmentCreatePage from './pages/AssignmentCreatePage';
 
 
 const App: React.FC = () => {
@@ -41,6 +42,7 @@ const App: React.FC = () => {
         <Route path="/chat" element={<ChatPage />} />
         {/* <Route path="/assignment" element={<ProtectedRoute component={FormPage} requiredRole={["teacher"]} />} /> */}
         <Route path="/assignment" element={<ProtectedRoute component={AssignmentFlowPage} requiredRole={["teacher"]} />} />
+        <Route path="/newassignment" element={<ProtectedRoute component={AssignmentCreatePage} requiredRole={["teacher"]} />} />
         <Route path="/registerteacher" element={<RegisterTeacherPage />} />
         <Route path="/registercourse" element={<RegisterCoursePage />} />
         <Route path="/registerorg" element={<RegisterOrganisationPage />} />
