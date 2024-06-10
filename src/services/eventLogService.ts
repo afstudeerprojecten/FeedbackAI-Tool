@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_BACKEND_URL ?? "CONFIG_BACKEND_URL";    // Change this to your backend URL
 
-export const registerStudent = async (studentData: any) => {
+export const registerEvent = async (eventData: any) => {
     try {
         const config = {
             method: 'POST',
@@ -11,14 +11,14 @@ export const registerStudent = async (studentData: any) => {
             },
             mode: 'cors' // Ensure CORS mode
         };
-        const response = await axios.post(`${API_URL}/student/add`, studentData, config);
+        const response = await axios.post(`${API_URL}/eventlog/add`, eventData, config);
         return response.data;
     } catch (error: any) {
         throw error.response.data.detail || 'An error occurred while registering the assignment';
     }
 };
 
-export const fetchStudents = async () => {
+export const fetchEvents = async () => {
     try {
         const config = {
             method: 'GET',
@@ -27,14 +27,14 @@ export const fetchStudents = async () => {
             },
             mode: 'cors' // Ensure CORS mode
         };
-        const response = await axios.get(`${API_URL}/students`, config);
+        const response = await axios.get(`${API_URL}/Events`, config);
         return response.data;
     } catch (error: any) {
         throw error.response.data.detail || 'An error occurred while fetching assignments';
     }
 }
 
-export const fetchStudent = async (studentId: number) => {
+export const fetchEventByEventID = async (event_id: number) => {
     try {
         const config = {
             method: 'GET',
@@ -43,14 +43,30 @@ export const fetchStudent = async (studentId: number) => {
             },
             mode: 'cors' // Ensure CORS mode
         };
-        const response = await axios.get(`${API_URL}/student/id/${studentId}`, config);
+        const response = await axios.get(`${API_URL}/eventlog/event/${event_id}`, config);
         return response.data;
     } catch (error: any) {
         throw error.response.data.detail || 'An error occurred while fetching the student';
     }
 }
 
-export const deleteStudent = async (studentId: number) => {
+export const fetchEventByUser = async (user_id: number) => {
+    try {
+        const config = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'  
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.get(`${API_URL}/eventlog/user/${user_id}`, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while fetching the student';
+    }
+}
+
+export const deleteEventLog = async (eventId: number) => {
     try {
         const config = {
             method: 'DELETE',
@@ -59,41 +75,9 @@ export const deleteStudent = async (studentId: number) => {
             },
             mode: 'cors' // Ensure CORS mode
         };
-        const response = await axios.delete(`${API_URL}/student/delete/${studentId}`, config);
+        const response = await axios.delete(`${API_URL}/eventlog/delete/${eventId}`, config);
         return response.data;
     } catch (error: any) {
         throw error.response.data.detail || 'An error occurred while deleting the student';
-    }
-}
-
-export const fetchStudentName = async (studentId: number) => {
-    try {
-        const config = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'  
-            },
-            mode: 'cors' // Ensure CORS mode
-        };
-        const response = await axios.get(`${API_URL}/student/name/${studentId}`, config);
-        return response.data;
-    } catch (error: any) {
-        throw error.response.data.detail || 'An error occurred while fetching the student';
-    }
-}
-
-export const fetchStudentByEmail = async (email: string) => {
-    try {
-        const config = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'  
-            },
-            mode: 'cors' // Ensure CORS mode
-        };
-        const response = await axios.get(`${API_URL}/student/email/${email}`, config);
-        return response.data;
-    } catch (error: any) {
-        throw error.response.data.detail || 'An error occurred while fetching the student';
     }
 }
