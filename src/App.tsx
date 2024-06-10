@@ -30,6 +30,7 @@ import Unauthorized from './pages/UnauthorizedPage';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import AssignmentFlowPage from './pages/AssignmentFlowPage';
 import AssignmentCreatePage from './pages/AssignmentCreatePage';
+import AssignmentIndividualOverviewPage from './pages/AssignmentIndividualOverviewPage';
 
 
 const App: React.FC = () => {
@@ -57,7 +58,7 @@ const App: React.FC = () => {
         <Route path="/registerstudent" element={<RegisterStudentPage />} />
         <Route path="/students" element={<StudentTableOverviewPage />} />
         <Route path="/assignments" element={<AssignemntOverviewPage />} />
-        <Route path="/assignment/:id" element={<AssignmentDescriptionPage />} />
+        <Route path="/assignment/:id" element={<AssignmentIndividualOverviewPage />} />
         <Route path="/assignment/:id/get_templates" element={<TemplatesTableOverviewPage />} />
         <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/submissions" element={<SubmissionOverviewPage />} />

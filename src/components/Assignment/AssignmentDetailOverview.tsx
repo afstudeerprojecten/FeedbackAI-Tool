@@ -76,7 +76,7 @@ const AssignmentDetailOverview: React.FC = () => {
                                 <td>
                                     {assignment.templates.length}
                                 </td>
-                                <td className="btn">
+                                <td className="btn mt-1 mb-1">
                                     <button onClick={() => handleViewMore(assignment.id)}>View More...</button>
                                 </td>
                             </tr>
