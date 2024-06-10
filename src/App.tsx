@@ -61,7 +61,7 @@ const App: React.FC = () => {
         <Route path="/submission/:id" element={<SubmissionContentPage />} />
         <Route path="/feedback/:id" element={<SubmissionFeedbackPage />} />
         <Route path="/generate_template/:id" element={<GenerateTemplatePage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard" element={<ProtectedRoute component={DashboardPage} requiredRole={["teacher"]} />} />
 
         {/* Add more routes as needed */}
       </Routes>
