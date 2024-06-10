@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../services/authService';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 // Define the type for the decoded token
 interface DecodedToken {
@@ -43,6 +40,9 @@ const Login: React.FC = () => {
     } catch (error) {
       setError('Incorrect email or password');
       toast.error('Incorrect email or password');
+      if ( userRole === 'student')
+        var student = await fetchStudentByEmail(email);
+        registerEvent({event_id: 1, user_id: student.id, value: 1});
     }
   };
 
