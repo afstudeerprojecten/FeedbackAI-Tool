@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../services/authService';
-import { registerEvent } from '../services/eventLogService';
-import { fetchStudentByEmail } from '../services/studentService';
 
 // Define the type for the decoded token
 interface DecodedToken {
@@ -36,13 +33,16 @@ const Login: React.FC = () => {
       const decodedToken = parseJwt(token);
       const userRole = decodedToken.user_type;
       sessionStorage.setItem('user', JSON.stringify({ email, role: userRole }));
-      navigate('/');
+      sessionStorage.setItem('token', token); 
+      toast.success('Logged in successfully', {
+        onClose: () => navigate('/')
+      });
+    } catch (error) {
+      setError('Incorrect email or password');
+      toast.error('Incorrect email or password');
       if ( userRole === 'student')
         var student = await fetchStudentByEmail(email);
         registerEvent({event_id: 1, user_id: student.id, value: 1});
-
-    } catch (error) {
-      setError('Incorrect email or password');
     }
   };
 
@@ -79,6 +79,7 @@ const Login: React.FC = () => {
           <div>
             <button type="submit" className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">Login</button>
           </div>
+          <ToastContainer position="top-center" />
         </form>
       </div>
     </div>

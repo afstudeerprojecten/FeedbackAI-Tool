@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home'; // Assuming you have a Home component
 import Navbar from './components/Navbar';
 import ChatPage from './pages/ChatPage'; // Assuming you have a ChatPage component
@@ -25,22 +26,27 @@ import SubmissionOverviewPage from './pages/SubmissionTableOverviewPage';
 import SubmissionContentPage from './pages/SubmissionContentPage';
 import SubmissionFeedbackPage from './pages/SubmissionFeedbackPage';
 import GenerateTemplatePage from './pages/GenerateTemplatePage';
+import Unauthorized from './pages/UnauthorizedPage';
+import ProtectedRoute from './components/Auth/ProtectedRoute';
 import DashboardPage from './pages/DashboardPage';
+
 
 const App: React.FC = () => {
   return (
     <Router>
       <Navbar />
+      <ToastContainer position="top-center" />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chat" element={<ChatPage />} />
-        <Route path="/assignment" element={<FormPage />} />
+        <Route path="/assignment" element={<ProtectedRoute component={FormPage} requiredRole={["teacher"]} />} />
         <Route path="/registerteacher" element={<RegisterTeacherPage />} />
         <Route path="/registercourse" element={<RegisterCoursePage />} />
         <Route path="/registerorg" element={<RegisterOrganisationPage />} />
         <Route path="/organisations" element={<OrganizationsOverviewPage />} />
         <Route path="/teachers" element={<TeacherOverviewPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
         <Route path="/teacher/update" element={<UpdateTeacherPage />} />
         <Route path="/courses" element={<CourseOverviewTable />} />
         <Route path="/registeradmin" element={<RegisterAdminPage />} />

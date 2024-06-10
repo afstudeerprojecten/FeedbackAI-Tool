@@ -1,13 +1,15 @@
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_BACKEND_URL ?? "CONFIG_BACKEND_URL";   // Change this to your backend URL
+const token = sessionStorage.getItem('token');
 
 export const createAssignment = async (assignmentData: any) => {
     try {
         const config = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'  
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}` // Include the token in the header
             },
             mode: 'cors' // Ensure CORS mode
         };
@@ -23,7 +25,8 @@ export const fetchAssigments = async () => {
         const config = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'  
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}` // Include the token in the header 
             },
             mode: 'cors' // Ensure CORS mode
         };
@@ -39,7 +42,8 @@ export const fetchAssignmentTemplates = async (assignmentId: number) => {
         const config = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'  
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}` // Include the token in the header  
             },
             mode: 'cors' // Ensure CORS mode
         };
@@ -55,7 +59,8 @@ export const fetchAssignmentById = async (assignmentId: number) => {
         const config = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'  
+                'Content-Type': 'application/json' ,
+                Authorization: `Bearer ${token}` // Include the token in the header
             },
             mode: 'cors' // Ensure CORS mode
         };
@@ -71,7 +76,8 @@ export const fetchAssignmentByCourse = async (courseId: number) => {
         const config = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'  
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}` // Include the token in the header
             },
             mode: 'cors' // Ensure CORS mode
         };

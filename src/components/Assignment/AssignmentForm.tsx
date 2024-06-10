@@ -6,6 +6,7 @@ import {
   generateTemplate,
   createTemplate,
 } from "../../services/templateService";
+import Markdown from "react-markdown";
 
 const AssignmentForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -441,9 +442,11 @@ const AssignmentForm: React.FC = () => {
               ? "No templates generated yet"
               : `Template ${templateCount}`}
           </p>
-          <p className="text-sm text-light-text dark:text-dark-text">
+
+            <Markdown>
             {template || "No template generated yet"}
-          </p>
+            </Markdown>
+
         </div>
       </div>
       <div className="flex justify-center">

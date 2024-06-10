@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TeacherReviews from '../components/Teacher/TeacherReviews';
 import SubjectCards from '../components/SubjectCards';
+import { ToastContainer } from 'react-toastify';
 
 const Home: React.FC = () => {
     // Check if user is logged in and get user role from sessionStorage
@@ -49,6 +50,7 @@ const Home: React.FC = () => {
                         <TeacherReviews />
                     </div>
                 </section>
+                <ToastContainer position="top-center" />
 
             </div>
         </main>

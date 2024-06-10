@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Markdown from 'react-markdown'
 import { generateTemplate, createTemplate } from '../../services/templateService';
 
 interface Props {
@@ -83,9 +84,9 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
                     <p className="text-lg text-light-text dark:text-dark-text font-bold">
                         {templateCount === 0 ? "No templates generated yet" : `Template ${templateCount}`}
                     </p>
-                    <p className="text-sm">
-                        {template || 'No template generated yet'}
-                    </p>
+                    <Markdown>
+                        { template || 'No template generated yet'}
+                        </Markdown>
                 </div>
             </div>
             <div className="flex justify-center">
