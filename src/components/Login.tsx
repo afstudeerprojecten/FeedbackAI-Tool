@@ -39,9 +39,9 @@ const Login: React.FC = () => {
       const userRole = decodedToken.user_type;
       sessionStorage.setItem('user', JSON.stringify({ email, role: userRole }));
       sessionStorage.setItem('token', token); 
-      if ( userRole === 'student')
+      if ( userRole === 'student'){
         var student = await fetchStudentByEmail(email);
-        registerEvent({event_id: 1, user_id: student.id, value: 1});
+        registerEvent({event_id: 1, user_id: student.id, value: 1})};
       toast.success('Logged in successfully', {
         onClose: () => navigate('/')
       });
