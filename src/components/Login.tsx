@@ -39,12 +39,12 @@ const Login: React.FC = () => {
       const userRole = decodedToken.user_type;
       sessionStorage.setItem('user', JSON.stringify({ email, role: userRole }));
       sessionStorage.setItem('token', token); 
+      if ( userRole === 'student'){
+        var student = await fetchStudentByEmail(email);
+        registerEvent({event_id: 1, user_id: student.id, value: 1})};
       toast.success('Logged in successfully', {
         onClose: () => navigate('/')
       });
-      if ( userRole === 'student')
-        var student = await fetchStudentByEmail(email);
-        registerEvent({event_id: 1, user_id: student.id, value: 1});
     } catch (error) {
       setError('Incorrect email or password');
       toast.error('Incorrect email or password');
