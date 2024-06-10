@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-import {registerEvent} from '../services/eventLogService';
-
-=======
 import { login } from '../services/authService';
+import { registerEvent } from '../services/eventLogService';
+import { fetchStudentByEmail } from '../services/studentService';
 
 // Define the type for the decoded token
 interface DecodedToken {
@@ -23,7 +21,6 @@ function parseJwt(token: string): DecodedToken {
 
   return JSON.parse(jsonPayload) as DecodedToken;
 }
->>>>>>> origin/master
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -33,23 +30,6 @@ const Login: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-<<<<<<< HEAD
-    // Check if the provided username and password match any mock user
-    const foundUser = mockUsers.find((user) => user.username === username && user.password === password);
-
-    if (foundUser) {
-      // Log in successful, redirect to the dashboard or homepage
-      // Here you can store the user's information in local storage or session storage for authentication purposes
-      // For now, we're just redirecting to the homepage
-        navigate("/");
-        console.log('Login successful');
-        sessionStorage.setItem('user', JSON.stringify(foundUser));
-        if (foundUser.role === 'Student')
-          registerEvent({event_id: 1, user_id: foundUser.id, value: 1});
-
-    } else {
-      setError('Invalid username or password.');
-=======
     try {
       const response = await login({ email, password });
       const token = response.access_token;
@@ -57,9 +37,12 @@ const Login: React.FC = () => {
       const userRole = decodedToken.user_type;
       sessionStorage.setItem('user', JSON.stringify({ email, role: userRole }));
       navigate('/');
+      if ( userRole === 'student')
+        var student = await fetchStudentByEmail(email);
+        registerEvent({event_id: 1, user_id: student.id, value: 1});
+
     } catch (error) {
       setError('Incorrect email or password');
->>>>>>> origin/master
     }
   };
 

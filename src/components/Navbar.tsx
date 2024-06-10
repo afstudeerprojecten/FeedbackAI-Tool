@@ -65,6 +65,9 @@ const Navbar: React.FC = () => {
                                     <li>
                                         <Link to="/submissions" className="text-dark-text dark:text-dark-text">Submission Overview</Link>
                                     </li>
+                                    <li>
+                                        <Link to="/dashboard" className="text-dark-text dark:text-dark-text">Student Dashboard</Link>
+                                    </li>
                                 </>
                             )}
                             {role === 'Organisation Admin' && (
