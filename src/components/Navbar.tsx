@@ -239,7 +239,11 @@ const Navbar: React.FC = () => {
                         </div>
 
                         <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                            <Link to="/submissions" className="">Submissions</Link>
+                            <Link to="/submissions">Submissions</Link>
+                        </div>
+
+                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+                            <Link to="/dashboard">User Dashboard</Link>
                         </div>
                     </>
                 )}  
