@@ -37,6 +37,16 @@ const AssignmentDetailOverview: React.FC = () => {
         return description.length > 50 ? `${description.substring(0, 50)}...` : description;
     }
 
+    const sortByTitle = () => {
+        const sorted = [...assignments].sort((a, b) => a.title.localeCompare(b.title));
+        setAssignments(sorted);
+    }
+
+    const sortByCourse = () => {
+        const sorted = [...assignments].sort((a, b) => a.course.name.localeCompare(b.course.name));
+        setAssignments(sorted);
+    }
+
 
     return (
         <div className="w-3/4 mx-auto">
@@ -48,17 +58,18 @@ const AssignmentDetailOverview: React.FC = () => {
                 <table className="table table-md">
                     <thead >
                         <tr className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
-                            <th scope="col">
+                            <th scope="col" onClick={sortByTitle} className="link">
                                 Title
                             </th>
                             <th scope="col">
                                 Description
                             </th>
+                            <th scope="col" onClick={sortByCourse} className="link">
+                                        Course
+                                    </th>
                             {role === 'teacher' &&
                                 <>
                                     <th scope="col">
-                                        Course
-                                    </th><th scope="col">
                                         Templates
                                     </th>
                                 </>
