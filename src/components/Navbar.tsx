@@ -204,21 +204,8 @@ const Navbar: React.FC = () => {
 
                 {role === 'teacher' && (
                     <>
-                        <div className="dropdown dropdown-bottom">
-                            <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                                Assignments
-                            </div>
-                            <ul
-                                tabIndex={0}
-                                className="menu dropdown-content z-[1] p-2 shadow rounded-box w-52 mt-4 bg-dark-neutral dark:bg-base-900 text-base-content dark:text-dark-text"
-                            >
-                                <li>
-                                    <Link to="/assignment" className="text-dark-text dark:text-dark-text">Create Assignment</Link>
-                                </li>
-                                <li>
-                                    <Link to="/assignments" className="text-dark-text dark:text-dark-text">Assignment Overview</Link>
-                                </li>
-                            </ul>
+                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+                            <Link to="/assignment">Assignments</Link>
                         </div>
 
                         <div className="dropdown dropdown-bottom">
