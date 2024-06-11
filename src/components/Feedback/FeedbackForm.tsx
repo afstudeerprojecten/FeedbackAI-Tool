@@ -4,6 +4,7 @@ import SubmissionInput from './SubmissionInput';
 import { CreateSubmission, Feedback, SubmissionChatCompletion } from '../../Interfaces/interfaces';
 import { submitAssignment } from '../../services/feedbackService';
 import { fetchStudentByEmail } from '../../services/studentService';
+import { registerEvent } from '../../services/eventLogService';
 
 interface FeedbackFormProps {
     assignmentId: number;
@@ -40,6 +41,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({assignmentId}) => {
                 console.log(feedback);
                 console.log(feedback.content)
                 console.log(ChatCompletion.usage_total_tokens)
+                registerEvent({event_id: 2, user_id: student.id, value: ChatCompletion.usage_total_tokens})
                 setFeedback(feedback.content);
             
             }

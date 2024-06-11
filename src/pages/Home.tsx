@@ -13,10 +13,10 @@ const Home: React.FC = () => {
 
     // Function to determine the link based on user role
     const getStartedLink = () => {
-        if (role === 'Teacher') {
+        if (role === 'teacher') {
             return '/assignment';
-        } else if (role === 'Student') {
-            return '/chat';
+        } else if (role === 'student') {
+            return '/feedback';
         } else {
             return '/login';
         }

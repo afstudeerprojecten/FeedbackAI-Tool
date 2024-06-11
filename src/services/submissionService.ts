@@ -36,3 +36,20 @@ export const fetchSubmission = async (submissionId: number) => {
         throw error.response.data.detail || 'An error occurred while fetching the submission';
     }
 };
+
+export const fetchSubmissionByUser = async (student_id: number) => {
+    try {
+        const config = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}` // Include the token in the header
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.get(`${API_URL}/submissions/student/${student_id}`, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while fetching the submission';
+    }
+}

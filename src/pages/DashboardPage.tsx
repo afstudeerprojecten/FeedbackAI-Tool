@@ -10,10 +10,10 @@ const DashboardPage: React.FC = () => {
     <main className="min-h-screen bg-light-neutral dark:bg-dark-neutral">
     <div className="container mx-auto">
       <div className="grid grid-cols-2 gap-4">
-        <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">
+        <div className="bg-white dark:bg-gray-800 shadow-2xl rounded-lg p-4">
           <DashboardUserOverview />
         </div>
-        <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">
+        <div className="bg-white dark:bg-gray-800 shadow-2xl rounded-lg p-4">
           <DashboardUserChart />
         </div>
       </div>
