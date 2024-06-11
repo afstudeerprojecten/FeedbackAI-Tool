@@ -29,7 +29,7 @@ const AssignmentIndividualOverview: React.FC = () => {
 
     return (
         <div className="container mx-auto w-3/4">
-            <h2 className="text-xl font-bold mb-2 text-light-text dark:text-dark-text ml-4 text-center">
+            <h2 className="text-3xl font-bold text-light-text dark:text-dark-text mb-2 text-center">
                 Assignment Overview: {assignment && assignment.title}</h2>
 
             <div className="container">
@@ -48,7 +48,7 @@ const AssignmentIndividualOverview: React.FC = () => {
                                 </tr>
                                 <tr>
                                     <th>Description</th>
-                                    <td><Markdown className="w-3/4 overflow-auto">{assignment.description}</Markdown></td>
+                                    <td><Markdown className="overflow-auto">{assignment.description}</Markdown></td>
                                 </tr>
                                 <tr>
                                     <th>Course</th>
