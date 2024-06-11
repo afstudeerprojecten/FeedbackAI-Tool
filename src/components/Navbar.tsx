@@ -11,8 +11,10 @@ const Navbar: React.FC = () => {
   const handleLogout = () => {
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
-    navigate('/');
-    toast.success('Logged out successfully');
+    
+    toast.success('Logged in successfully', {
+      onClose: () => navigate('/')
+    });
 
   };
 

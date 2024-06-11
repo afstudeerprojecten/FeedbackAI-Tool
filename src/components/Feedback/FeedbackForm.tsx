@@ -6,8 +6,8 @@ import { Assignment, CreateSubmission, Feedback, SubmissionChatCompletion } from
 import { fetchAssignmentByCourse } from '../../services/assignmentService';
 import { fetchCourses } from '../../services/courseService';
 import { submitAssignment } from '../../services/feedbackService';
-import { User } from '../../data/mockData';
 import { fetchStudentByEmail } from '../../services/studentService';
+import { registerEvent } from '../../services/eventLogService';
 
 const FeedbackForm: React.FC = () => {
     const [assignments, setAssignments] = useState<Assignment[]>([]);
@@ -80,6 +80,7 @@ const FeedbackForm: React.FC = () => {
                 console.log(feedback);
                 console.log(feedback.content)
                 console.log(ChatCompletion.usage_total_tokens)
+                registerEvent({event_id: 2, user_id: student.id, value: ChatCompletion.usage_total_tokens})
                 setFeedback(feedback.content);
             
             }
