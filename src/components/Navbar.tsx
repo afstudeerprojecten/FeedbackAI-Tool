@@ -68,13 +68,8 @@ const Navbar: React.FC = () => {
             {role === 'student' && (
               <>
                 <li>
-                  <Link to="/assignments" className="text-dark-text dark:text-dark-text">
-                    Assignment Overview
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/feedback" className="text-dark-text dark:text-dark-text">
-                    Submission Feedback
+                  <Link to="/assignment" className="text-dark-text dark:text-dark-text">
+                    Assignments
                   </Link>
                 </li>
               </>
@@ -93,12 +88,7 @@ const Navbar: React.FC = () => {
                 </li>
                 <li>
                   <Link to="/assignment" className="text-dark-text dark:text-dark-text">
-                    Create Assignment
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/assignments" className="text-dark-text dark:text-dark-text">
-                    Assignment Overview
+                    Assignments
                   </Link>
                 </li>
                 <li>
@@ -192,33 +182,15 @@ const Navbar: React.FC = () => {
             {role === 'student' && (
                     <>
                         <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                            <Link to="/assignments" className="text-base-content dark:text-dark-text">Assignment Overview</Link>
+                            <Link to="/assignment" className="text-base-content dark:text-dark-text">Assignments</Link>
                         </div>
-
-                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                            <Link to="/feedback" className="text-base-content dark:text-dark-text">Submission Feedback</Link>
-                        </div>
-
                     </>
                 )}
 
                 {role === 'teacher' && (
                     <>
-                        <div className="dropdown dropdown-bottom">
-                            <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                                Assignments
-                            </div>
-                            <ul
-                                tabIndex={0}
-                                className="menu dropdown-content z-[1] p-2 shadow rounded-box w-52 mt-4 bg-dark-neutral dark:bg-base-900 text-base-content dark:text-dark-text"
-                            >
-                                <li>
-                                    <Link to="/assignment" className="text-dark-text dark:text-dark-text">Create Assignment</Link>
-                                </li>
-                                <li>
-                                    <Link to="/assignments" className="text-dark-text dark:text-dark-text">Assignment Overview</Link>
-                                </li>
-                            </ul>
+                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+                            <Link to="/assignment">Assignments</Link>
                         </div>
 
                         <div className="dropdown dropdown-bottom">
