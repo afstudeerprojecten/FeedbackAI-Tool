@@ -43,7 +43,8 @@ const Login: React.FC = () => {
         var student = await fetchStudentByEmail(email);
         registerEvent({event_id: 1, user_id: student.id, value: 1})};
       toast.success('Logged in successfully', {
-        onClose: () => navigate('/')
+        onClose: () => navigate('/'),
+        autoClose: 1000,
       });
     } catch (error) {
       // setError('Incorrect email or password');

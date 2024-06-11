@@ -13,7 +13,8 @@ const Navbar: React.FC = () => {
     sessionStorage.removeItem('token');
     navigate('/')
     toast.success('Logged in successfully', {
-      onClose: () => window.location.reload()
+      onClose: () => window.location.reload(),
+      autoClose: 1000
     });
 
   };
