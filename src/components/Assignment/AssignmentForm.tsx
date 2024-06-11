@@ -7,6 +7,7 @@ import {
   createTemplate,
 } from "../../services/templateService";
 import Markdown from "react-markdown";
+import { toast } from 'react-toastify';
 
 const AssignmentForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -20,10 +21,10 @@ const AssignmentForm: React.FC = () => {
   });
   const [loading, setLoading] = useState(false);
   const [loadingTemplate, setLoadingTemplate] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
-  const [templateSuccess, setTemplateSuccess] = useState(false);
-  const [templateError, setTemplateError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
+  // const [success, setSuccess] = useState(false);
+  // const [templateSuccess, setTemplateSuccess] = useState(false);
+  // const [templateError, setTemplateError] = useState<string | null>(null);
   const [courses, setCourses] = useState<any[]>([]);
   const [assignment, setAssignment] = useState<any>();
   const [template, setTemplate] = useState<any>();
@@ -86,7 +87,7 @@ const AssignmentForm: React.FC = () => {
 
   const handleAssignmetSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
+    // setError(null);
     setLoading(true);
     console.log("Form Data:", formData);
     try {
@@ -97,7 +98,8 @@ const AssignmentForm: React.FC = () => {
         word_count: parseInt(formData.word_count),
       };
       const createdAssignment = await createAssignment(dataToSend);
-      setSuccess(true);
+      // setSuccess(true);
+      toast.success('Assignment created successfully');
       setAssignment(createdAssignment);
       setFormData({
         teacher_id: "",
@@ -113,52 +115,57 @@ const AssignmentForm: React.FC = () => {
         // navigate('/assignments');
       }, 2000);
     } catch (error: any) {
-      setError("Something went wrong. Please try again later.");
+      toast.error("Something went wrong. Please try again later.");
     } finally {
       setLoading(false);
     }
   };
   const handleTemplateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setTemplateError(null);
+    // setTemplateError(null);
     try {
       if (templateCount >= 3) {
-        return setTemplateError(
-          "You have reached the maximum number of templates"
-        );
+        toast.error('You have reached the maximum number of templates');
       }
       setLoadingTemplate(true);
       const createdTemplate = await generateTemplate(assignment.id);
       setTemplate(createdTemplate);
       console.log("Template created:", template);
-      setTemplateSuccess(true);
+      // setTemplateSuccess(true);
+      toast.success('Template generated successfully');
       setTemplateCount((prevCount) => prevCount + 1);
       console.log("Template Count:", templateCount);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
     } catch (error: any) {
-      setTemplateError(error);
+      toast.error("Sometghing went wrong. Please try again later.");
     } finally {
       setLoadingTemplate(false);
     }
   };
   const handleTemplateAccept = async (e: React.FormEvent) => {
     e.preventDefault();
-    setTemplateError(null);
+    // setTemplateError(null);
     try {
-      // Accept the template
-      createTemplate({
+      const templateCheck = template
+      if (!templateCheck) {
+        toast.error('No templates to accept');
+        } else{
+         // Accept the template
+        createTemplate({
         template_content: template,
         assignment_id: assignment.id,
       });
       console.log("Template accepted:", template);
+      toast.success('Template accepted successfully');
       setTemplate("");
       setTimeout(() => {
         // navigate('/assignments');
-      }, 2000);
+      }, 2000);}
+     
     } catch (error: any) {
-      setTemplateError(error);
+      toast.error("Something went wrong. Please try again later.");
     } finally {
       setLoadingTemplate(false);
     }
@@ -166,10 +173,10 @@ const AssignmentForm: React.FC = () => {
 
   const handleTemplateDecline = async (e: React.FormEvent) => {
     e.preventDefault();
-    setTemplateError(null);
+    // setTemplateError(null);
     try {
       if (templateCount <= 0) {
-        return setError("No template to decline");
+        toast.error('No templates to decline');
       } else {
         setTemplateCount((prevCount) => prevCount - 1);
       }
@@ -180,7 +187,7 @@ const AssignmentForm: React.FC = () => {
         // navigate('/assignments');
       }, 2000);
     } catch (error: any) {
-      setTemplateError(error);
+      toast.error("Something went wrong. Please try again later.");
     } finally {
       setLoadingTemplate(false);
     }
@@ -344,6 +351,7 @@ const AssignmentForm: React.FC = () => {
               )}
             </button>
           </div>
+          {/*
           {error && <div className="alert alert-error mt-4 py-2 px-4">
           {" "}
           <svg
@@ -359,7 +367,7 @@ const AssignmentForm: React.FC = () => {
               d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>{error.toString()}</div>}
-          {success && (
+           {success && (
              <div className="alert alert-success mt-4 py-2 px-4">
              <svg
                xmlns="http://www.w3.org/2000/svg"
@@ -376,7 +384,7 @@ const AssignmentForm: React.FC = () => {
              </svg>
               Assignment created successfully!
             </div>
-          )}
+          )} */}
         </form>
       </div>
       <div className="flex justify-center">
@@ -395,7 +403,7 @@ const AssignmentForm: React.FC = () => {
         </button>
         </div>
       </div>
-      {templateError && (
+      {/* {templateError && (
         <div className="alert alert-error mt-4 py-2 px-4">
           {" "}
           <svg
@@ -431,7 +439,7 @@ const AssignmentForm: React.FC = () => {
           </svg>
           Template successfully generated!
         </div>
-      )}
+      )} */}
       <div className="bg-light-neutral dark:bg-dark-neutral rounded p-4 mb-4">
         <h2 className="text-2xl font-bold mb-4 text-light-text dark:text-dark-text">
           Generated Templates
