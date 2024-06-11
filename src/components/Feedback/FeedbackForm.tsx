@@ -6,7 +6,6 @@ import { Assignment, CreateSubmission, Feedback, SubmissionChatCompletion } from
 import { fetchAssignmentByCourse } from '../../services/assignmentService';
 import { fetchCourses } from '../../services/courseService';
 import { submitAssignment } from '../../services/feedbackService';
-import { User } from '../../data/mockData';
 import { fetchStudentByEmail } from '../../services/studentService';
 
 const FeedbackForm: React.FC = () => {
