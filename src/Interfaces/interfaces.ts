@@ -21,3 +21,9 @@ export interface Feedback {
     submission_id: number
     content: string
 }
+
+
+export interface SubmissionChatCompletion {
+    feedback: Feedback
+    usage_total_tokens: number
+}
