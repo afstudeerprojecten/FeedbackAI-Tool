@@ -72,11 +72,6 @@ const Navbar: React.FC = () => {
                     Assignments
                   </Link>
                 </li>
-                <li>
-                  <Link to="/feedback" className="text-dark-text dark:text-dark-text">
-                    Submission Feedback
-                  </Link>
-                </li>
               </>
             )}
             {role === 'teacher' && (
@@ -189,11 +184,6 @@ const Navbar: React.FC = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
                             <Link to="/assignment" className="text-base-content dark:text-dark-text">Assignments</Link>
                         </div>
-
-                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                            <Link to="/feedback" className="text-base-content dark:text-dark-text">Submission Feedback</Link>
-                        </div>
-
                     </>
                 )}
 

@@ -19,7 +19,7 @@ const AssignmentIndividualOverviewPage: React.FC = () => {
                 </>
             }
             {role === 'student' &&
-                <FeedbackForm />
+                <FeedbackForm assignmentId={parseInt(id)} />
             }
 
         </div>
