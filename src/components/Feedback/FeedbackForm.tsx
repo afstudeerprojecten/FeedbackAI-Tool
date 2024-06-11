@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import SubmissionButton from './SubmissionButton';
 import AssignmentSelector from './AssignmentSelecter';
 import SubmissionInput from './SubmissionInput';
-import { Assignment, CreateSubmission, Feedback } from '../../Interfaces/interfaces';
+import { Assignment, CreateSubmission, Feedback, SubmissionChatCompletion } from '../../Interfaces/interfaces';
 import { fetchAssignmentByCourse } from '../../services/assignmentService';
 import { fetchCourses } from '../../services/courseService';
 import { submitAssignment } from '../../services/feedbackService';
 import { User } from '../../data/mockData';
+import { fetchStudentByEmail } from '../../services/studentService';
 
 const FeedbackForm: React.FC = () => {
     const [assignments, setAssignments] = useState<Assignment[]>([]);
@@ -55,42 +56,37 @@ const FeedbackForm: React.FC = () => {
         setSelectedCourse(courseId);
     };
 
-    const getStudentIdFromLocalStorage = (): number | null => {
-        // Retrieve student ID from local storage
-        const user = sessionStorage.getItem('user');
-
-        if (user) {
-            const userData: User = JSON.parse(user);
-            const studentId = userData.id;
-            return studentId
-        } else {
-            return null;
-        }
-    };
-
     const handleSubmissionSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError(null);
         setLoading(true);
         setFeedback("")
         try {
-            let studentId = getStudentIdFromLocalStorage()
-            if (studentId) {
+            let sessionUser =  sessionStorage.getItem("user")
+            if (sessionUser != null) {
+                let realUser = JSON.parse(sessionUser)
+                let student = await fetchStudentByEmail(realUser.email)
                 const dataSubmission: CreateSubmission = {
                     assignment_id: parseInt(selectedAssignment),
-                    student_id: studentId,
+                    student_id:student.id,
                     content: submission
                 }
 
-                const feedback: Feedback = await submitAssignment(dataSubmission)
+                const ChatCompletion: SubmissionChatCompletion = await submitAssignment(dataSubmission) 
+                console.log(ChatCompletion)
+
+                const feedback: Feedback = ChatCompletion.feedback
                 console.log("got feedback");
-                console.log(feedback)
+                console.log(feedback);
                 console.log(feedback.content)
+                console.log(ChatCompletion.usage_total_tokens)
                 setFeedback(feedback.content);
+            
             }
             else {
-                throw new Error("ID missing, please try logging in again")
+                throw new Error("Something went wrong.")
             }
+            
         }
         catch (error: any) {
             setError("Something went wrong")

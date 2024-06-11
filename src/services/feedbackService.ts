@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { CreateSubmission, Feedback } from '../Interfaces/interfaces';
+import { CreateSubmission, Feedback, SubmissionChatCompletion } from '../Interfaces/interfaces';
 
 const API_URL = import.meta.env.VITE_BACKEND_URL ?? "CONFIG_BACKEND_URL";    // Change this to your backend URL
 
-export const submitAssignment = async (submission: CreateSubmission) : Promise<Feedback> => {
+export const submitAssignment = async (submission: CreateSubmission) : Promise<SubmissionChatCompletion> => {
     try {
         const config = {
             method: 'POST',
