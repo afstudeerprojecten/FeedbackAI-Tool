@@ -28,6 +28,8 @@ const AssignmentForm: React.FC = () => {
   const [assignment, setAssignment] = useState<any>();
   const [template, setTemplate] = useState<any>();
   const [templateCount, setTemplateCount] = useState(0);
+  const [editedTemplate, setEditedTemplate] = useState<string>(""); // Add state to store edited template content
+
 
   // Placeholder function to simulate response from OpenAI API
 
@@ -130,6 +132,7 @@ const AssignmentForm: React.FC = () => {
       setLoadingTemplate(true);
       const createdTemplate = await generateTemplate(assignment.id);
       setTemplate(createdTemplate);
+      setEditedTemplate(createdTemplate); // Set initial edited template content
       console.log("Template created:", template);
       setTemplateSuccess(true);
       setTemplateCount((prevCount) => prevCount + 1);
@@ -149,10 +152,10 @@ const AssignmentForm: React.FC = () => {
     try {
       // Accept the template
       createTemplate({
-        template_content: template,
+        template_content: editedTemplate, // Send edited template content
         assignment_id: assignment.id,
       });
-      console.log("Template accepted:", template);
+      console.log("Template accepted:", editedTemplate); // Log edited template content
       setTemplate("");
       setTimeout(() => {
         // navigate('/assignments');
@@ -345,54 +348,54 @@ const AssignmentForm: React.FC = () => {
             </button>
           </div>
           {error && <div className="alert alert-error mt-4 py-2 px-4">
-          {" "}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="stroke-current shrink-0 h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>{error.toString()}</div>}
+            {" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-current shrink-0 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>{error.toString()}</div>}
           {success && (
-             <div className="alert alert-success mt-4 py-2 px-4">
-             <svg
-               xmlns="http://www.w3.org/2000/svg"
-               className="stroke-current shrink-0 h-6 w-6"
-               fill="none"
-               viewBox="0 0 24 24"
-             >
-               <path
-                 strokeLinecap="round"
-                 strokeLinejoin="round"
-                 strokeWidth="2"
-                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-               />
-             </svg>
+            <div className="alert alert-success mt-4 py-2 px-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
               Assignment created successfully!
             </div>
           )}
         </form>
       </div>
       <div className="flex justify-center">
-      <div className="tooltip tooltip-left" data-tip="This allows you to directly generate templates for the assignment you just created">
-        <button
-          type="submit"
-          onClick={handleTemplateSubmit}
-          disabled={loadingTemplate}
-          className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
-        >
-          {loadingTemplate ? (
-            <span className="loading loading-spinner loading-xs"></span>
-          ) : (
-            "Generate Template"
-          )}
-        </button>
+        <div className="tooltip tooltip-left" data-tip="This allows you to directly generate templates for the assignment you just created">
+          <button
+            type="submit"
+            onClick={handleTemplateSubmit}
+            disabled={loadingTemplate}
+            className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+          >
+            {loadingTemplate ? (
+              <span className="loading loading-spinner loading-xs"></span>
+            ) : (
+              "Generate Template"
+            )}
+          </button>
         </div>
       </div>
       {templateError && (
@@ -440,36 +443,38 @@ const AssignmentForm: React.FC = () => {
           <p className="text-lg font-bold text-light-text dark:text-dark-text">
             {templateCount === 0
               ? "No templates generated yet"
-              : `Template ${templateCount}`}  
+              : `Template ${templateCount}`}
           </p>
-            <div contentEditable="true">
-              <Markdown>
-            {template || "No template generated yet"}
+          <div
+            contentEditable="true"
+            // Add onChange handler to capture edited template content
+            onInput={(e) => setEditedTemplate(e.currentTarget.textContent || '')}
+          >
+            <Markdown>
+              {template || "No template generated yet"}
             </Markdown>
-            </div>
-            
-
+          </div>
         </div>
       </div>
-      <div className="flex justify-center">
-      <div className="tooltip tooltip-left" data-tip="Accepting a template will save it for the recently created assignment">
-        <button
-          type="button"
-          onClick={handleTemplateAccept}
-          className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mr-4"
-        >
-          Accept Templates
-        </button>
-        </div>
-        <button
-          type="button"
-          onClick={handleTemplateDecline}
-          className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
-        >
-          Decline Templates
-        </button>
-      </div>
+  <div className="flex justify-center">
+    <div className="tooltip tooltip-left" data-tip="Accepting a template will save it for the recently created assignment">
+      <button
+        type="button"
+        onClick={handleTemplateAccept}
+        className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mr-4"
+      >
+        Accept Templates
+      </button>
     </div>
+    <button
+      type="button"
+      onClick={handleTemplateDecline}
+      className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+    >
+      Decline Templates
+    </button>
+  </div>
+    </div >
   );
 };
 
