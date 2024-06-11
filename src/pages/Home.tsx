@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import TeacherReviews from '../components/Teacher/TeacherReviews';
 import SubjectCards from '../components/SubjectCards';
 import { ToastContainer } from 'react-toastify';
+import DashboardUserHomePage from '../components/Dashboard/DashboardUserHomePage';
 
 const Home: React.FC = () => {
     // Check if user is logged in and get user role from sessionStorage
     const user = sessionStorage.getItem('user');
     const role = user ? JSON.parse(user).role : null;
+    console.log(role);
 
     // Function to determine the link based on user role
     const getStartedLink = () => {
@@ -23,6 +25,7 @@ const Home: React.FC = () => {
         <main className="min-h-screen bg-light-neutral dark:bg-dark-neutral">
             <div className="container mx-auto">
                 {/* Hero section */}
+                {role !== 'student' && (
                 <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8">
                     <div className="col-span-full">
                         <div className="hero bg-base rounded-lg p-8">
@@ -36,6 +39,15 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                 </section>
+                )}  
+                {role === 'student' && (
+                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8">
+                    <div className="col-span-full">
+                        <DashboardUserHomePage />
+                        <Link to={getStartedLink()} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
+                    </div>
+                </section>
+                )} 
                 <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8 mt-16">
                     <div className="col-span-full">
                         <h2 className="text-3xl text-light-text font-bold text-center mb-4 dark:text-dark-text">Features</h2>

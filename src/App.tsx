@@ -28,6 +28,7 @@ import SubmissionFeedbackPage from './pages/SubmissionFeedbackPage';
 import GenerateTemplatePage from './pages/GenerateTemplatePage';
 import Unauthorized from './pages/UnauthorizedPage';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
+import DashboardPage from './pages/DashboardPage';
 import AssignmentFlowPage from './pages/AssignmentFlowPage';
 import AssignmentCreatePage from './pages/AssignmentCreatePage';
 import AssignmentIndividualOverviewPage from './pages/AssignmentIndividualOverviewPage';
@@ -66,6 +67,7 @@ const App: React.FC = () => {
         <Route path="/submission/:id" element={<SubmissionContentPage />} />
         <Route path="/feedback/:id" element={<SubmissionFeedbackPage />} />
         <Route path="/generate_template/:id" element={<GenerateTemplatePage />} />
+        <Route path="/dashboard" element={<ProtectedRoute component={DashboardPage} requiredRole={["teacher"]} />} />
 
         {/* Add more routes as needed */}
       </Routes>
