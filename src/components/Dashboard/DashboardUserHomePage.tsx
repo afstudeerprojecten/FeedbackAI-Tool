@@ -52,7 +52,8 @@ const DashboardUserHomePage: React.FC = () => {
     
 
     return (
-        <div className="container">
+        <div className="container mx-auto">
+            <div className="grid grid-cols-2 gap-4">
             <h1 className="text-6xl font-bold text-light-text dark:text-dark-text">Welcome back {user.name}</h1>
             <ul>
                 {events.map((event, index) => (
@@ -61,6 +62,7 @@ const DashboardUserHomePage: React.FC = () => {
                     </li>
                 ))}
             </ul>
+            </div>
         </div>
     );
 };
