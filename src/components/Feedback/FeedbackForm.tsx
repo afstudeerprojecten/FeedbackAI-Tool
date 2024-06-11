@@ -56,19 +56,6 @@ const FeedbackForm: React.FC = () => {
         setSelectedCourse(courseId);
     };
 
-    const getStudentIdFromLocalStorage = (): number | null => {
-        // Retrieve student ID from local storage
-        const user = sessionStorage.getItem('user');
-
-        if (user) {
-            const userData: User = JSON.parse(user);
-            const studentId = userData.id;
-            return studentId
-        } else {
-            return null;
-        }
-    };
-
     const handleSubmissionSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError(null);
