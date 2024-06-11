@@ -4,7 +4,6 @@ import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home'; // Assuming you have a Home component
 import Navbar from './components/Navbar';
 import ChatPage from './pages/ChatPage'; // Assuming you have a ChatPage component
-import FormPage from './pages/FormPage';
 // import RegisterUserForm from './components/RegisterUserForm';
 import LoginPage from './pages/LoginPage';
 import RegisterOrganisationPage from './pages/RegisterOrganisationPage';
@@ -19,9 +18,7 @@ import AdminOverviewTablePage from './pages/AdminTableOverviewPage';
 import RegisterStudentPage from './pages/RegisterStudentPage';
 import StudentTableOverviewPage from './pages/StudentTableOverviewPage';
 import AssignemntOverviewPage from './pages/AssignmentTableOverviewPage';
-import AssignmentDescriptionPage from './pages/AssignmentDescriptionPage';
 import TemplatesTableOverviewPage from './pages/TemplateTableOverviewPage';
-import FeedbackPage from './pages/FeedbackPage';
 import SubmissionOverviewPage from './pages/SubmissionTableOverviewPage';
 import SubmissionContentPage from './pages/SubmissionContentPage';
 import SubmissionFeedbackPage from './pages/SubmissionFeedbackPage';
@@ -62,7 +59,6 @@ const App: React.FC = () => {
         <Route path="/assignments" element={<AssignemntOverviewPage />} />
         <Route path="/assignment/:id" element={<AssignmentIndividualOverviewPage />} />
         <Route path="/assignment/:id/get_templates" element={<TemplatesTableOverviewPage />} />
-        <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/submissions" element={<SubmissionOverviewPage />} />
         <Route path="/submission/:id" element={<SubmissionContentPage />} />
         <Route path="/feedback/:id" element={<SubmissionFeedbackPage />} />

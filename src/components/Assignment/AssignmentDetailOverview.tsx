@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { fetchAssigments } from "../../services/assignmentService";
 
 const AssignmentDetailOverview: React.FC = () => {
     const [assignments, setAssignments] = useState<any[]>([]);
-    const [showTemplates, setShowTemplates] = useState(false);
     const navigate = useNavigate();
     const user = sessionStorage.getItem('user');
     const role = user ? JSON.parse(user).role : null;
@@ -21,12 +20,6 @@ const AssignmentDetailOverview: React.FC = () => {
         };
 
         fetchData();
-    }, []);
-
-    useEffect(() => {
-        const user = sessionStorage.getItem('user');
-        const role = user ? JSON.parse(user).role : null;
-        setShowTemplates(role === 'Teacher');
     }, []);
 
     const handleViewMore = (id: number) => {
