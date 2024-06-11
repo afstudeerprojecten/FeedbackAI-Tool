@@ -4,6 +4,7 @@ import { fetchEventByUser, fetchEventNameById } from "../../services/eventLogSer
 
 
 
+
 const DashboardUserHomePage: React.FC = () => {
     const [events, setEvents] = useState<any[]>([]);
     const [user, setUser] = useState<any>({});
@@ -43,6 +44,7 @@ const DashboardUserHomePage: React.FC = () => {
                 // Convert groupedEvents back to an array
                 const groupedEventsArray = Object.values(groupedEvents);
                 setEvents(groupedEventsArray);
+
             } catch (error: any) {
                 console.error(error.message);
             }
@@ -63,6 +65,7 @@ const DashboardUserHomePage: React.FC = () => {
                 ))}
             </ul>
             </div>
+
         </div>
     );
 };
