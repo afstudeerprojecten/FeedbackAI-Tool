@@ -440,12 +440,14 @@ const AssignmentForm: React.FC = () => {
           <p className="text-lg font-bold text-light-text dark:text-dark-text">
             {templateCount === 0
               ? "No templates generated yet"
-              : `Template ${templateCount}`}
+              : `Template ${templateCount}`}  
           </p>
-
-            <Markdown>
+            <div contentEditable="true">
+              <Markdown>
             {template || "No template generated yet"}
             </Markdown>
+            </div>
+            
 
         </div>
       </div>
