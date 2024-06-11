@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { fetchStudentByEmail } from "../../services/studentService";
 import { fetchEventByUser, fetchEventNameById } from "../../services/eventLogService";
+import { fetchSubmissionByUser } from "../../services/submissionService";
+
 
 
 
@@ -8,6 +10,7 @@ import { fetchEventByUser, fetchEventNameById } from "../../services/eventLogSer
 const DashboardUserHomePage: React.FC = () => {
     const [events, setEvents] = useState<any[]>([]);
     const [user, setUser] = useState<any>({});
+    const [submissions, setSubmissions] = useState<any[]>([]);
     useEffect(() => {
         const fetchData = async () => {
             const change_id_to_name = async (id: number) => {
@@ -28,7 +31,6 @@ const DashboardUserHomePage: React.FC = () => {
                 const groupedEvents = await data.reduce(async (accPromise: Promise<any>, event: any) => {
                     const acc = await accPromise;
                     const eventName = await change_id_to_name(event.event_id);
-                    console.log(eventName.name);
                     if (!eventName) {
                         return acc; // Skip if event name not found
                     }
@@ -44,6 +46,8 @@ const DashboardUserHomePage: React.FC = () => {
                 // Convert groupedEvents back to an array
                 const groupedEventsArray = Object.values(groupedEvents);
                 setEvents(groupedEventsArray);
+                const submissions = await fetchSubmissionByUser(user.id);
+                setSubmissions(submissions);
 
             } catch (error: any) {
                 console.error(error.message);
@@ -56,16 +60,22 @@ const DashboardUserHomePage: React.FC = () => {
     return (
         <div className="container mx-auto">
             <div className="grid grid-cols-2 gap-4">
-            <h1 className="text-6xl font-bold text-light-text dark:text-dark-text">Welcome back {user.name}</h1>
+            <h1 className="text-6xl font-bold text-light-text dark:text-dark-text ">Welcome back {user.name}</h1>
+            <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-8">
+            <h2 className="text-xl font-bold mb-4">Your Activity</h2>
             <ul>
                 {events.map((event, index) => (
-                    <li key={index}>
-                        {event.name}  :   {event.value}
+                    <li key={index} className="border-b border-gray-300 dark:border-gray-700 p-2">
+                        <strong>{event.name}</strong> :   {event.value}
                     </li>
+                
                 ))}
+                <li className="border-b border-gray-300 dark:border-gray-700 p-2">
+                    <strong>Submissions</strong> : {submissions.length}
+                </li>
             </ul>
             </div>
-
+            </div>
         </div>
     );
 };
