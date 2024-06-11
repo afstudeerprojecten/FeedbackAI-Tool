@@ -27,7 +27,7 @@ function parseJwt(token: string): DecodedToken {
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null); // Change the error state type to string | null
+  // const [error, setError] = useState<string | null>(null); // Change the error state type to string | null
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,7 +46,7 @@ const Login: React.FC = () => {
         onClose: () => navigate('/')
       });
     } catch (error) {
-      setError('Incorrect email or password');
+      // setError('Incorrect email or password');
       toast.error('Incorrect email or password');
     }
   };
@@ -80,7 +80,7 @@ const Login: React.FC = () => {
               required
             />
           </div>
-          {error && <div className="text-red-500 mb-4">{error}</div>} {/* Render error message */}
+          {/* {error && <div className="text-red-500 mb-4">{error}</div>} Render error message */}
           <div>
             <button type="submit" className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">Login</button>
           </div>
