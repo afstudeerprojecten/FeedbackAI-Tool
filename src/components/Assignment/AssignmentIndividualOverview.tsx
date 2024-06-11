@@ -28,13 +28,13 @@ const AssignmentIndividualOverview: React.FC = () => {
     }, []);
 
     return (
-        <div className="container mx-auto">
-            <h2 className="text-xl font-bold mb-2 text-light-text dark:text-dark-text ml-4">
+        <div className="container mx-auto w-3/4">
+            <h2 className="text-xl font-bold mb-2 text-light-text dark:text-dark-text ml-4 text-center">
                 Assignment Overview: {assignment && assignment.title}</h2>
 
             <div className="container">
                 <table>
-                    <tbody className="align-top overflow-x-auto table table-md">
+                    <tbody className="overflow-x-auto table table-md">
                         {!assignment &&
                             <tr>
                                 <td>Loading...</td>
@@ -48,7 +48,7 @@ const AssignmentIndividualOverview: React.FC = () => {
                                 </tr>
                                 <tr>
                                     <th>Description</th>
-                                    <td><Markdown>{assignment.description}</Markdown></td>
+                                    <td><Markdown className="w-3/4 overflow-auto">{assignment.description}</Markdown></td>
                                 </tr>
                                 <tr>
                                     <th>Course</th>

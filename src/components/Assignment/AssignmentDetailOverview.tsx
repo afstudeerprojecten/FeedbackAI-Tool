@@ -6,6 +6,8 @@ const AssignmentDetailOverview: React.FC = () => {
     const [assignments, setAssignments] = useState<any[]>([]);
     const [showTemplates, setShowTemplates] = useState(false);
     const navigate = useNavigate();
+    const user = sessionStorage.getItem('user');
+    const role = user ? JSON.parse(user).role : null;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,7 +39,7 @@ const AssignmentDetailOverview: React.FC = () => {
 
 
     return (
-        <div>
+        <div className="w-3/4 mx-auto">
             <h2 className="text-xl font-bold mb-2 text-light-text dark:text-dark-text ml-4">
                 All assignments</h2>
 
@@ -52,12 +54,16 @@ const AssignmentDetailOverview: React.FC = () => {
                             <th scope="col">
                                 Description
                             </th>
-                            <th scope="col">
-                                Course
-                            </th>
-                            <th scope="col">
-                                Templates
-                            </th>
+                            {role === 'teacher' &&
+                                <>
+                                    <th scope="col">
+                                        Course
+                                    </th><th scope="col">
+                                        Templates
+                                    </th>
+                                </>
+                            }
+
                         </tr>
                     </thead>
 
@@ -73,9 +79,13 @@ const AssignmentDetailOverview: React.FC = () => {
                                 <td>
                                     {assignment.course.name}
                                 </td>
-                                <td>
-                                    {assignment.templates.length}
-                                </td>
+                                {role === 'teacher' &&
+                                    <>
+                                        <td>
+                                            {assignment.templates.length}
+                                        </td>
+                                    </>
+                                }
                                 <td className="btn mt-1 mb-1">
                                     <button onClick={() => handleViewMore(assignment.id)}>View More...</button>
                                 </td>

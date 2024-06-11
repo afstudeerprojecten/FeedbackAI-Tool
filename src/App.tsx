@@ -42,7 +42,8 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/chat" element={<ChatPage />} />
         {/* <Route path="/assignment" element={<ProtectedRoute component={FormPage} requiredRole={["teacher"]} />} /> */}
-        <Route path="/assignment" element={<ProtectedRoute component={AssignmentFlowPage} requiredRole={["teacher"]} />} />
+        {/* <Route path="/assignment" element={<ProtectedRoute component={AssignmentFlowPage} requiredRole={["teacher"]} />} /> */}
+        <Route path="/assignment" element={<AssignmentFlowPage />} />
         <Route path="/newassignment" element={<ProtectedRoute component={AssignmentCreatePage} requiredRole={["teacher"]} />} />
         <Route path="/registerteacher" element={<RegisterTeacherPage />} />
         <Route path="/registercourse" element={<RegisterCoursePage />} />
