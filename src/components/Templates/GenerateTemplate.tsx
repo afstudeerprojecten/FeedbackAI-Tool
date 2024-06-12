@@ -132,11 +132,11 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
     return (
       <div>
       <div className="bg-light-neutral dark:bg-dark-neutral rounded p-4 mb-4">
-        <h2 className="text-2xl text-light-text dark:text-dark-text font-bold mb-4">Generated Templates</h2>
+        <h2 className="text-2xl text-light-text dark:text-dark-text font-bold mb-4 text-center">Sample solutions</h2>
         <div className="border border-gray-500 p-2 rounded-md">
           <p className="text-lg font-bold text-light-text dark:text-dark-text">
             {templateCount === 0
-              ? 'No templates generated yet'
+              ? 'No sample solutions generated yet'
               : `Template ${templateCount}`}
           </p>
           <div
@@ -144,7 +144,7 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
             onInput={(e) => setEditedTemplate(e.currentTarget.textContent || '')}
           >
             <Markdown className="text-light-text dark:text-dark-text">
-              {template || 'No template generated yet'}
+              {template || 'No sample solution generated yet'}
             </Markdown>
           </div>
           <div className="flex justify-end mt-2">
@@ -173,14 +173,14 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
                     onClick={handleTemplateAccept}
                     className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary m-4"
                 >
-                    Accept Templates
+                    Accept Sample Solution
                 </button>
                 <button
                     type='button'
                     onClick={handleTemplateDecline}
                     className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary m-4"
                 >
-                    Decline Templates
+                    Decline Sample Solution
                 </button>
             </div>
 

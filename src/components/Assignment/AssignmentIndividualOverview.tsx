@@ -29,10 +29,10 @@ const AssignmentIndividualOverview: React.FC = () => {
 
     return (
         <div className="container mx-auto w-3/4 text-light-text dark:text-dark-text">
-            <h2 className="text-3xl font-bold mb-2 text-center">
+            <h2 className="text-4xl font-bold mb-2 text-center pt-8">
                 Assignment Overview: {assignment && assignment.title}</h2>
 
-            <div className="container">
+            <div className="container pt-4 pb-8">
                 <table>
                     <tbody className="overflow-x-auto table table-md">
                         {!assignment &&

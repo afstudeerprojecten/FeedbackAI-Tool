@@ -63,7 +63,7 @@ const AssignmentDetailOverview: React.FC = () => {
                             {role === 'teacher' &&
                                 <>
                                     <th scope="col">
-                                        Templates
+                                        Sample solutions
                                     </th>
                                 </>
                             }

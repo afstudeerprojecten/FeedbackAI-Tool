@@ -30,15 +30,15 @@ const AssignmentTemplatesOverview: React.FC = () => {
 
   return (
     <div className="p-6 bg-light-neutral dark:bg-dark-neutral">
-      <h2 className="text-xl text-light-text dark:text-dark-text font-bold mb-4">Assignment Templates Overview</h2>
+      <h2 className="text-xl text-light-text dark:text-dark-text font-bold mb-4">Sample Solutions Overview</h2>
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-light-neutral dark:bg-dark-neutral">
           <tr>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark-text-dark-text uppercase tracking-wider">
-              Template ID
+              Solution ID
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
-              Template Content
+              Sample Solution Content
             </th>
           </tr>
         </thead>
