@@ -43,6 +43,11 @@ const DashboardSpendageChart: React.FC = () => {
             };
         });
     };
+    const getColor = (value: number) => {
+        if (value < 0.2) return 'yellowgreen';
+        if (value < 0.5) return '#ff7f0e';
+        return '#d62728';
+    };
 
     return (
         <div className="p-6">
@@ -54,7 +59,7 @@ const DashboardSpendageChart: React.FC = () => {
                         y: events.map(event => event.value),
                         type: 'bar',
                         mode: 'bars',
-                        marker: { color: 'red' },
+                        marker: {color: events.map(event => getColor(event.value)),},
                     },
                 ]}
                 layout={{

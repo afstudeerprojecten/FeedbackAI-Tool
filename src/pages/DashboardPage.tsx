@@ -9,7 +9,7 @@ import DashboardSpendageChart from '../components/Dashboard/DashboardSpendageCha
 const DashboardPage: React.FC = () => {
   return (
     <main className="min-h-screen bg-light-neutral dark:bg-dark-neutral">
-    <div className="container mx-auto">
+    <div className="container mx-auto pt-4">
       <div className="grid grid-cols-2 gap-4 ">
         <div className="bg-white dark:bg-gray-800 shadow-2xl rounded-lg p-4">
           <DashboardUserOverview />
