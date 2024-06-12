@@ -49,8 +49,8 @@ const AssignmentDetailOverview: React.FC = () => {
             <div className="overflow-x-auto">
 
                 <table className="table table-md">
-                    <thead >
-                        <tr className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+                    <thead className="divide-gray-200">
+                        <tr className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider ">
                             <th scope="col" onClick={sortByTitle} className="link">
                                 Title
                             </th>

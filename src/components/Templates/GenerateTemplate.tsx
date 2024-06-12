@@ -55,7 +55,7 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
         toast.success("Template accepted successfully");
         setTemplate("");
         setTimeout(() => {
-          // navigate('/assignments');
+          window.location.reload();
         }, 2000);
       } catch (error: any) {
         toast.error("Failed to accept template");
@@ -143,7 +143,7 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
             contentEditable="true"
             onInput={(e) => setEditedTemplate(e.currentTarget.textContent || '')}
           >
-            <Markdown>
+            <Markdown className="text-light-text dark:text-dark-text">
               {template || 'No template generated yet'}
             </Markdown>
           </div>

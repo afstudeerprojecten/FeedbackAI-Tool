@@ -98,10 +98,9 @@ const AssignmentNew: React.FC = () => {
                 teacher_name: "",
                 word_count: "",
             });
-            console.log("Assignment created:", assignment);
             toast.success("Assignment created successfully");
             setTimeout(() => {
-                navigate("/assignment");
+                navigate("/assignment/" + createdAssignment.id);
             }, 2000);
         } catch (error: any) {
             toast.error("Failed to create assignment");

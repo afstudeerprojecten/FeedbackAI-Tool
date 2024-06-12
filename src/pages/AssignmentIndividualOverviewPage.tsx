@@ -11,6 +11,7 @@ const AssignmentIndividualOverviewPage: React.FC = () => {
     const role = user ? JSON.parse(user).role : null;
 
     return (
+        <div className="bg-light-neutral dark:bg-dark-neutral">
         <div className="w-3/4 content-center mx-auto">
             <ToastContainer position="top-center" />
 
@@ -26,6 +27,8 @@ const AssignmentIndividualOverviewPage: React.FC = () => {
             }
 
         </div>
+        </div>
+
     );
 }
 
