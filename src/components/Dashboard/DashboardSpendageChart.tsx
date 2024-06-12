@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { fetchEventByEventID } from "../../services/eventLogService";
 import Plot from 'react-plotly.js';
 
-const DashboardUserChart: React.FC = () => {
+const DashboardSpendageChart: React.FC = () => {
     const [events, setEvents] = useState<{ timestamp: Date; value: number }[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await fetchEventByEventID(1);
+                const data = await fetchEventByEventID(2);
                 console.log("Data:", data); // Log data
                 const aggregatedData = aggregateDataByMonth(data);
                 console.log("Aggregated data:", aggregatedData); // Log aggregated data
@@ -26,14 +26,12 @@ const DashboardUserChart: React.FC = () => {
 
         data.forEach(event => {
             const date = new Date(event.date_created);
-            console.log("Date:", date); // Log date
             const month = `${String(date.getMonth())}/${date.getFullYear()}`;
-            console.log("Month:", month); // Log month
 
             if (!aggregated[month]) {
                 aggregated[month] = 0;
             }
-            aggregated[month] += event.value;
+            aggregated[month] += event.value * 0.00002 * 0.9241;
         });
 
         return Object.entries(aggregated).map(([month, value]) => {
@@ -48,14 +46,14 @@ const DashboardUserChart: React.FC = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-xl font-bold mb-4">Login Chart</h2>
+            <h2 className="text-xl font-bold mb-4">Expenses Chart</h2>
             <Plot
                 data={[
                     {
                         x: events.map(event => event.timestamp),
                         y: events.map(event => event.value),
-                        type: 'scatter',
-                        mode: 'lines+markers',
+                        type: 'bar',
+                        mode: 'bars',
                         marker: { color: 'red' },
                     },
                 ]}
@@ -72,7 +70,7 @@ const DashboardUserChart: React.FC = () => {
                         tickvals: events.map(event => event.timestamp),
                     },
                     yaxis: {
-                        title: 'Logins',
+                        title: 'Euro ',
                         titlefont: {
                             family: 'Courier New, monospace',
                             size: 18,
@@ -87,4 +85,4 @@ const DashboardUserChart: React.FC = () => {
     );
 };
 
-export default DashboardUserChart;
+export default DashboardSpendageChart;
