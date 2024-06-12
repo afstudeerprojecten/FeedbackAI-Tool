@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Course, TeacherUploadCourseDocument } from '../Interfaces/interfaces';
+import { Course } from '../Interfaces/interfaces';
 
 const API_URL = import.meta.env.VITE_BACKEND_URL ?? "CONFIG_BACKEND_URL";    // Change this to your backend URL
 

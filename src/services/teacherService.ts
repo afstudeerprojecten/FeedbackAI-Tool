@@ -1,7 +1,6 @@
 // TeacherService.ts
 
 import axios from 'axios';
-import { ca } from 'date-fns/locale';
 
 const API_URL = import.meta.env.VITE_BACKEND_URL ?? "CONFIG_BACKEND_URL";   // Replace with your actual API URL
 
