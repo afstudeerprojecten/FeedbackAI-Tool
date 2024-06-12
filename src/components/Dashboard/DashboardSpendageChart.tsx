@@ -58,7 +58,6 @@ const DashboardSpendageChart: React.FC = () => {
                         x: events.map(event => event.timestamp),
                         y: events.map(event => event.value),
                         type: 'bar',
-                        mode: 'bars',
                         marker: {color: events.map(event => getColor(event.value)),},
                     },
                 ]}
