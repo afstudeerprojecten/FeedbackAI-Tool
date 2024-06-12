@@ -51,3 +51,19 @@ export const fetchCoursesByTeacherId = async (teacher_id: number) => {
     }
 };
 
+export const teacherUploadDocumentToCourse = async (formData: FormData) => {
+
+    // Don't set conctent type for file and multipart types
+    try {
+        const config = {
+            method: 'POST',
+            headers: {
+            },
+            mode: 'cors', // Ensure CORS mode
+        };
+        const response = await axios.post(`${API_URL}/courses/teacher/upload/document`, formData, config);
+        return response.data;
+    } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while registering the course';
+    }
+};
