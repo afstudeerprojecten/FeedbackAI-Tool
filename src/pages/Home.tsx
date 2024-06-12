@@ -9,7 +9,7 @@ const Home: React.FC = () => {
     // Check if user is logged in and get user role from sessionStorage
     const user = sessionStorage.getItem('user');
     const role = user ? JSON.parse(user).role : null;
-    console.log(role);
+    
 
     // Function to determine the link based on user role
     const getStartedLink = () => {
