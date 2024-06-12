@@ -1,6 +1,7 @@
 // TeacherService.ts
 
 import axios from 'axios';
+import { ca } from 'date-fns/locale';
 
 const API_URL = import.meta.env.VITE_BACKEND_URL ?? "CONFIG_BACKEND_URL";   // Replace with your actual API URL
 
@@ -80,6 +81,22 @@ export const fetchTeacher = async (teacherId: number) => {
         const response = await axios.get(`${API_URL}/teacher/id/${teacherId}`, config);
         return response.data;
     } catch (error: any) {
+        throw error.response.data.detail || 'An error occurred while fetching the teacher';
+    }
+}
+
+export const fetchTeacherByEmail = async (teacherEmail: string) => {
+    try {
+        const config = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'  
+            },
+            mode: 'cors' // Ensure CORS mode
+        };
+        const response = await axios.get(`${API_URL}/teacher/email/${teacherEmail}`, config);
+        return response.data;
+    } catch( error: any ) {
         throw error.response.data.detail || 'An error occurred while fetching the teacher';
     }
 }
