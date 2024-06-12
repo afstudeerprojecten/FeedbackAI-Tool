@@ -3,6 +3,7 @@ import AssignmentIndividualOverview from "../components/Assignment/AssignmentInd
 import GenerateTemplate from "../components/Templates/GenerateTemplate";
 import FeedbackForm from "../components/Feedback/FeedbackForm";
 import TemplateTableOverview from "../components/Templates/TemplateTableOverview";
+import { ToastContainer } from "react-toastify";
 
 const AssignmentIndividualOverviewPage: React.FC = () => {
     const { id } = useParams<{ id: any }>();
@@ -11,6 +12,8 @@ const AssignmentIndividualOverviewPage: React.FC = () => {
 
     return (
         <div className="w-3/4 content-center mx-auto">
+            <ToastContainer position="top-center" />
+
             <AssignmentIndividualOverview />
             {role === 'teacher' &&
                 <>
