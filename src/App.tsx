@@ -29,7 +29,7 @@ import DashboardPage from './pages/DashboardPage';
 import AssignmentFlowPage from './pages/AssignmentFlowPage';
 import AssignmentCreatePage from './pages/AssignmentCreatePage';
 import AssignmentIndividualOverviewPage from './pages/AssignmentIndividualOverviewPage';
-
+import UploadCourseDocumentsPage from './pages/UploadCourseDocumentsPage';
 
 const App: React.FC = () => {
   return (
@@ -46,6 +46,7 @@ const App: React.FC = () => {
         <Route path="/registerteacher" element={<RegisterTeacherPage />} />
         <Route path="/registercourse" element={<RegisterCoursePage />} />
         <Route path="/registerorg" element={<RegisterOrganisationPage />} />
+        <Route path="/uploadcoursedocuments" element={<UploadCourseDocumentsPage />} />
         <Route path="/organisations" element={<OrganizationsOverviewPage />} />
         <Route path="/teachers" element={<TeacherOverviewPage />} />
         <Route path="/login" element={<LoginPage />} />
