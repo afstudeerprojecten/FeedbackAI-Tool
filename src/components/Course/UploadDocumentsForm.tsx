@@ -4,6 +4,7 @@ import { fetchCoursesByTeacherId, teacherUploadDocumentToCourse } from '../../se
 import { User } from '../../data/mockData';
 import CourseSelector from './CourseSelector';
 import FileUploader from './FileUploader';
+import { fetchTeacherByEmail } from '../../services/teacherService';
 
 const UploadDocumentsForm: React.FC = ()=> {
     const [courses, setCourses] = useState<Course[]>([]);
@@ -19,8 +20,9 @@ const UploadDocumentsForm: React.FC = ()=> {
 
     const fetchCourses = async () => {
         try {
-            let teacherId = getTeacherIdFromLocalStorage()
+            let teacherId = await getTeacherIdFromLocalStorage()
             if (teacherId) {
+                console.log(teacherId);
                 const data = await fetchCoursesByTeacherId(teacherId);
                 setCourses(data);                
             }
@@ -34,15 +36,23 @@ const UploadDocumentsForm: React.FC = ()=> {
     };
 
 
-    const getTeacherIdFromLocalStorage = (): number | null => {
+    const getTeacherIdFromLocalStorage = async () : Promise<number | null> => {
         // Retrieve teacher  ID from local storage
         const user = sessionStorage.getItem('user');
 
         if (user) {
             const userData: User = JSON.parse(user);
-            const studentId = userData.id;
-            return studentId
-        } else {
+
+            let teacher = await fetchTeacherByEmail(userData.email)
+            // let teacher = await fetchTeacherByEmail(userData.email)
+            if (teacher) {
+                return teacher.id
+            }
+            else {
+                return null
+            }
+        } 
+        else {
             return null;
         }
     };
@@ -73,7 +83,7 @@ const UploadDocumentsForm: React.FC = ()=> {
         setError(null);
         setLoading(true);
         try {
-            let teacherId = getTeacherIdFromLocalStorage()
+            let teacherId = await getTeacherIdFromLocalStorage()
             if (teacherId) {
                 if ( (selectedCourseId) && (selectedCourseId != '') ) {
                     if (selectedFile) {
@@ -96,7 +106,7 @@ const UploadDocumentsForm: React.FC = ()=> {
 
                     }
                     else {
-                        throw new Error("Please select a file firsst")
+                        throw new Error("Please select a file first")
                     }
                 }
                 else {
