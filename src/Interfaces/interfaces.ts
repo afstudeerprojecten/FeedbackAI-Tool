@@ -27,3 +27,16 @@ export interface SubmissionChatCompletion {
     feedback: Feedback
     usage_total_tokens: number
 }
+
+export interface Course {
+    id: number
+    name: string
+    teacher_id: number
+}
+
+
+export interface TeacherUploadCourseDocument {
+    teacher_id: number
+    course_id: number
+    file: File
+}
