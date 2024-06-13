@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { fetchAssignmentById } from "../../services/assignmentService";
 import Markdown from "react-markdown";
 
@@ -64,6 +64,12 @@ const AssignmentIndividualOverview: React.FC = () => {
                                     <tr>
                                         <th>Word Count</th>
                                         <td>{assignment.word_count}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Submissions</th>
+                                        <td className="link">
+                                            <Link to={`/submissions/${assignment.id}`}>View Submissions</Link>
+                                        </td>
                                     </tr>
                                 </>
                             }

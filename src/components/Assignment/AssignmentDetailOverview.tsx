@@ -68,9 +68,12 @@ const AssignmentDetailOverview: React.FC = () => {
                     <div >
                         <h2 className="text-2xl font-bold text-center mt-14 mb-2 bg-white dark:bg-gray-800 rounded-lg m-3 pt-2 pb-2">
                             {course.name}</h2>
-
+                            { (courseAssignments(course.id).length === 0) &&
+                                <div className="text-center ">No assignments for this course</div>
+                            }
                         <div className="grid xl:grid-cols-3 gap-4 md:grid-cols-2 grid-cols-1">
-                            {courseAssignments(course.id).map(assignment => (
+                            {
+                            courseAssignments(course.id).map(assignment => (
                                 <div key={assignment.id} className="card text-light-text dark:text-dark-text bg-white dark:bg-gray-800 rounded-lg p-2 m-3">
                                     <div className="card-body ">
                                         <h3 className="text-lg font-bold pb-1">
