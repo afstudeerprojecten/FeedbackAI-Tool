@@ -74,7 +74,7 @@ const DashboardSpendageChart: React.FC = () => {
         }
 
         const result = [];
-        for (const [user, { value, userId }] of Object.entries(aggregated)) {
+        for (const [_user, { value, userId }] of Object.entries(aggregated)) {
             const name = await changeIdToName(userId);
             result.push({
                 date_created: new Date(), // Use a placeholder date
