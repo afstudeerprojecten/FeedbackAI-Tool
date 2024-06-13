@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import Markdown from 'react-markdown'
 import { generateTemplate, createTemplate } from '../../services/templateService';
 import { toast } from 'react-toastify';
-import { fetchTeacherByEmail } from '../../services/teacherService';
-import { registerEvent } from '../../services/eventLogService';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
     assignmentId: number; // Define the prop for assignmentId
@@ -86,74 +82,23 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
       }
     };
 
-    const handleLike = async (e: React.FormEvent) => {
-      e.preventDefault();
-      try {
-        const user = sessionStorage.getItem('user');
-        const email = user ? JSON.parse(user).email : null;
-        console.log("User:", user);
-        console.log("Email:", email);
-        
-        const userRole = user ? JSON.parse(user).role : null;
-    
-        if (!email) {
-          throw new Error('Email not found in sessionStorage');
-        }
-    
-        if (userRole === 'teacher') {
-          const teacher = await fetchTeacherByEmail(email);
-          await registerEvent({ event_id: 3, user_id: teacher.id, value: 1 });
-          toast.info('Liked template successfully');
-        }
-      } catch (error) {
-      }
-    };
-
-    const handleDislike = async (e: React.FormEvent) => {
-      e.preventDefault();
-      try {
-        const email = sessionStorage.getItem('email');
-        const userRole = sessionStorage.getItem('role');
-    
-        if (!email) {
-          throw new Error('Email not found in sessionStorage');
-        }
-    
-        if (userRole === 'teacher') {
-          const teacher = await fetchTeacherByEmail(email);
-          await registerEvent({ event_id: 4, user_id: teacher.id, value: 1 });
-          toast.info('Disliked template successfully');
-        }
-      } catch (error) {
-        toast.error('Incorrect email or password');
-      }
-    };
-
     return (
       <div>
-      <div className="bg-light-neutral dark:bg-dark-neutral rounded p-4 mb-4">
+      <div className="bg-neutral-100 dark:bg-dark-neutral rounded p-4 mb-4">
         <h2 className="text-2xl text-light-text dark:text-dark-text font-bold mb-4 text-center">Sample solutions</h2>
         <div className="border border-gray-500 p-2 rounded-md">
           <p className="text-lg font-bold text-light-text dark:text-dark-text">
             {templateCount === 0
-              ? 'No sample solutions generated yet'
-              : `Template ${templateCount}`}
+              ? 'Sample Solution'
+              : `Sample SOlution ${templateCount}`}
           </p>
           <div
             contentEditable="true"
             onInput={(e) => setEditedTemplate(e.currentTarget.textContent || '')}
           >
             <Markdown className="text-light-text dark:text-dark-text">
-              {template || 'No sample solution generated yet'}
+              {template || 'Click here to make your own sample solution or generate a new one.'}
             </Markdown>
-          </div>
-          <div className="flex justify-end mt-2">
-            <button onClick={handleLike} className="mr-2 text-blue-500">
-              <FontAwesomeIcon icon={faThumbsUp} />
-            </button>
-            <button onClick={handleDislike} className="text-red-500">
-              <FontAwesomeIcon icon={faThumbsDown} />
-            </button>
           </div>
         </div>
       </div>
