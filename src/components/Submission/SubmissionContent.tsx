@@ -17,9 +17,9 @@ const SubmissionContent: React.FC<SubmissionContentProps> = ({ content }) => {
   };
 
   return (
-    <div className="p-6 bg-light-neutral dark-bg-dark-neutral">
-      <h2 className="text-xl font-bold mb-4 text-light-text dark:-text-dark-text">Submission Content</h2>
-      <div className="text-light-text dark:-text-dark-text">
+    <div className="p-6">
+      <h2 className="text-xl font-bold mb-4 ">Submission Content</h2>
+      <div className="">
         {formatDescription(content)}
       </div>
     </div>
