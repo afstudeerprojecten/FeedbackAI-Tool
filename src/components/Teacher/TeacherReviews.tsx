@@ -4,7 +4,7 @@ const TeacherReviews: React.FC = () => {
     return (
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8">
             {/* Review 1 */}
-            <div className="card shadow-2xl p-6">
+            <div className="card bg-white dark:bg-gray-800 p-6">
                 <div className="flex justify-between">
                     <div>
                         <h3 className="text-xl font-bold text-light-text dark:text-dark-text">John Doe</h3>
@@ -16,7 +16,7 @@ const TeacherReviews: React.FC = () => {
             </div>
 
             {/* Review 2 */}
-            <div className="card shadow-2xl p-6">
+            <div className="card bg-white dark:bg-gray-800 p-6">
                 <div className="flex justify-between">
                     <div>
                         <h3 className="text-xl font-bold text-light-text dark:text-dark-text">Jane Smith</h3>
@@ -28,7 +28,7 @@ const TeacherReviews: React.FC = () => {
             </div>
 
             {/* Review 3 */}
-            <div className="card shadow-2xl p-6">
+            <div className="card bg-white dark:bg-gray-800 p-6">
                 <div className="flex justify-between">
                     <div>
                         <h3 className="text-xl font-bold text-light-text dark:text-dark-text">Michael Johnson</h3>
@@ -40,7 +40,7 @@ const TeacherReviews: React.FC = () => {
             </div>
 
             {/* Review 4 */}
-            <div className="card shadow-2xl p-6">
+            <div className="card bg-white dark:bg-gray-800 p-6">
                 <div className="flex justify-between">
                     <div>
                         <h3 className="text-xl font-bold text-light-text dark:text-dark-text">Emily Brown</h3>
@@ -52,7 +52,7 @@ const TeacherReviews: React.FC = () => {
             </div>
 
             {/* Review 5 */}
-            <div className="card shadow-2xl p-6">
+            <div className="card bg-white dark:bg-gray-800 p-6">
                 <div className="flex justify-between">
                     <div>
                         <h3 className="text-xl font-bold text-light-text dark:text-dark-text">Sarah Johnson</h3>
@@ -64,7 +64,7 @@ const TeacherReviews: React.FC = () => {
             </div>
 
             {/* Review 6 */}
-            <div className="card shadow-2xl p-6">
+            <div className="card bg-white dark:bg-gray-800 p-6">
                 <div className="flex justify-between">
                     <div>
                         <h3 className="text-xl font-bold text-light-text dark:text-dark-text">Adam Wilson</h3>

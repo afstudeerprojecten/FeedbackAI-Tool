@@ -3,7 +3,7 @@ import { fetchEventByEventID } from "../../services/eventLogService";
 import Plot from 'react-plotly.js';
 
 const DashboardUserChart: React.FC = () => {
-    const [events, setEvents] = useState<{ timestamp: Date; value: number }[]>([]);
+    const [events, setEvents] = useState<{ date_created: Date; value: number }[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,9 +38,9 @@ const DashboardUserChart: React.FC = () => {
 
         return Object.entries(aggregated).map(([month, value]) => {
             const [monthPart, yearPart] = month.split('/');
-            const timestamp = new Date(`${yearPart}-${monthPart.padStart(2, '0')}-01`); // Ensure valid Date object
+            const date_created = new Date(`${yearPart}-${monthPart.padStart(2, '0')}-01`); // Ensure valid Date object
             return {
-                timestamp,
+                date_created,
                 value
             };
         });
@@ -48,11 +48,11 @@ const DashboardUserChart: React.FC = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-xl font-bold mb-4">Login Chart</h2>
+            <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text" >Login Chart</h2>
             <Plot
                 data={[
                     {
-                        x: events.map(event => event.timestamp),
+                        x: events.map(event => event.date_created),
                         y: events.map(event => event.value),
                         type: 'scatter',
                         mode: 'lines+markers',
@@ -69,7 +69,7 @@ const DashboardUserChart: React.FC = () => {
                             color: '#7f7f7f'
                         },
                         tickformat: '%m/%Y', // Correct tick format for months and years
-                        tickvals: events.map(event => event.timestamp),
+                        tickvals: events.map(event => event.date_created),
                     },
                     yaxis: {
                         title: 'Logins',

@@ -74,7 +74,7 @@ const DashboardUserOverview: React.FC = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">Login Overview</h2>
+      <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">Login Overview</h2>
       <div className="mb-4">
         <button
           className={`px-4 py-2 mr-2 ${filterMode === "allTime" ? "bg-dark-neutral text-white dark:bg-gray-200 dark:text-gray-700" : "bg-gray-200 text-gray-700 dark:bg-dark-neutral dark:text-white" } rounded-lg`}
@@ -89,28 +89,28 @@ const DashboardUserOverview: React.FC = () => {
           This Month
         </button>
       </div>
-      <table className="min-w-full divide-y divide-gray-200">
+      <table className="min-w-full divide-y">
         <thead className="bg-base">
           <tr>
             <th
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider"
             >
               User
             </th>
             <th
               scope="col"
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider"
             >
               Total Logins
             </th>
           </tr>
         </thead>
-        <tbody className="bg-base divide-y divide-gray-200">
+        <tbody className="bg-base divide-y ">
           {events.map((event) => (
             <tr key={event.user_name}>
-              <td className="px-6 py-4 whitespace-nowrap">{event.user_name}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{event.total_value}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">{event.user_name}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-light-text dark:text-dark-text">{event.total_value}</td>
             </tr>
           ))}
         </tbody>
