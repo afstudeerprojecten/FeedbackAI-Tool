@@ -4,7 +4,7 @@ import Plot from 'react-plotly.js';
 import { fetchStudentName } from "../../services/studentService";
 
 type Event = {
-    timestamp: Date;
+    date_created: Date;
     value: number;
     label?: string;
 };
@@ -53,9 +53,9 @@ const DashboardSpendageChart: React.FC = () => {
 
         return Object.entries(aggregated).map(([month, value]) => {
             const [monthPart, yearPart] = month.split('/');
-            const timestamp = new Date(`${yearPart}-${monthPart.padStart(2, '0')}-01`); // Ensure valid Date object
+            const date_created = new Date(`${yearPart}-${monthPart.padStart(2, '0')}-01`); // Ensure valid Date object
             return {
-                timestamp,
+                date_created,
                 value
             };
         });
@@ -77,7 +77,7 @@ const DashboardSpendageChart: React.FC = () => {
         for (const [user, { value, userId }] of Object.entries(aggregated)) {
             const name = await changeIdToName(userId);
             result.push({
-                timestamp: new Date(), // Use a placeholder date
+                date_created: new Date(), // Use a placeholder date
                 value,
                 label: name // Add the fetched name as a label
             });
@@ -105,7 +105,7 @@ const DashboardSpendageChart: React.FC = () => {
             <Plot
                 data={[
                     {
-                        x: events.map(event => groupingMode === "month" ? event.timestamp : event.label),
+                        x: events.map(event => groupingMode === "month" ? event.date_created : event.label),
                         y: events.map(event => event.value),
                         type: 'bar',
                         marker: { color: events.map(event => getColor(event.value)) },
@@ -120,8 +120,8 @@ const DashboardSpendageChart: React.FC = () => {
                             size: 18,
                             color: '#7f7f7f'
                         },
-                        tickformat: groupingMode === "month" ? '%m/%Y' : '', // Correct tick format for months and years
-                        tickvals: events.map(event => groupingMode === "month" ? event.timestamp : event.label),
+                        tickformat: groupingMode === "month" ? '%m/%Y' : '', 
+                        tickvals: events.map(event => groupingMode === "month" ? event.date_created : event.label),
                     },
                     yaxis: {
                         title: 'Euro',
