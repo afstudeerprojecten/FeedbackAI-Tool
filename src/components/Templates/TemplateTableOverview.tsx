@@ -66,14 +66,11 @@ const AssignmentTemplatesOverview: React.FC = () => {
   };
 
   return (
-    <div className="p-6 bg-light-neutral dark:bg-dark-neutral">
+    <div className="p-6 bg-neutral-100 dark:bg-dark-neutral">
       <h2 className="text-xl text-light-text dark:text-dark-text font-bold mb-4">Sample Solutions Overview</h2>
       <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-light-neutral dark:bg-dark-neutral">
+        <thead className="bg-neutral-100 dark:bg-dark-neutral">
           <tr>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
-              Solution ID
-            </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
               Sample Solution Content
             </th>
@@ -82,12 +79,9 @@ const AssignmentTemplatesOverview: React.FC = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="bg-light-neutral dark:bg-dark-neutral divide-y divide-gray-200">
+        <tbody className="bg-neutral-100 dark:bg-dark-neutral divide-y divide-gray-200">
           {templates.map((template, index) => (
             <tr key={index}>
-              <td className="px-6 py-4 whitespace-normal align-top text-light-text dark:text-dark-text ">
-                {template.id}
-              </td>
               <td className="px-6 py-4 whitespace-normal text-light-text dark:text-dark-text">
                 <Markdown>
                   {template.content}
