@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import DashboardUserHomePage from '../components/Dashboard/DashboardUserHomePage';
 import DashboardTeacherHomeCard from '../components/Dashboard/DashboardTeacherHomeCard';
 import DashboardUserOverview from '../components/Dashboard/DashboardUserOverview';
+import SubmissionOverviewCard from '../components/Submission/SubmissionOverviewCard';
 
 const Home: React.FC = () => {
     // Check if user is logged in and get user role from sessionStorage
@@ -43,20 +44,20 @@ const Home: React.FC = () => {
                 </section>
                 )}  
                 {role === 'student' && (
-                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8">
+                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-8">
                     <div className="col-span-full">
-                        <DashboardUserHomePage />
-                        <Link to={getStartedLink()} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
+                        <DashboardUserHomePage role={role}/>
                     </div>
                 </section>
                 )} 
                 {role === 'teacher' && (
-                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8">
+                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-8">
                     <div className="col-span-full">
                         <DashboardTeacherHomeCard/>
-                        <div className='bg-white dark:bg-gray-800 rounded-lg p-4 mt-4'><DashboardUserOverview/></div>
                         <Link to={getStartedLink()} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
                     </div>
+                    <div className='bg-white dark:bg-gray-800 rounded-lg p-4 mt-4 max-h-96 overflow-auto hover:overflow-y-scroll'><DashboardUserOverview/></div>
+                    <div className='bg-white dark:bg-gray-800 rounded-lg p-4 mt-4 max-h-96 overflow-auto hover:overflow-y-scroll'><SubmissionOverviewCard/></div>
                 </section>
                 )}
                 <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8 mt-16">

@@ -3,8 +3,13 @@ import { fetchStudentByEmail } from "../../services/studentService";
 import { fetchEventByUser, fetchEventNameById } from "../../services/eventLogService";
 import { fetchSubmissionByUser } from "../../services/submissionService";
 import { fetchAssigments } from "../../services/assignmentService";
+import { Link } from "react-router-dom";
 
-const DashboardUserHomePage: React.FC = () => {
+
+type Props = {
+    role: string;
+};
+const DashboardUserHomePage: React.FC<Props> = ({role}: Props) => {
     const [events, setEvents] = useState<any[]>([]);
     const [user, setUser] = useState<any>({});
     const [submissions, setSubmissions] = useState<any[]>([]);
@@ -61,10 +66,23 @@ const DashboardUserHomePage: React.FC = () => {
         fetchData();
     }, []);
 
+    const getStartedLink = () => {
+        if (role === 'teacher') {
+            return '/assignment';
+        } else if (role === 'student') {
+            return '/assignment';
+        } else {
+            return '/login';
+        }
+    };
+
     return (
         <div className="container mx-auto">
             <div className="grid grid-cols-2 gap-4">
-                <h1 className="text-6xl font-bold text-light-text dark:text-dark-text ">Welcome back {user.name}</h1>
+                <div>
+                <h1 className="text-6xl font-bold text-light-text dark:text-dark-text mb-8">Welcome back {user.name}</h1>
+                <Link to={getStartedLink()} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
+                </div>
                 <div className="bg-white dark:bg-gray-800 rounded-lg p-8">
                     <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">Your Activity</h2>
                     <ul>
@@ -85,7 +103,7 @@ const DashboardUserHomePage: React.FC = () => {
                             <strong>Submissions</strong> : {submissions.length}
                         </li>
                     </ul>
-                </div>
+                </div>  
             </div>
         </div>
     );

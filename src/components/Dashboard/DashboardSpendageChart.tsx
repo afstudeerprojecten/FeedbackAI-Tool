@@ -87,8 +87,8 @@ const DashboardSpendageChart: React.FC = () => {
     };
 
     const getColor = (value: number) => {
-        if (value < 0.2) return 'yellowgreen';
-        if (value < 0.5) return '#ff7f0e';
+        if (value < 1) return 'yellowgreen';
+        if (value < 2) return '#ff7f0e';
         return '#d62728';
     };
     const isDefined = <T,>(value: T | undefined): value is T => value !== undefined;
