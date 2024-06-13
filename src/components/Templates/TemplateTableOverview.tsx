@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchAssignmentTemplates } from "../../services/assignmentService";
 import Markdown from "react-markdown";
+import { toast } from 'react-toastify';
+import { fetchTeacherByEmail } from '../../services/teacherService';
+import { registerEvent } from '../../services/eventLogService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 const AssignmentTemplatesOverview: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -20,13 +25,45 @@ const AssignmentTemplatesOverview: React.FC = () => {
     fetchData();
   }, [id]);
 
-  // Function to format the template content into paragraphs
-  // const formatTemplateContent = (content: string) => {
-  //   return content.split('\n').map((paragraph, index) => (
-  //     <div key={index} className="mb-4">{paragraph}</div>
-  //   ));
-  // };
+  const handleLike = async (templateId: number) => {
+    try {
+      const user = sessionStorage.getItem('user');
+      const email = user ? JSON.parse(user).email : null;
+      const userRole = user ? JSON.parse(user).role : null;
 
+      if (!email) {
+        throw new Error('Email not found in sessionStorage');
+      }
+
+      if (userRole === 'teacher') {
+        const teacher = await fetchTeacherByEmail(email);
+        await registerEvent({ event_id: 3, user_id: teacher.id, value: templateId });
+        toast.info('Liked template successfully');
+      }
+    } catch (error) {
+      toast.error('Error liking the template');
+    }
+  };
+
+  const handleDislike = async (templateId: number) => {
+    try {
+      const user = sessionStorage.getItem('user');
+      const email = user ? JSON.parse(user).email : null;
+      const userRole = user ? JSON.parse(user).role : null;
+
+      if (!email) {
+        throw new Error('Email not found in sessionStorage');
+      }
+
+      if (userRole === 'teacher') {
+        const teacher = await fetchTeacherByEmail(email);
+        await registerEvent({ event_id: 4, user_id: teacher.id, value: templateId });
+        toast.info('Disliked template successfully');
+      }
+    } catch (error) {
+      toast.error('Error disliking the template');
+    }
+  };
 
   return (
     <div className="p-6 bg-light-neutral dark:bg-dark-neutral">
@@ -34,11 +71,14 @@ const AssignmentTemplatesOverview: React.FC = () => {
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-light-neutral dark:bg-dark-neutral">
           <tr>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark-text-dark-text uppercase tracking-wider">
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
               Solution ID
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
               Sample Solution Content
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-light-text dark:text-dark-text uppercase tracking-wider">
+              Actions
             </th>
           </tr>
         </thead>
@@ -49,15 +89,23 @@ const AssignmentTemplatesOverview: React.FC = () => {
                 {template.id}
               </td>
               <td className="px-6 py-4 whitespace-normal text-light-text dark:text-dark-text">
-              <Markdown>
-                {template.content}
-              </Markdown>
+                <Markdown>
+                  {template.content}
+                </Markdown>
+              </td>
+              <td className="px-6 py-4 whitespace-normal text-light-text dark:text-dark-text">
+                <button onClick={() => handleLike(template.id)} className="mr-2 text-blue-500">
+                  <FontAwesomeIcon icon={faThumbsUp} size="2x" />
+                </button>
+                <button onClick={() => handleDislike(template.id)} className="text-red-500">
+                  <FontAwesomeIcon icon={faThumbsDown} size="2x" />
+                </button>
               </td>
             </tr>
           ))}
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
+    </div >
   );
 };
 
