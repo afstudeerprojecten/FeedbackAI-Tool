@@ -48,7 +48,7 @@ const DashboardUserChart: React.FC = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-xl font-bold mb-4">Login Chart</h2>
+            <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text" >Login Chart</h2>
             <Plot
                 data={[
                     {

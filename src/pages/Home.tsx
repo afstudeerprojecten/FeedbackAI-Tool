@@ -22,7 +22,7 @@ const Home: React.FC = () => {
         }
     };
     return (
-        <main className="min-h-screen bg-light-neutral dark:bg-dark-neutral">
+        <main className="min-h-screen bg-neutral-100 dark:bg-dark-neutral">
             <div className="container mx-auto">
                 {/* Hero section */}
                 {role !== 'student' && (
