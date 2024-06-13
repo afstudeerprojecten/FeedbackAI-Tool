@@ -18,7 +18,7 @@ const AssignmentNew: React.FC = () => {
     const [courses, setCourses] = useState<any[]>([]);
     // const [error, setError] = useState<string | null>(null);
     // const [success, setSuccess] = useState(false);
-    const [assignment, setAssignment] = useState<any>();
+    // const [assignment, setAssignment] = useState<any>();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -88,7 +88,7 @@ const AssignmentNew: React.FC = () => {
                 word_count: parseInt(formData.word_count),
             };
             const createdAssignment = await createAssignment(dataToSend);
-            setAssignment(createdAssignment);
+            // setAssignment(createdAssignment);
             setFormData({
                 teacher_id: "",
                 course_id: "",
