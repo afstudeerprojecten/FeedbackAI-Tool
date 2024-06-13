@@ -74,7 +74,7 @@ const DashboardSpendageChart: React.FC = () => {
         }
 
         const result = [];
-        for (const [user, { value, userId }] of Object.entries(aggregated)) {
+        for (const [_user, { value, userId }] of Object.entries(aggregated)) {
             const name = await changeIdToName(userId);
             result.push({
                 date_created: new Date(), // Use a placeholder date
@@ -91,6 +91,7 @@ const DashboardSpendageChart: React.FC = () => {
         if (value < 0.5) return '#ff7f0e';
         return '#d62728';
     };
+    const isDefined = <T,>(value: T | undefined): value is T => value !== undefined;
 
     return (
         <div className="p-6">
@@ -105,7 +106,7 @@ const DashboardSpendageChart: React.FC = () => {
             <Plot
                 data={[
                     {
-                        x: events.map(event => groupingMode === "month" ? event.date_created : event.label),
+                        x: events.map(event => groupingMode === "month" ? event.date_created : event.label).filter(isDefined),
                         y: events.map(event => event.value),
                         type: 'bar',
                         marker: { color: events.map(event => getColor(event.value)) },
