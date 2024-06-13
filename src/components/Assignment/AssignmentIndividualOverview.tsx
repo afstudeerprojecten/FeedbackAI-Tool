@@ -33,39 +33,43 @@ const AssignmentIndividualOverview: React.FC = () => {
                 Assignment Overview: {assignment && assignment.title}</h2>
 
             <div className="container pt-4 pb-8">
-                <table>
-                    <tbody className="overflow-x-auto table table-md">
-                        {!assignment &&
-                            <tr>
-                                <td>Loading...</td>
-                            </tr>}
-                        {assignment && // make sure assignment has been set
-                            <>
-                                <tr className="text-lg"
+                <div className="card bg-white dark:bg-gray-800 rounded-lg p-4">
+
+
+                    <table>
+                        <tbody className="overflow-x-auto table table-md">
+                            {!assignment &&
+                                <tr>
+                                    <td>Loading...</td>
+                                </tr>}
+                            {assignment && // make sure assignment has been set
+                                <>
+                                    <tr className="text-lg"
                                     >
-                                    <th>Title</th>
-                                    <td>{assignment.title}</td>
-                                </tr>
-                                <tr>
-                                    <th>Description</th>
-                                    <td><Markdown className="overflow-auto">{assignment.description}</Markdown></td>
-                                </tr>
-                                <tr>
-                                    <th>Course</th>
-                                    <td>{assignment.course.name}</td>
-                                </tr>
-                                <tr>
-                                    <th>Students Age</th>
-                                    <td>{assignment.student_ages}</td>
-                                </tr>
-                                <tr>
-                                    <th>Word Count</th>
-                                    <td>{assignment.word_count}</td>
-                                </tr>
-                            </>
-                        }
-                    </tbody>
-                </table>
+                                        <th>Title</th>
+                                        <td>{assignment.title}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Description</th>
+                                        <td><Markdown className="overflow-auto">{assignment.description}</Markdown></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Course</th>
+                                        <td>{assignment.course.name}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Students Age</th>
+                                        <td>{assignment.student_ages}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Word Count</th>
+                                        <td>{assignment.word_count}</td>
+                                    </tr>
+                                </>
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
 
