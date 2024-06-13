@@ -5,10 +5,9 @@ import { fetchCourses } from "../../services/courseService";
 
 const AssignmentDetailOverview: React.FC = () => {
     const [assignments, setAssignments] = useState<any[]>([]);
+    const [filteredCourses, setFilteredCourses] = useState<any[]>([]);
     const [courses, setCourses] = useState<any[]>([]);
     const navigate = useNavigate();
-    const user = sessionStorage.getItem('user');
-    const role = user ? JSON.parse(user).role : null;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,6 +16,7 @@ const AssignmentDetailOverview: React.FC = () => {
                 setAssignments(data);
                 const data1 = await fetchCourses();
                 setCourses(data1);
+                setFilteredCourses(data1);
                 console.log(data);
             } catch (error: any) {
                 console.error(error.message);
@@ -39,21 +39,32 @@ const AssignmentDetailOverview: React.FC = () => {
         return description.length > 100 ? `${description.substring(0, 100)}...` : description;
     }
 
-    const sortByTitle = () => {
-        const sorted = [...assignments].sort((a, b) => a.title.localeCompare(b.title));
-        setAssignments(sorted);
+    const filterCourses = (courseId: number) => {
+        const filteredCourses = [...courses].filter(course => course.id === courseId);
+        setFilteredCourses(filteredCourses);
+    }
+    const removeFilter = () => {
+        setFilteredCourses(courses);
     }
 
-    const sortByCourse = () => {
-        const sorted = [...assignments].sort((a, b) => a.course.name.localeCompare(b.course.name));
-        setAssignments(sorted);
-    }
 
 
     return (
         <div className="w-3/4 mx-auto mt-10 pb-10">
+
             <div>
+                <div className="btn ml-3 mr-2" onClick={() => removeFilter()}>
+                    All courses
+                </div>
                 {courses.map(course => (
+                    <div className="btn btn-light-btn dark:btn-dark-btn mr-2" onClick={() => filterCourses(course.id)}>
+                        {course.name}
+                    </div>
+                    ))}
+            </div>
+
+            <div>
+                {filteredCourses.map(course => (
                     <div >
                         <h2 className="text-2xl font-bold text-center mt-14 mb-2 bg-white dark:bg-gray-800 rounded-lg m-3 pt-2 pb-2">
                             {course.name}</h2>
