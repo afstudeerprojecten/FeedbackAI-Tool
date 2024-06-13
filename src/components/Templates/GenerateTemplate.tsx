@@ -84,7 +84,7 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
 
     return (
       <div>
-      <div className="bg-light-neutral dark:bg-dark-neutral rounded p-4 mb-4">
+      <div className="bg-neutral-100 dark:bg-dark-neutral rounded p-4 mb-4">
         <h2 className="text-2xl text-light-text dark:text-dark-text font-bold mb-4 text-center">Sample solutions</h2>
         <div className="border border-gray-500 p-2 rounded-md">
           <p className="text-lg font-bold text-light-text dark:text-dark-text">
