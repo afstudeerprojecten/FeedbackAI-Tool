@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTeachers } from '../../services/teacherService';
 import { registerCourse } from '../../services/courseService';
+import { ToastContainer, toast } from 'react-toastify';
 
 const RegisterCourse: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -8,8 +9,6 @@ const RegisterCourse: React.FC = () => {
     teacher_id: ''
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
   const [teachers, setTeachers] = useState<any[]>([]);
 
   useEffect(() => {
@@ -33,18 +32,18 @@ const RegisterCourse: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     console.log('formData', formData);
     e.preventDefault();
-    setError(null);
     setLoading(true);
     try {
       // Parse organisationId to an integer before sending the data
       const dataToSend = { ...formData, teacher_id: parseInt(formData.teacher_id) };
       await registerCourse(dataToSend);
-      setSuccess(true);
+      toast.success("Course created successfully");
       setTimeout(() => {
         window.location.reload();
       }, 2000);
     } catch (error: any) {
-      setError(error.response.data.detail || 'An error occurred while registering the teacher');
+      toast.error("Failed to create course");
+      // setError(error.response.data.detail || 'An error occurred while registering the teacher');
     } finally {
       setLoading(false);
     }
@@ -53,11 +52,7 @@ const RegisterCourse: React.FC = () => {
   return (
     <div className="p-6">
       <h2 className="text-xl font-bold mb-4">Register Course</h2>
-      {success ? (
-        <div className="bg-green-200 text-green-800 px-4 py-2 mb-4">
-          Course registered successfully!
-        </div>
-      ) : (
+
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
 
@@ -104,8 +99,8 @@ const RegisterCourse: React.FC = () => {
             {loading ? 'Registering...' : 'Register'}
           </button>
         </form>
-      )}
-      {error && <div className="text-red-600 mt-4">{error}</div>}
+        <ToastContainer position="top-center" />
+
     </div>
   );
 };
