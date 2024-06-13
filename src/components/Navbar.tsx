@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
   }, [token]);
 
   return (
-    <nav className="navbar bg-light-neutral text-light-text dark:bg-dark-neutral dark:text-dark-text">
+    <nav className="navbar bg-neutral-100 text-light-text dark:bg-dark-neutral dark:text-dark-text">
       <div className="flex-none">
         <div className="dropdown dropdown-bottom">
           <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn md:hidden">

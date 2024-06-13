@@ -35,10 +35,12 @@ const DashboardUserHomePage: React.FC = () => {
                     }
 
                     const key = eventName.name; // Change 'type' to the attribute you want to group by
-                    if (!acc[key]) {
-                        acc[key] = { ...event, name: eventName.name, value: 0 }; // Initialize if not already present
+                    if (eventName.name === "Login" || eventName.name === "Tokens Used") {
+                        if (!acc[key]) {
+                            acc[key] = { ...event, name: eventName.name, value: 0 }; // Initialize if not already present
+                        }
+                        acc[key].value += event.value; // Sum the count attribute
                     }
-                    acc[key].value += event.value; // Sum the count attribute
                     return acc;
                 }, Promise.resolve({}));
 
@@ -63,23 +65,23 @@ const DashboardUserHomePage: React.FC = () => {
         <div className="container mx-auto">
             <div className="grid grid-cols-2 gap-4">
                 <h1 className="text-6xl font-bold text-light-text dark:text-dark-text ">Welcome back {user.name}</h1>
-                <div className="bg-white dark:bg-gray-800 shadow-2xl rounded-lg p-8">
-                    <h2 className="text-xl font-bold mb-4">Your Activity</h2>
+                <div className="bg-white dark:bg-gray-800 rounded-lg p-8">
+                    <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">Your Activity</h2>
                     <ul>
                         {events.map((event, index) => (
-                            <li key={index} className="border-b border-gray-300 dark:border-gray-700 p-2">
+                            <li key={index} className="border-b border-gray-950 dark:border-white p-2 text-light-text dark:text-dark-text">
                                 <strong>{event.name}</strong> : {event.value}
                             </li>
                         ))}
                         {events.length > 1 && (
-                            <li className="border-b border-gray-300 dark:border-gray-700 p-2">
+                            <li className="border-b border-gray-950 dark:border-white p-2 text-light-text dark:text-dark-text">
                                 <strong>Money Spent</strong> : € {(events[1].value * 0.00002 * 0.9241).toFixed(4)}
                             </li>
                         )}
-                        <li className="border-b border-gray-300 dark:border-gray-700 p-2">
+                        <li className="border-b border-gray-950 dark:border-white p-2 text-light-text dark:text-dark-text">
                             <strong>Open Assignments</strong> : {assignments.length}
                         </li>
-                        <li className="border-b border-gray-300 dark:border-gray-700 p-2">
+                        <li className="border-b border-gray-950 dark:border-white p-2 text-light-text dark:text-dark-text">
                             <strong>Submissions</strong> : {submissions.length}
                         </li>
                     </ul>
