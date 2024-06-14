@@ -10,7 +10,7 @@ const SubmissionButton: React.FC<SubmissionButtonProps> = ({ onSubmit }) => {
         <>
         <button 
         type="submit"
-        className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+        className="btn btn-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
         onClick={onSubmit}>Submit</button>
         </>
     );
