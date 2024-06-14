@@ -215,13 +215,17 @@ const Navbar: React.FC = () => {
                                 <li>
                                     <Link to="/courses" className="text-dark-text dark:text-dark-text">Course Overview</Link>
                                 </li>
+                                <li>
+                                  <Link to="/uploadcoursedocuments" className="text-dark-text dark:text-dark-text">
+                                    Upload Documents
+                                  </Link>
+                                </li>
                             </ul>
                         </div>
 
                         <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
                             <Link to="/submissions">Submissions</Link>
                         </div>
-
                         <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
                             <Link to="/dashboard">User Dashboard</Link>
                         </div>
