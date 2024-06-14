@@ -19,7 +19,7 @@ const DashboardTeacherHomeCard: React.FC = () => {
             <div className="grid grid-cols-2 gap-4">
                 <h1 className="text-6xl font-bold text-light-text dark:text-dark-text ">Welcome back {user.name}</h1>
                 <div className="bg-white dark:bg-gray-800 rounded-lg p-8">
-                    <h2 className="text-xl font-bold mb-4">kaka</h2>
+                    <h2 className="text-xl font-bold mb-4">placeholder</h2>
                    
                 </div>
             </div>
