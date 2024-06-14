@@ -29,6 +29,8 @@ const AssignmentForm: React.FC = () => {
   const [assignment, setAssignment] = useState<any>();
   const [template, setTemplate] = useState<any>();
   const [templateCount, setTemplateCount] = useState(0);
+  const [editedTemplate, setEditedTemplate] = useState<string>(""); // Add state to store edited template content
+
 
   // Placeholder function to simulate response from OpenAI API
 
@@ -382,19 +384,19 @@ const AssignmentForm: React.FC = () => {
         </form>
       </div>
       <div className="flex justify-center">
-      <div className="tooltip tooltip-left" data-tip="This allows you to directly generate templates for the assignment you just created">
-        <button
-          type="submit"
-          onClick={handleTemplateSubmit}
-          disabled={loadingTemplate}
-          className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
-        >
-          {loadingTemplate ? (
-            <span className="loading loading-spinner loading-xs"></span>
-          ) : (
-            "Generate Template"
-          )}
-        </button>
+        <div className="tooltip tooltip-left" data-tip="This allows you to directly generate templates for the assignment you just created">
+          <button
+            type="submit"
+            onClick={handleTemplateSubmit}
+            disabled={loadingTemplate}
+            className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+          >
+            {loadingTemplate ? (
+              <span className="loading loading-spinner loading-xs"></span>
+            ) : (
+              "Generate Template"
+            )}
+          </button>
         </div>
       </div>
       {/* {templateError && (
@@ -442,36 +444,38 @@ const AssignmentForm: React.FC = () => {
           <p className="text-lg font-bold text-light-text dark:text-dark-text">
             {templateCount === 0
               ? "No templates generated yet"
-              : `Template ${templateCount}`}  
+              : `Template ${templateCount}`}
           </p>
-            <div contentEditable="true">
-              <Markdown>
-            {template || "No template generated yet"}
+          <div
+            contentEditable="true"
+            // Add onChange handler to capture edited template content
+            onInput={(e) => setEditedTemplate(e.currentTarget.textContent || '')}
+          >
+            <Markdown>
+              {template || "No template generated yet"}
             </Markdown>
-            </div>
-            
-
+          </div>
         </div>
       </div>
-      <div className="flex justify-center">
-      <div className="tooltip tooltip-left" data-tip="Accepting a template will save it for the recently created assignment">
-        <button
-          type="button"
-          onClick={handleTemplateAccept}
-          className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mr-4"
-        >
-          Accept Templates
-        </button>
-        </div>
-        <button
-          type="button"
-          onClick={handleTemplateDecline}
-          className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
-        >
-          Decline Templates
-        </button>
-      </div>
+  <div className="flex justify-center">
+    <div className="tooltip tooltip-left" data-tip="Accepting a template will save it for the recently created assignment">
+      <button
+        type="button"
+        onClick={handleTemplateAccept}
+        className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mr-4"
+      >
+        Accept Templates
+      </button>
     </div>
+    <button
+      type="button"
+      onClick={handleTemplateDecline}
+      className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+    >
+      Decline Templates
+    </button>
+  </div>
+    </div >
   );
 };
 
