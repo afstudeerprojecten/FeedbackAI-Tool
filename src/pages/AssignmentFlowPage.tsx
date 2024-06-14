@@ -7,8 +7,8 @@ const AssignmentFlowPage: React.FC = () => {
   const role = user ? JSON.parse(user).role : null;
 
   return (
-    <main className="min-h-screen min-w-screen bg-light-neutral dark:bg-dark-neutral">
-      
+    <main className="min-h-screen min-w-screen bg-neutral-100 dark:bg-dark-neutral text-light-text dark:text-dark-text">
+      <h1 className="text-3xl font-bold text-light-text dark:text-dark-text mb-4 text-center pt-10">Assignments</h1>
       {role === 'teacher' &&
         <AssignmentHeading />
       }

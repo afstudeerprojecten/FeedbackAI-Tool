@@ -61,6 +61,7 @@ const App: React.FC = () => {
         <Route path="/assignment/:id" element={<AssignmentIndividualOverviewPage />} />
         <Route path="/assignment/:id/get_templates" element={<TemplatesTableOverviewPage />} />
         <Route path="/submissions" element={<SubmissionOverviewPage />} />
+        <Route path="/submissions/:id" element={<SubmissionOverviewPage />} />
         <Route path="/submission/:id" element={<SubmissionContentPage />} />
         <Route path="/feedback/:id" element={<SubmissionFeedbackPage />} />
         <Route path="/generate_template/:id" element={<GenerateTemplatePage />} />

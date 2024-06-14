@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchCourses } from "../../services/courseService";
 import { fetchTeacher } from "../../services/teacherService";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 import { createAssignment } from "../../services/assignmentService";
 
 const AssignmentNew: React.FC = () => {
@@ -16,9 +16,9 @@ const AssignmentNew: React.FC = () => {
         word_count: "",
     });
     const [courses, setCourses] = useState<any[]>([]);
-    const [error, setError] = useState<string | null>(null);
-    const [success, setSuccess] = useState(false);
-    const [assignment, setAssignment] = useState<any>();
+    // const [error, setError] = useState<string | null>(null);
+    // const [success, setSuccess] = useState(false);
+    // const [assignment, setAssignment] = useState<any>();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -78,7 +78,6 @@ const AssignmentNew: React.FC = () => {
 
     const handleAssignmetSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError(null);
         setLoading(true);
         console.log("Form Data:", formData);
         try {
@@ -89,8 +88,7 @@ const AssignmentNew: React.FC = () => {
                 word_count: parseInt(formData.word_count),
             };
             const createdAssignment = await createAssignment(dataToSend);
-            setSuccess(true);
-            setAssignment(createdAssignment);
+            // setAssignment(createdAssignment);
             setFormData({
                 teacher_id: "",
                 course_id: "",
@@ -100,20 +98,20 @@ const AssignmentNew: React.FC = () => {
                 teacher_name: "",
                 word_count: "",
             });
-            console.log("Assignment created:", assignment);
+            toast.success("Assignment created successfully");
             setTimeout(() => {
-                navigate("/assignment");
+                navigate("/assignment/" + createdAssignment.id);
             }, 2000);
         } catch (error: any) {
-            setError("Something went wrong. Please try again later.");
+            toast.error("Failed to create assignment");
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="container mx-auto p-4 bg-light-neutral rounded dark:bg-dark-neutral">
-            <h2 className="text-2xl font-bold mb-4 text-center text-light-text dark:text-dark-text">
+        <div className="container w-1/2 mx-auto p-4 bg-light-neutral rounded dark:bg-dark-neutral">
+            <h2 className="text-4xl font-bold mb-4 text-center text-light-text dark:text-dark-text pt-8 pb-4">
                 Assignment Form
             </h2>
             <form>
@@ -269,39 +267,6 @@ const AssignmentNew: React.FC = () => {
                         )}
                     </button>
                 </div>
-                {error && <div className="alert alert-error mt-4 py-2 px-4">
-                    {" "}
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="stroke-current shrink-0 h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                    </svg>{error.toString()}</div>}
-                {success && (
-                    <div className="alert alert-success mt-4 py-2 px-4">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="stroke-current shrink-0 h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
-                        Assignment created successfully!
-                    </div>
-                )}
             </form>
         </div >
     );

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Function to handle logout
   const handleLogout = () => {
@@ -45,8 +46,12 @@ const Navbar: React.FC = () => {
     }
   }, [token]);
 
+  const getLinkClass = (path: string) => {
+    return location.pathname === path ? 'btn-active' : 'btn-ghost';
+  };
+
   return (
-    <nav className="navbar bg-light-neutral text-light-text dark:bg-dark-neutral dark:text-dark-text">
+    <nav className="navbar bg-neutral-100 text-light-text dark:bg-dark-neutral dark:text-dark-text">
       <div className="flex-none">
         <div className="dropdown dropdown-bottom">
           <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn md:hidden">
@@ -79,11 +84,6 @@ const Navbar: React.FC = () => {
             )}
             {role === 'teacher' && (
               <>
-                <li>
-                  <Link to="/registercourse" className="text-dark-text dark:text-dark-text">
-                    Register Course
-                  </Link>
-                </li>
                 <li>
                   <Link to="/uploadcoursedocuments" className="text-dark-text dark:text-dark-text">
                     Upload Documents
@@ -180,73 +180,58 @@ const Navbar: React.FC = () => {
       </div>
       <div className="flex-1">
         <div className="btn btn-ghost">
-        <Link to="/" className="text-l md:text-2xl">
-          FeedbackAI-Tool
-        </Link>
+          <Link to="/" className="text-l md:text-2xl">
+            FeedbackAI-Tool
+          </Link>
         </div>
       </div>
 
-        <div className="md:block hidden">
-            {role === 'student' && (
-                    <>
-                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                            <Link to="/assignment" className="text-base-content dark:text-dark-text">Assignments</Link>
-                        </div>
-                    </>
-                )}
-
-                {role === 'teacher' && (
-                    <>
-                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                            <Link to="/assignment">Assignments</Link>
-                        </div>
-
-                        <div className="dropdown dropdown-bottom">
-                            <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                                Courses
-                            </div>
-                            <ul
-                                tabIndex={0}
-                                className="menu dropdown-content z-[1] p-2 shadow rounded-box w-52 mt-4 bg-dark-neutral dark:bg-base-900 text-base-content dark:text-dark-text"
-                            >
-                                <li>
-                                    <Link to="/registercourse" className="text-dark-text dark:text-dark-text">Register Course</Link>
-                                </li>
-                                <li>
-                                    <Link to="/courses" className="text-dark-text dark:text-dark-text">Course Overview</Link>
-                                </li>
-                                <li>
-                                  <Link to="/uploadcoursedocuments" className="text-dark-text dark:text-dark-text">
-                                    Upload Documents
-                                  </Link>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                            <Link to="/submissions">Submissions</Link>
-                        </div>
-                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
-                            <Link to="/dashboard">User Dashboard</Link>
-                        </div>
-                    </>
-                )}  
-        </div>
-
-        <div>
-            <div className="mr-1">
-                {!isLoggedIn && (
-                    <Link to="/login" className="btn bg-dark-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">
-                    Login
-                    </Link>
-                )}
-                {isLoggedIn && (
-                    <button onClick={handleLogout} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">
-                    Logout
-                    </button>
-                )}
+      <div className="md:block hidden">
+        {role === 'student' && (
+          <>
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/assignment')} rounded-btn`}>
+              <Link to="/assignment" className="text-base-content dark:text-dark-text">Assignments</Link>
             </div>
+          </>
+        )}
+
+        {role === 'teacher' && (
+          <>
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/assignment')} rounded-btn`}>
+              <Link to="/assignment">Assignments</Link>
+            </div>
+
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/courses')} rounded-btn`}>
+              <Link to="/courses">Courses</Link>
+
+            </div>
+
+
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/submissions')} rounded-btn`}>
+              <Link to="/submissions">Submissions</Link>
+            </div>
+
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/dashboard')} rounded-btn`}>
+              <Link to="/dashboard">User Dashboard</Link>
+            </div>
+          </>
+        )}
+      </div>
+
+      <div>
+        <div className="mr-1">
+          {!isLoggedIn && (
+            <Link to="/login" className="btn bg-dark-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">
+              Login
+            </Link>
+          )}
+          {isLoggedIn && (
+            <button onClick={handleLogout} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">
+              Logout
+            </button>
+          )}
         </div>
+      </div>
 
       <div className="flex-none">
         <label className="flex cursor-pointer gap-2 mr-10" htmlFor="theme-switch">
