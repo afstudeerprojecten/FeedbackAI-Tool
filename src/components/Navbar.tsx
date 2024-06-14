@@ -203,9 +203,11 @@ const Navbar: React.FC = () => {
 
             <div tabIndex={0} role="button" className={` btn ${getLinkClass('/courses')} rounded-btn`}>
               <Link to="/courses">Courses</Link>
-
             </div>
 
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/uploadcoursedocuments')} rounded-btn`}>
+              <Link to="/uploadcoursedocuments">Upload Documents</Link>
+            </div>
 
             <div tabIndex={0} role="button" className={` btn ${getLinkClass('/submissions')} rounded-btn`}>
               <Link to="/submissions">Submissions</Link>
