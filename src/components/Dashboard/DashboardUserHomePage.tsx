@@ -81,7 +81,7 @@ const DashboardUserHomePage: React.FC<Props> = ({role}: Props) => {
             <div className="grid grid-cols-2 gap-4">
                 <div>
                 <h1 className="text-6xl font-bold text-light-text dark:text-dark-text mb-8">Welcome back {user.name}</h1>
-                <Link to={getStartedLink()} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
+                <Link to={getStartedLink()} className="btn btn-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
                 </div>
                 <div className="bg-white dark:bg-gray-800 rounded-lg p-8">
                     <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">Your Activity</h2>

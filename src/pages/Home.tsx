@@ -34,7 +34,7 @@ const Home: React.FC = () => {
                         <div className="hero bg-base rounded-lg p-8">
                             <div className="hero-content text-center">
                                 <div className="max-w-7xl mx-auto mt-10">
-                                    <h1 className="text-6xl font-bold text-light-text dark:text-dark-text">Revolutionize your feedback process with AI-driven insights directly integrated into your assignments.</h1>
+                                    <h1 className="text-6xl font-bold text-light-text dark:text-dark-text">Revolutionize your feedback process with AI-driven insights.</h1>
                                     <p className="py-6 text-2xl text-light-text dark:text-dark-text">An E-Learning Platform that utilizes OpenAI's API to allows students to get instant personalized feedback, directly from the AI while also allowing teachers to generate example solutions for their assignments.</p>
                                     <Link to={getStartedLink()} className="btn btn-neutral dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
                                 </div>
@@ -51,7 +51,7 @@ const Home: React.FC = () => {
                 </section>
                 )} 
                 {role === 'teacher' && (
-                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-8">
+                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 p-8">
                     <div className="col-span-full">
                         <DashboardTeacherHomeCard/>
                         <Link to={getStartedLink()} className="btn btn-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>

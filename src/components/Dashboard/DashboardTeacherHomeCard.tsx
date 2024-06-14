@@ -17,11 +17,7 @@ const DashboardTeacherHomeCard: React.FC = () => {
     return (
         <div className="container mx-auto">
             <div className="grid grid-cols-2 gap-4">
-                <h1 className="text-6xl font-bold text-light-text dark:text-dark-text ">Welcome back {user.name}</h1>
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-8">
-                    <h2 className="text-xl font-bold mb-4">placeholder</h2>
-                   
-                </div>
+                <h1 className="text-6xl font-bold text-light-text dark:text-dark-text pb-16 ">Welcome back {user.name}</h1>
             </div>
         </div>
     );
