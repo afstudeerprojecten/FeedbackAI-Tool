@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Function to handle logout
   const handleLogout = () => {
@@ -44,6 +45,10 @@ const Navbar: React.FC = () => {
       handleLogout();
     }
   }, [token]);
+
+  const getLinkClass = (path: string) => {
+    return location.pathname === path ? 'btn-active' : 'btn-ghost';
+  };
 
   return (
     <nav className="navbar bg-neutral-100 text-light-text dark:bg-dark-neutral dark:text-dark-text">
@@ -184,7 +189,7 @@ const Navbar: React.FC = () => {
       <div className="md:block hidden">
         {role === 'student' && (
           <>
-            <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/assignment')} rounded-btn`}>
               <Link to="/assignment" className="text-base-content dark:text-dark-text">Assignments</Link>
             </div>
           </>
@@ -192,21 +197,21 @@ const Navbar: React.FC = () => {
 
         {role === 'teacher' && (
           <>
-            <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/assignment')} rounded-btn`}>
               <Link to="/assignment">Assignments</Link>
             </div>
 
-            <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/courses')} rounded-btn`}>
               <Link to="/courses">Courses</Link>
 
             </div>
 
 
-            <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/submissions')} rounded-btn`}>
               <Link to="/submissions">Submissions</Link>
             </div>
 
-            <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/dashboard')} rounded-btn`}>
               <Link to="/dashboard">User Dashboard</Link>
             </div>
           </>
