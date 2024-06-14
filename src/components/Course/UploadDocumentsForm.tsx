@@ -127,8 +127,8 @@ const UploadDocumentsForm: React.FC = ()=> {
 
     return (
         <>
-        <div className="container mx-auto p-4">
-            <div className="bg-base shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
+        <div className="container bg-neutral-100 dark:bg-dark-neutral mx-auto p-4">
+            <div className="bg-base rounded px-8 pt-6 pb-8 mb-4">
                 <h2 className="text-2xl font-bold mb-4 text-center">Upload Documents Form</h2>
                 <form>
                     <CourseSelector
@@ -142,7 +142,7 @@ const UploadDocumentsForm: React.FC = ()=> {
                     />
                     <button 
                     type="submit"
-                    className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+                    className="btn btn-neutral dark:bg-dark-btn dark:text-light-text dark:btn-primary"
                     onClick={handleUploadDocumentSubmit}>Submit</button>
                     {error && <div className="text-red-600 mt-4">{error.toString()}</div>}
                     {loading && <div className="text-green-600 mt-4">Uploading document</div>}
