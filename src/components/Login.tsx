@@ -83,7 +83,7 @@ const Login: React.FC = () => {
           </div>
           {/* {error && <div className="text-red-500 mb-4">{error}</div>} Render error message */}
           <div>
-            <button type="submit" className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">Login</button>
+            <button type="submit" className="btn btn-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">Login</button>
           </div>
           <ToastContainer position="top-center" />
         </form>
