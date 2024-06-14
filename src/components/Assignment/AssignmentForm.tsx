@@ -89,7 +89,6 @@ const AssignmentForm: React.FC = () => {
     e.preventDefault();
     // setError(null);
     setLoading(true);
-    ("Form Data:", formData);
     try {
       const dataToSend = {
         ...formData,
@@ -110,7 +109,6 @@ const AssignmentForm: React.FC = () => {
         teacher_name: "",
         word_count: "",
       });
-      ("Assignment created:", assignment);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -130,11 +128,9 @@ const AssignmentForm: React.FC = () => {
       setLoadingTemplate(true);
       const createdTemplate = await generateTemplate(assignment.id);
       setTemplate(createdTemplate);
-      ("Template created:", template);
       // setTemplateSuccess(true);
       toast.success('Template generated successfully');
       setTemplateCount((prevCount) => prevCount + 1);
-      ("Template Count:", templateCount);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -157,7 +153,6 @@ const AssignmentForm: React.FC = () => {
         template_content: template,
         assignment_id: assignment.id,
       });
-      ("Template accepted:", template);
       toast.success('Template accepted successfully');
       setTemplate("");
       setTimeout(() => {
@@ -182,7 +177,6 @@ const AssignmentForm: React.FC = () => {
       }
       // Decline the template
       setTemplate("");
-      ("Template declined:", template);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);

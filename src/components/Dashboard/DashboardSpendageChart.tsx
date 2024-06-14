@@ -26,9 +26,7 @@ const DashboardSpendageChart: React.FC = () => {
         const fetchData = async () => {
             try {
                 const data = await fetchEventByEventID(2);
-                ("Data:", data); // Log data
                 const aggregatedData = groupingMode === "month" ? aggregateDataByMonth(data) : await aggregateDataByUser(data);
-                ("Aggregated data:", aggregatedData); // Log aggregated data
                 setEvents(aggregatedData);
             } catch (error: any) {
                 console.error("Error fetching data:", error.message);

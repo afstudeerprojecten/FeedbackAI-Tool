@@ -8,9 +8,6 @@ const CourseRegistration: React.FC = () => {
     // Placeholder function for form submission
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // Handle form submission here (e.g., send data to backend)
-        ('Teacher Name:', teacherName);
-        ('Course Name:', courseName);
     };
 
     return (
