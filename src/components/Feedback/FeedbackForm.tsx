@@ -113,7 +113,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ assignmentId }) => {
 
     return (
         <>
-            <div className="container mx-auto p-4 bg-light-neutral rounded dark:bg-dark-neutral">
+            <div className="card bg-white dark:bg-gray-800 rounded-lg p-4 mb-8 w-3/4 mx-auto">
                 <div className="bg-light-neutral rounded px-8 pt-6 pb-8 mb-4 dark:bg-dark-neutral">
                     <h2 className="text-2xl font-bold mb-4 text-center text-light-text dark:text-dark-text">Submission Form</h2>
                     <form>
@@ -134,7 +134,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ assignmentId }) => {
             </div>
 
 
-            <div className="container mx-auto p-4 bg-light-neutral rounded dark:bg-dark-neutral">
+            <div className="card bg-white dark:bg-gray-800 rounded-lg p-4 mb-8 w-3/4 mx-auto">
                 <div className="bg-light-neutral rounded px-8 pt-6 pb-8 mb-4 dark:bg-dark-neutral">
                     <h2 className="text-2xl font-bold mb-4 text-center text-light-text dark:text-dark-text">Feedback</h2>
                     <div>
