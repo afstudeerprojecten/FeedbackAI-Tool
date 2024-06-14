@@ -29,7 +29,7 @@ const AssignmentForm: React.FC = () => {
   const [assignment, setAssignment] = useState<any>();
   const [template, setTemplate] = useState<any>();
   const [templateCount, setTemplateCount] = useState(0);
-  const [editedTemplate, setEditedTemplate] = useState<string>(""); // Add state to store edited template content
+  // const [editedTemplate, setEditedTemplate] = useState<string>(""); // Add state to store edited template content
 
 
   // Placeholder function to simulate response from OpenAI API
@@ -60,7 +60,7 @@ const AssignmentForm: React.FC = () => {
     if (name === "course_id") {
       const selectedCourse = courses.find(
         (course) => course.id === parseInt(value)
-      );
+      ); 
       if (selectedCourse) {
         (`Selected Course ID: ${selectedCourse.id}`);
         (`Selected Teacher ID: ${selectedCourse.teacher_id}`);
@@ -449,7 +449,7 @@ const AssignmentForm: React.FC = () => {
           <div
             contentEditable="true"
             // Add onChange handler to capture edited template content
-            onInput={(e) => setEditedTemplate(e.currentTarget.textContent || '')}
+            // onInput={(e) => setEditedTemplate(e.currentTarget.textContent || '')}
           >
             <Markdown>
               {template || "No template generated yet"}
