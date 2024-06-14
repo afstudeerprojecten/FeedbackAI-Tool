@@ -203,9 +203,11 @@ const Navbar: React.FC = () => {
 
             <div tabIndex={0} role="button" className={` btn ${getLinkClass('/courses')} rounded-btn`}>
               <Link to="/courses">Courses</Link>
-
             </div>
 
+            <div tabIndex={0} role="button" className={` btn ${getLinkClass('/uploadcoursedocuments')} rounded-btn`}>
+              <Link to="/uploadcoursedocuments">Upload Documents</Link>
+            </div>
 
             <div tabIndex={0} role="button" className={` btn ${getLinkClass('/submissions')} rounded-btn`}>
               <Link to="/submissions">Submissions</Link>
@@ -221,12 +223,12 @@ const Navbar: React.FC = () => {
       <div>
         <div className="mr-1">
           {!isLoggedIn && (
-            <Link to="/login" className="btn bg-dark-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">
+            <Link to="/login" className={`btn ${getLinkClass('/dashboard')} rounded-btn`}>
               Login
             </Link>
           )}
           {isLoggedIn && (
-            <button onClick={handleLogout} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">
+            <button onClick={handleLogout} className={`btn ${getLinkClass('/dashboard')} rounded-btn   `}>
               Logout
             </button>
           )}

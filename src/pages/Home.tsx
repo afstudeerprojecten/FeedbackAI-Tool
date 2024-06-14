@@ -36,7 +36,7 @@ const Home: React.FC = () => {
                                 <div className="max-w-7xl mx-auto mt-10">
                                     <h1 className="text-6xl font-bold text-light-text dark:text-dark-text">Revolutionize your feedback process with AI-driven insights directly integrated into your assignments.</h1>
                                     <p className="py-6 text-2xl text-light-text dark:text-dark-text">An E-Learning Platform that utilizes OpenAI's API to allows students to get instant personalized feedback, directly from the AI while also allowing teachers to generate example solutions for their assignments.</p>
-                                    <Link to={getStartedLink()} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
+                                    <Link to={getStartedLink()} className="btn btn-neutral dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@ const Home: React.FC = () => {
                 <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-8">
                     <div className="col-span-full">
                         <DashboardTeacherHomeCard/>
-                        <Link to={getStartedLink()} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
+                        <Link to={getStartedLink()} className="btn btn-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-8">Get Started</Link>
                     </div>
                     <div className='bg-white dark:bg-gray-800 rounded-lg p-4 mt-4 max-h-96 overflow-auto hover:overflow-y-scroll'><DashboardUserOverview/></div>
                     <div className='bg-white dark:bg-gray-800 rounded-lg p-4 mt-4 max-h-96 overflow-auto hover:overflow-y-scroll'><SubmissionOverviewCard/></div>

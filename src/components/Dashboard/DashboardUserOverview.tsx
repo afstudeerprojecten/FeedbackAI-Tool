@@ -77,13 +77,13 @@ const DashboardUserOverview: React.FC = () => {
       <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">Login Overview</h2>
       <div className="mb-4">
         <button
-          className={`px-4 py-2 mr-2 ${filterMode === "allTime" ? "bg-dark-neutral text-white dark:bg-gray-200 dark:text-gray-700" : "bg-gray-200 text-gray-700 dark:bg-dark-neutral dark:text-white" } rounded-lg`}
+          className={`px-4 py-2 mr-2 ${filterMode === "allTime" ? "btn btn-neutral text-white dark:bg-gray-200 dark:text-gray-700" : " btn bg-gray-200 text-gray-700 dark:bg-dark-neutral dark:text-white" } rounded-lg`}
           onClick={() => setFilterMode("allTime")}
         >
           All Time
         </button>
         <button
-          className={`px-4 py-2 ${filterMode === "thisMonth" ? "bg-dark-neutral text-white dark:bg-gray-200 dark:text-gray-700" : "bg-gray-200 text-gray-700 dark:bg-dark-neutral dark:text-white"} rounded-lg`}
+          className={`px-4 py-2 ${filterMode === "thisMonth" ? "btn btn-neutral dark:bg-gray-200 dark:text-gray-700" : " btn bg-gray-200 text-gray-700 dark:bg-dark-neutral dark:text-white"} rounded-lg`}
           onClick={() => setFilterMode("thisMonth")}
         >
           This Month

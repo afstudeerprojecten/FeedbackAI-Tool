@@ -14,7 +14,7 @@ const AssignmentIndividualOverviewPage: React.FC = () => {
         <div className="bg-neutral-100 dark:bg-dark-neutral">
             <div className="w-3/4 content-center mx-auto">
                 <ToastContainer position="top-center" />
-                <div className="btn bg-neutral-300 dark:text-light-text dark:btn-primary mb-8">
+                <div className="btn btn-neutral dark:text-light-text dark:btn-primary mb-8">
                     <Link to="/assignment">Back to overview</Link>
                 </div>
                 <AssignmentIndividualOverview />

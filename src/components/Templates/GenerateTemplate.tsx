@@ -107,7 +107,7 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
           type="submit"
           onClick={handleTemplateSubmit}
           disabled={loadingTemplate}
-          className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+          className="btn btn-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
         >
           {loadingTemplate ? <span className="loading loading-spinner loading-xs"></span> : 'Generate Template'}
         </button>
@@ -116,14 +116,14 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
                 <button
                     type='button'
                     onClick={handleTemplateAccept}
-                    className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary m-4"
+                    className="btn btn-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary m-4"
                 >
                     Accept Sample Solution
                 </button>
                 <button
                     type='button'
                     onClick={handleTemplateDecline}
-                    className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary m-4"
+                    className="btn btn-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary m-4"
                 >
                     Decline Sample Solution
                 </button>
