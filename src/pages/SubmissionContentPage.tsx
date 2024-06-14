@@ -19,7 +19,7 @@ const SubmissionContentPage: React.FC = () => {
           const data = await fetchSubmission(Number(id)); // Convert id to number
           setSubmission(data);
           setSubmissionContent(data.content);
-          console.log(data);
+          (data);
           const feedback = await fetchFeedback(Number(id));
           setFeedbackContent(feedback.content);
         } else {

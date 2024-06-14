@@ -47,8 +47,9 @@ const Navbar: React.FC = () => {
   }, [token]);
 
   const getLinkClass = (path: string) => {
-    return location.pathname === path ? 'btn-active' : 'btn-ghost';
+    return location.pathname === path ? 'btn-active' : 'btn-ghost'; 
   };
+ 
 
   return (
     <nav className="navbar bg-neutral-100 text-light-text dark:bg-dark-neutral dark:text-dark-text">
@@ -223,12 +224,12 @@ const Navbar: React.FC = () => {
       <div>
         <div className="mr-1">
           {!isLoggedIn && (
-            <Link to="/login" className={`btn ${getLinkClass('/dashboard')} rounded-btn`}>
+            <Link to="/login" className={`btn ${getLinkClass('/login')} rounded-btn`}>
               Login
             </Link>
           )}
           {isLoggedIn && (
-            <button onClick={handleLogout} className={`btn ${getLinkClass('/dashboard')} rounded-btn   `}>
+            <button onClick={handleLogout} className={`btn ${getLinkClass('/logout')} rounded-btn   `}>
               Logout
             </button>
           )}

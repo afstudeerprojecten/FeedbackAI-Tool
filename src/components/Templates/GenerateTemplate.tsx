@@ -26,10 +26,8 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
         const createdTemplate = await generateTemplate(assignmentId);
         setTemplate(createdTemplate);
         setEditedTemplate(createdTemplate); // Set initial edited template content
-        console.log("Template created:", template);
         toast.success("Template generated successfully");
         setTemplateCount((prevCount) => prevCount + 1);
-        console.log("Template Count:", templateCount);
         setTimeout(() => {
           // navigate('/assignments');
         }, 2000);
@@ -47,7 +45,6 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
           template_content: editedTemplate, // Send edited template content
           assignment_id: assignmentId,
         });
-        console.log("Template accepted:", editedTemplate); // Log edited template content
         toast.success("Template accepted successfully");
         setTemplate("");
         setTimeout(() => {
@@ -70,7 +67,6 @@ const GenerateTemplate: React.FC<Props> = ({ assignmentId }) => {
         }
         // Decline the template
         setTemplate("");
-        console.log("Template declined:", template);
         toast.success("Template declined successfully");
         setTimeout(() => {
           // navigate('/assignments');

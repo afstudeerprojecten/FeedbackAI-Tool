@@ -60,8 +60,8 @@ const AssignmentForm: React.FC = () => {
         (course) => course.id === parseInt(value)
       );
       if (selectedCourse) {
-        console.log(`Selected Course ID: ${selectedCourse.id}`);
-        console.log(`Selected Teacher ID: ${selectedCourse.teacher_id}`);
+        (`Selected Course ID: ${selectedCourse.id}`);
+        (`Selected Teacher ID: ${selectedCourse.teacher_id}`);
         setFormData((prevState) => ({
           ...prevState,
           teacher_id: selectedCourse.teacher_id,
@@ -71,7 +71,7 @@ const AssignmentForm: React.FC = () => {
         try {
           const teacher = await fetchTeacher(selectedCourse.teacher_id);
           if (teacher) {
-            console.log(`Teacher Name: ${teacher.name}`);
+            (`Teacher Name: ${teacher.name}`);
             // Update the teacher name in the form data
             setFormData((prevState) => ({
               ...prevState,
@@ -89,7 +89,7 @@ const AssignmentForm: React.FC = () => {
     e.preventDefault();
     // setError(null);
     setLoading(true);
-    console.log("Form Data:", formData);
+    ("Form Data:", formData);
     try {
       const dataToSend = {
         ...formData,
@@ -110,7 +110,7 @@ const AssignmentForm: React.FC = () => {
         teacher_name: "",
         word_count: "",
       });
-      console.log("Assignment created:", assignment);
+      ("Assignment created:", assignment);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -130,11 +130,11 @@ const AssignmentForm: React.FC = () => {
       setLoadingTemplate(true);
       const createdTemplate = await generateTemplate(assignment.id);
       setTemplate(createdTemplate);
-      console.log("Template created:", template);
+      ("Template created:", template);
       // setTemplateSuccess(true);
       toast.success('Template generated successfully');
       setTemplateCount((prevCount) => prevCount + 1);
-      console.log("Template Count:", templateCount);
+      ("Template Count:", templateCount);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -157,7 +157,7 @@ const AssignmentForm: React.FC = () => {
         template_content: template,
         assignment_id: assignment.id,
       });
-      console.log("Template accepted:", template);
+      ("Template accepted:", template);
       toast.success('Template accepted successfully');
       setTemplate("");
       setTimeout(() => {
@@ -182,7 +182,7 @@ const AssignmentForm: React.FC = () => {
       }
       // Decline the template
       setTemplate("");
-      console.log("Template declined:", template);
+      ("Template declined:", template);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);

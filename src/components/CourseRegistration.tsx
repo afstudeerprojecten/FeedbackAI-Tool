@@ -9,8 +9,8 @@ const CourseRegistration: React.FC = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         // Handle form submission here (e.g., send data to backend)
-        console.log('Teacher Name:', teacherName);
-        console.log('Course Name:', courseName);
+        ('Teacher Name:', teacherName);
+        ('Course Name:', courseName);
     };
 
     return (

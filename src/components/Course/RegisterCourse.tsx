@@ -30,7 +30,6 @@ const RegisterCourse: React.FC = () => {
     setFormData(prevState => ({ ...prevState, [name]: parsedValue }));
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log('formData', formData);
     e.preventDefault();
     setLoading(true);
     try {

@@ -51,8 +51,8 @@ const AssignmentNew: React.FC = () => {
                 (course) => course.id === parseInt(value)
             );
             if (selectedCourse) {
-                // console.log(`Selected Course ID: ${selectedCourse.id}`);
-                // console.log(`Selected Teacher ID: ${selectedCourse.teacher_id}`);
+                // (`Selected Course ID: ${selectedCourse.id}`);
+                // (`Selected Teacher ID: ${selectedCourse.teacher_id}`);
                 setFormData((prevState) => ({
                     ...prevState,
                     teacher_id: selectedCourse.teacher_id,
@@ -62,7 +62,7 @@ const AssignmentNew: React.FC = () => {
                 try {
                     const teacher = await fetchTeacher(selectedCourse.teacher_id);
                     if (teacher) {
-                        // console.log(`Teacher Name: ${teacher.name}`);
+                        // (`Teacher Name: ${teacher.name}`);
                         // Update the teacher name in the form data
                         setFormData((prevState) => ({
                             ...prevState,
@@ -79,7 +79,6 @@ const AssignmentNew: React.FC = () => {
     const handleAssignmetSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        console.log("Form Data:", formData);
         try {
             const dataToSend = {
                 ...formData,

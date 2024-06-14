@@ -56,7 +56,7 @@ const UpdateTeacherForm: React.FC = () => {
     try {
       const teacherId = Number(sessionStorage.getItem('updateId'));
       const response = await updateTeacher(teacherId, formData);
-      console.log(response);
+      (response);
       setSuccess(true);
         setTimeout(() => {
             nav('/teachers');

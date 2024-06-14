@@ -17,7 +17,7 @@ const AssignmentDetailOverview: React.FC = () => {
                 const data1 = await fetchCourses();
                 setCourses(data1);
                 setFilteredCourses(data1);
-                console.log(data);
+                (data);
             } catch (error: any) {
                 console.error(error.message);
             }

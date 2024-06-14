@@ -22,7 +22,7 @@ const UploadDocumentsForm: React.FC = ()=> {
         try {
             let teacherId = await getTeacherIdFromLocalStorage()
             if (teacherId) {
-                console.log(teacherId);
+                (teacherId);
                 const data = await fetchCoursesByTeacherId(teacherId);
                 setCourses(data);                
             }
@@ -96,7 +96,7 @@ const UploadDocumentsForm: React.FC = ()=> {
                         formData.append("teacher_id", String(dataUploadDocument.teacher_id));
                         formData.append("course_id", String(dataUploadDocument.course_id));
                         formData.append("file", dataUploadDocument.file);
-                        console.log(formData);
+                        (formData);
                         await teacherUploadDocumentToCourse(formData)
                         setError("File successfully uploaded")
                         setTimeout(() => {

@@ -43,15 +43,9 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ assignmentId }) => {
                 }
 
                 const ChatCompletion: SubmissionChatCompletion = await submitAssignment(dataSubmission)
-                console.log(ChatCompletion)
 
                 const feedback: Feedback = ChatCompletion.feedback
-                console.log("got feedback");
-                console.log(feedback);
-                console.log(feedback.id)
                 setFeedbackId(feedback.id)
-                console.log(feedback.content)
-                console.log(ChatCompletion.usage_total_tokens)
                 registerEvent({ event_id: 2, user_id: student.id, value: ChatCompletion.usage_total_tokens })
                 setFeedback(feedback.content);
 

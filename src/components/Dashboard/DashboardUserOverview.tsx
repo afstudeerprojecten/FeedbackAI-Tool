@@ -50,19 +50,14 @@ const DashboardUserOverview: React.FC = () => {
 
     const filterThisMonthData = (data: any[]) => {
       const today = new Date();
-      console.log("Today:", today);
       const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-      console.log("Start of Month:", startOfMonth);
       const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-      console.log("End of Month:", endOfMonth);
     
       const filteredData = data.filter(event => {
         const eventDate = new Date(event.date_created);
-        console.log("Event Date:", eventDate);
         return eventDate >= startOfMonth && eventDate <= endOfMonth;
       });
     
-      console.log("Filtered Data for This Month:", filteredData);
     
       return filteredData;
     };
