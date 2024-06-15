@@ -13,7 +13,7 @@ const CourseSelector: React.FC<CourseSelectorProps> = ({ courses, selectedCourse
    
     return (
         <div>
-            <label className="block text-sm font-bold mb-2 text-light-text dark:text-dark-text" htmlFor="assignment">
+            <label className="block text-sm font-bold mb-2 text-light-text dark:text-dark-text" htmlFor="course">
                 Choose a course from your organisation
             </label>
 
