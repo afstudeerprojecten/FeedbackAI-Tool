@@ -5,6 +5,7 @@ import { User } from '../../data/mockData';
 import CourseSelector from './CourseSelector';
 import FileUploader from './FileUploader';
 import { fetchTeacherByEmail } from '../../services/teacherService';
+import { toast } from 'react-toastify';
 
 const UploadDocumentsForm: React.FC = ()=> {
     const [courses, setCourses] = useState<Course[]>([]);
@@ -99,6 +100,7 @@ const UploadDocumentsForm: React.FC = ()=> {
                         (formData);
                         await teacherUploadDocumentToCourse(formData)
                         setError("File successfully uploaded")
+                        toast.success("File successfully uploaded")
                         setTimeout(() => {
                         setError(null)
                         }, 2000);
@@ -119,6 +121,7 @@ const UploadDocumentsForm: React.FC = ()=> {
         }
         catch (error: any) {
             setError("Something went wrong")
+            toast.error(error.message)
         }
         finally {
             setLoading(false)
@@ -127,27 +130,43 @@ const UploadDocumentsForm: React.FC = ()=> {
 
     return (
         <>
-        <div className="container bg-neutral-100 dark:bg-dark-neutral mx-auto p-4">
-            <div className="bg-base rounded px-8 pt-6 pb-8 mb-4">
-                <h2 className="text-2xl font-bold mb-4 text-center">Upload Documents Form</h2>
-                <form>
-                    <CourseSelector
-                        courses={courses}
-                        selectedCourse={selectedCourseId}
-                        onSelectCourse={handleCourseSelect}
-                    />
-                    <FileUploader
-                        selectedFile={selectedFile}
-                        handleFileSelect={handleFileSelect}
-                    />
-                    <button 
-                    type="submit"
-                    className="btn btn-neutral dark:bg-dark-btn dark:text-light-text dark:btn-primary"
-                    onClick={handleUploadDocumentSubmit}>Submit</button>
-                    {error && <div className="text-red-600 mt-4">{error.toString()}</div>}
-                    {loading && <div className="text-green-600 mt-4">Uploading document</div>}
-                </form>
+        <div className="container w-1/2 mx-auto p-4 bgneutral-100 rounded dark:bg-dark-neutral">
+            <h2 className="text-4xl font-bold mb-4 text-center text-light-text dark:text-dark-text pt-8 pb-4">
+                Upload Documents Form
+            </h2>
+            <form>
+            <div className="mb-4">
+                <CourseSelector
+                    courses={courses}
+                    selectedCourse={selectedCourseId}
+                    onSelectCourse={handleCourseSelect}
+                />
             </div>
+            <div className="mb-4">
+                <FileUploader
+                    selectedFile={selectedFile}
+                    handleFileSelect={handleFileSelect}
+                />
+            </div>
+            <div className="flex justify-center mt-4">
+                <button 
+                type="submit"
+                className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+                onClick={handleUploadDocumentSubmit}
+                disabled={loading}
+                >
+                {loading ? (
+                    <>
+                    <span className="loading loading-spinner loading-xs"></span>
+                    <span className='mt-2 text-light-text dark:text-dark-text text-center'>Uploading document</span>
+                    </>
+                ) : (
+                'Submit'
+                )}
+                </button>
+            </div>
+            {error && <div className="text-red-600 mt-4 text-center" style={{ display: 'none' }}>{error.toString()}</div>}
+            </form>
         </div>
         </>
     );
