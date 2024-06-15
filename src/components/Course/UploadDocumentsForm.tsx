@@ -130,7 +130,7 @@ const UploadDocumentsForm: React.FC = ()=> {
 
     return (
         <>
-        <div className="container w-1/2 mx-auto p-4 bg-light-neutral rounded dark:bg-dark-neutral">
+        <div className="container w-1/2 mx-auto p-4 bgneutral-100 rounded dark:bg-dark-neutral">
             <h2 className="text-4xl font-bold mb-4 text-center text-light-text dark:text-dark-text pt-8 pb-4">
                 Upload Documents Form
             </h2>
