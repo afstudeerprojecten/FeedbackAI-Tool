@@ -12,8 +12,8 @@ interface CourseSelectorProps {
 const CourseSelector: React.FC<CourseSelectorProps> = ({ courses, selectedCourse, onSelectCourse }) => {
    
     return (
-        <div className="mb-4">
-            <label className="block text-sm font-bold mb-2" htmlFor="assignment">
+        <div>
+            <label className="block text-sm font-bold mb-2 text-light-text dark:text-dark-text" htmlFor="course">
                 Choose a course from your organisation
             </label>
 
@@ -21,7 +21,7 @@ const CourseSelector: React.FC<CourseSelectorProps> = ({ courses, selectedCourse
                 id="course" 
                 value={selectedCourse} 
                 onChange={(e) => onSelectCourse(e.target.value)}
-                className="w-full border rounded px-3 py-2"
+                className="w-full border rounded px-3 py-2 text-light-text dark:text-dark-text bg-light-neutral dark:bg-dark-neutral dark:border-gray-500 dark:text-dark-text dark:focus-dark-primary focus:outline-none focus:ring-gray-500 focus:border-gray-500"
                 required
             >
 
