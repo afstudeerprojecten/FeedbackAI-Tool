@@ -9,9 +9,7 @@ const DashboardUserChart: React.FC = () => {
         const fetchData = async () => {
             try {
                 const data = await fetchEventByEventID(1);
-                console.log("Data:", data); // Log data
                 const aggregatedData = aggregateDataByMonth(data);
-                console.log("Aggregated data:", aggregatedData); // Log aggregated data
                 setEvents(aggregatedData);
             } catch (error: any) {
                 console.error("Error fetching data:", error.message);
@@ -26,9 +24,7 @@ const DashboardUserChart: React.FC = () => {
 
         data.forEach(event => {
             const date = new Date(event.date_created);
-            console.log("Date:", date); // Log date
             const month = `${String(date.getMonth())}/${date.getFullYear()}`;
-            console.log("Month:", month); // Log month
 
             if (!aggregated[month]) {
                 aggregated[month] = 0;

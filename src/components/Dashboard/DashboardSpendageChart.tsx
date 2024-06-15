@@ -26,9 +26,7 @@ const DashboardSpendageChart: React.FC = () => {
         const fetchData = async () => {
             try {
                 const data = await fetchEventByEventID(2);
-                console.log("Data:", data); // Log data
                 const aggregatedData = groupingMode === "month" ? aggregateDataByMonth(data) : await aggregateDataByUser(data);
-                console.log("Aggregated data:", aggregatedData); // Log aggregated data
                 setEvents(aggregatedData);
             } catch (error: any) {
                 console.error("Error fetching data:", error.message);
@@ -87,8 +85,8 @@ const DashboardSpendageChart: React.FC = () => {
     };
 
     const getColor = (value: number) => {
-        if (value < 0.2) return 'yellowgreen';
-        if (value < 0.5) return '#ff7f0e';
+        if (value < 1) return 'yellowgreen';
+        if (value < 2) return '#ff7f0e';
         return '#d62728';
     };
     const isDefined = <T,>(value: T | undefined): value is T => value !== undefined;

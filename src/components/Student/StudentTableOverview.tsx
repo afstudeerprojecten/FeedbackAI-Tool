@@ -22,7 +22,7 @@ const StudentTableOverview: React.FC = () => {
         });
     } else {
       // User clicked Cancel, do nothing
-      console.log('Deletion cancelled by user');
+      ('Deletion cancelled by user');
     }
   }
 //   const clickUpdate = (updateId: any) => {

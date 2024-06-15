@@ -19,7 +19,7 @@ const SubmissionContentPage: React.FC = () => {
           const data = await fetchSubmission(Number(id)); // Convert id to number
           setSubmission(data);
           setSubmissionContent(data.content);
-          console.log(data);
+          (data);
           const feedback = await fetchFeedback(Number(id));
           setFeedbackContent(feedback.content);
         } else {
@@ -40,7 +40,7 @@ const SubmissionContentPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-neutral-100 text-light-text dark:bg-dark-neutral dark:text-dark-text">
       <div className="w-3/4 mx-auto">
-        <button className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mb-4 mt-8" onClick={handleGoBack}>Back to Overview</button>
+        <button className="btn btn-neutral dark:bg-dark-btn dark:text-light-text dark:btn-primary mb-4 mt-8" onClick={handleGoBack}>Back to Overview</button>
         <h2 className="text-4xl font-bold mb-2 text-center mb-8">
           Submission</h2>
           <div className="card bg-white dark:bg-gray-800 rounded-lg p-4 mt-4 mb-6">

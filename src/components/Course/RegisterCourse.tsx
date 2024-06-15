@@ -30,7 +30,6 @@ const RegisterCourse: React.FC = () => {
     setFormData(prevState => ({ ...prevState, [name]: parsedValue }));
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log('formData', formData);
     e.preventDefault();
     setLoading(true);
     try {
@@ -93,7 +92,7 @@ const RegisterCourse: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+            className="btn btn-neutral dark:bg-dark-btn dark:text-light-text dark:btn-primary"
             disabled={loading}
           >
             {loading ? 'Registering...' : 'Register'}

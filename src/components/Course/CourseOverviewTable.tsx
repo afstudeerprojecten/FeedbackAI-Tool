@@ -34,13 +34,10 @@ const OrganizationsOverviewTable: React.FC = () => {
         <thead className="bg-base">
           <tr>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              ID
-            </th>
-            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Name
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Teacher ID
+              Teacher
             </th>
             {/* Add more table headers as needed */}
           </tr>
@@ -48,7 +45,6 @@ const OrganizationsOverviewTable: React.FC = () => {
         <tbody className="bg-base divide-y divide-gray-200">
           {courses.map((org) => (
             <tr key={org.id}>
-              <td className="px-6 py-4 whitespace-nowrap">{org.id}</td>
               <td className="px-6 py-4 whitespace-nowrap">{org.name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{teacherName(org.teacher_id)}</td>
 

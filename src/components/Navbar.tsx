@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
     navigate('/')
-    toast.success('Logged in successfully', {
+    toast.success('Logged out successfully', {
       onClose: () => window.location.reload(),
       autoClose: 1000
     });
@@ -47,8 +47,9 @@ const Navbar: React.FC = () => {
   }, [token]);
 
   const getLinkClass = (path: string) => {
-    return location.pathname === path ? 'btn-active' : 'btn-ghost';
+    return location.pathname === path ? 'btn-active' : 'btn-ghost'; 
   };
+ 
 
   return (
     <nav className="navbar bg-neutral-100 text-light-text dark:bg-dark-neutral dark:text-dark-text">
@@ -223,12 +224,12 @@ const Navbar: React.FC = () => {
       <div>
         <div className="mr-1">
           {!isLoggedIn && (
-            <Link to="/login" className="btn bg-dark-neutral text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">
+            <Link to="/login" className={`btn ${getLinkClass('/login')} rounded-btn`}>
               Login
             </Link>
           )}
           {isLoggedIn && (
-            <button onClick={handleLogout} className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary">
+            <button onClick={handleLogout} className={`btn ${getLinkClass('/logout')} rounded-btn   `}>
               Logout
             </button>
           )}

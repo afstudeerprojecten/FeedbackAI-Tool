@@ -10,7 +10,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ component: Component, r
   const token = sessionStorage.getItem('token');
   const user = sessionStorage.getItem('user');
   const role = user ? JSON.parse(user).role : null;
-  console.log(role);
+  (role);
 
   const isTokenExpired = (token: string): boolean => {
     const base64Url = token.split('.')[1];

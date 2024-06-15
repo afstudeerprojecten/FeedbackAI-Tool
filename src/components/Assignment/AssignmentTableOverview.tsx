@@ -23,7 +23,7 @@ const AssignmentTableOverview: React.FC = () => {
   useEffect(() => {
     const user = sessionStorage.getItem('user');
     const role = user ? JSON.parse(user).role : null;
-    setShowTemplates(role === 'Teacher');
+    setShowTemplates(role === 'teacher');
   }, []);
 
   const handleViewDescription = (id: number) => {

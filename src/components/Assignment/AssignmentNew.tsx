@@ -51,8 +51,8 @@ const AssignmentNew: React.FC = () => {
                 (course) => course.id === parseInt(value)
             );
             if (selectedCourse) {
-                // console.log(`Selected Course ID: ${selectedCourse.id}`);
-                // console.log(`Selected Teacher ID: ${selectedCourse.teacher_id}`);
+                // (`Selected Course ID: ${selectedCourse.id}`);
+                // (`Selected Teacher ID: ${selectedCourse.teacher_id}`);
                 setFormData((prevState) => ({
                     ...prevState,
                     teacher_id: selectedCourse.teacher_id,
@@ -62,7 +62,7 @@ const AssignmentNew: React.FC = () => {
                 try {
                     const teacher = await fetchTeacher(selectedCourse.teacher_id);
                     if (teacher) {
-                        // console.log(`Teacher Name: ${teacher.name}`);
+                        // (`Teacher Name: ${teacher.name}`);
                         // Update the teacher name in the form data
                         setFormData((prevState) => ({
                             ...prevState,
@@ -79,7 +79,6 @@ const AssignmentNew: React.FC = () => {
     const handleAssignmetSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        console.log("Form Data:", formData);
         try {
             const dataToSend = {
                 ...formData,
@@ -110,7 +109,7 @@ const AssignmentNew: React.FC = () => {
     };
 
     return (
-        <div className="container w-1/2 mx-auto p-4 bg-light-neutral rounded dark:bg-dark-neutral">
+        <div className="container w-1/2 mx-auto p-4 bgneutra-100 rounded dark:bg-dark-neutral">
             <h2 className="text-4xl font-bold mb-4 text-center text-light-text dark:text-dark-text pt-8 pb-4">
                 Assignment Form
             </h2>
@@ -256,7 +255,7 @@ const AssignmentNew: React.FC = () => {
                     {/* Flex container to center the button */}
                     <button
                         type="submit"
-                        className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+                        className="btn btn-neutral dark:bg-dark-btn dark:text-light-text dark:btn-primary"
                         onClick={handleAssignmetSubmit}
                         disabled={loading}
                     >

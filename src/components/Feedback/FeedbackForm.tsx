@@ -43,15 +43,9 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ assignmentId }) => {
                 }
 
                 const ChatCompletion: SubmissionChatCompletion = await submitAssignment(dataSubmission)
-                console.log(ChatCompletion)
 
                 const feedback: Feedback = ChatCompletion.feedback
-                console.log("got feedback");
-                console.log(feedback);
-                console.log(feedback.id)
                 setFeedbackId(feedback.id)
-                console.log(feedback.content)
-                console.log(ChatCompletion.usage_total_tokens)
                 registerEvent({ event_id: 2, user_id: student.id, value: ChatCompletion.usage_total_tokens })
                 setFeedback(feedback.content);
 
@@ -113,7 +107,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ assignmentId }) => {
 
     return (
         <>
-            <div className="container mx-auto p-4 bg-light-neutral rounded dark:bg-dark-neutral">
+            <div className="card bg-white dark:bg-gray-800 rounded-lg p-4 mb-8 w-3/4 mx-auto">
                 <div className="bg-light-neutral rounded px-8 pt-6 pb-8 mb-4 dark:bg-dark-neutral">
                     <h2 className="text-2xl font-bold mb-4 text-center text-light-text dark:text-dark-text">Submission Form</h2>
                     <form>
@@ -134,7 +128,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ assignmentId }) => {
             </div>
 
 
-            <div className="container mx-auto p-4 bg-light-neutral rounded dark:bg-dark-neutral">
+            <div className="card bg-white dark:bg-gray-800 rounded-lg p-4 mb-8 w-3/4 mx-auto">
                 <div className="bg-light-neutral rounded px-8 pt-6 pb-8 mb-4 dark:bg-dark-neutral">
                     <h2 className="text-2xl font-bold mb-4 text-center text-light-text dark:text-dark-text">Feedback</h2>
                     <div>

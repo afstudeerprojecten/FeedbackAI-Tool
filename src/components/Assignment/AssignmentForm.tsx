@@ -29,6 +29,8 @@ const AssignmentForm: React.FC = () => {
   const [assignment, setAssignment] = useState<any>();
   const [template, setTemplate] = useState<any>();
   const [templateCount, setTemplateCount] = useState(0);
+  // const [editedTemplate, setEditedTemplate] = useState<string>(""); // Add state to store edited template content
+
 
   // Placeholder function to simulate response from OpenAI API
 
@@ -58,10 +60,10 @@ const AssignmentForm: React.FC = () => {
     if (name === "course_id") {
       const selectedCourse = courses.find(
         (course) => course.id === parseInt(value)
-      );
+      ); 
       if (selectedCourse) {
-        console.log(`Selected Course ID: ${selectedCourse.id}`);
-        console.log(`Selected Teacher ID: ${selectedCourse.teacher_id}`);
+        (`Selected Course ID: ${selectedCourse.id}`);
+        (`Selected Teacher ID: ${selectedCourse.teacher_id}`);
         setFormData((prevState) => ({
           ...prevState,
           teacher_id: selectedCourse.teacher_id,
@@ -71,7 +73,7 @@ const AssignmentForm: React.FC = () => {
         try {
           const teacher = await fetchTeacher(selectedCourse.teacher_id);
           if (teacher) {
-            console.log(`Teacher Name: ${teacher.name}`);
+            (`Teacher Name: ${teacher.name}`);
             // Update the teacher name in the form data
             setFormData((prevState) => ({
               ...prevState,
@@ -89,7 +91,6 @@ const AssignmentForm: React.FC = () => {
     e.preventDefault();
     // setError(null);
     setLoading(true);
-    console.log("Form Data:", formData);
     try {
       const dataToSend = {
         ...formData,
@@ -110,7 +111,6 @@ const AssignmentForm: React.FC = () => {
         teacher_name: "",
         word_count: "",
       });
-      console.log("Assignment created:", assignment);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -130,11 +130,9 @@ const AssignmentForm: React.FC = () => {
       setLoadingTemplate(true);
       const createdTemplate = await generateTemplate(assignment.id);
       setTemplate(createdTemplate);
-      console.log("Template created:", template);
       // setTemplateSuccess(true);
       toast.success('Template generated successfully');
       setTemplateCount((prevCount) => prevCount + 1);
-      console.log("Template Count:", templateCount);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -157,7 +155,6 @@ const AssignmentForm: React.FC = () => {
         template_content: template,
         assignment_id: assignment.id,
       });
-      console.log("Template accepted:", template);
       toast.success('Template accepted successfully');
       setTemplate("");
       setTimeout(() => {
@@ -182,7 +179,6 @@ const AssignmentForm: React.FC = () => {
       }
       // Decline the template
       setTemplate("");
-      console.log("Template declined:", template);
       setTimeout(() => {
         // navigate('/assignments');
       }, 2000);
@@ -388,19 +384,19 @@ const AssignmentForm: React.FC = () => {
         </form>
       </div>
       <div className="flex justify-center">
-      <div className="tooltip tooltip-left" data-tip="This allows you to directly generate templates for the assignment you just created">
-        <button
-          type="submit"
-          onClick={handleTemplateSubmit}
-          disabled={loadingTemplate}
-          className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
-        >
-          {loadingTemplate ? (
-            <span className="loading loading-spinner loading-xs"></span>
-          ) : (
-            "Generate Template"
-          )}
-        </button>
+        <div className="tooltip tooltip-left" data-tip="This allows you to directly generate templates for the assignment you just created">
+          <button
+            type="submit"
+            onClick={handleTemplateSubmit}
+            disabled={loadingTemplate}
+            className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+          >
+            {loadingTemplate ? (
+              <span className="loading loading-spinner loading-xs"></span>
+            ) : (
+              "Generate Template"
+            )}
+          </button>
         </div>
       </div>
       {/* {templateError && (
@@ -448,36 +444,38 @@ const AssignmentForm: React.FC = () => {
           <p className="text-lg font-bold text-light-text dark:text-dark-text">
             {templateCount === 0
               ? "No templates generated yet"
-              : `Template ${templateCount}`}  
+              : `Template ${templateCount}`}
           </p>
-            <div contentEditable="true">
-              <Markdown>
-            {template || "No template generated yet"}
+          <div
+            contentEditable="true"
+            // Add onChange handler to capture edited template content
+            // onInput={(e) => setEditedTemplate(e.currentTarget.textContent || '')}
+          >
+            <Markdown>
+              {template || "No template generated yet"}
             </Markdown>
-            </div>
-            
-
+          </div>
         </div>
       </div>
-      <div className="flex justify-center">
-      <div className="tooltip tooltip-left" data-tip="Accepting a template will save it for the recently created assignment">
-        <button
-          type="button"
-          onClick={handleTemplateAccept}
-          className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mr-4"
-        >
-          Accept Templates
-        </button>
-        </div>
-        <button
-          type="button"
-          onClick={handleTemplateDecline}
-          className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
-        >
-          Decline Templates
-        </button>
-      </div>
+  <div className="flex justify-center">
+    <div className="tooltip tooltip-left" data-tip="Accepting a template will save it for the recently created assignment">
+      <button
+        type="button"
+        onClick={handleTemplateAccept}
+        className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mr-4"
+      >
+        Accept Templates
+      </button>
     </div>
+    <button
+      type="button"
+      onClick={handleTemplateDecline}
+      className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+    >
+      Decline Templates
+    </button>
+  </div>
+    </div >
   );
 };
 

@@ -17,7 +17,7 @@ const AssignmentDetailOverview: React.FC = () => {
                 const data1 = await fetchCourses();
                 setCourses(data1);
                 setFilteredCourses(data1);
-                console.log(data);
+                (data);
             } catch (error: any) {
                 console.error(error.message);
             }
@@ -79,8 +79,8 @@ const AssignmentDetailOverview: React.FC = () => {
                                         <h3 className="text-lg font-bold pb-1">
                                             {assignment.title}</h3>
                                         <p className="pb-3">{shortenDescription(assignment.description)}</p>
-                                        <div className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-1 w-1/2 mx-auto" onClick={() => handleViewMore(assignment.id)}>
-                                            View more</div>
+                                        <div className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary mt-1 w-1/4" onClick={() => handleViewMore(assignment.id)}>
+                                            More...</div>
                                     </div>
                                 </div>
                             ))}
