@@ -151,7 +151,7 @@ const UploadDocumentsForm: React.FC = ()=> {
             <div className="flex justify-center mt-4">
                 <button 
                 type="submit"
-                className="btn bg-light-btn text-dark-text dark:bg-dark-btn dark:text-light-text dark:btn-primary"
+                className="btn btn-neutral dark:bg-dark-btn dark:text-light-text dark:btn-primary"
                 onClick={handleUploadDocumentSubmit}
                 disabled={loading}
                 >
